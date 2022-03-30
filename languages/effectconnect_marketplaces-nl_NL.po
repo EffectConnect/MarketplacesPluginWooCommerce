@@ -1,0 +1,1527 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-03-17 10:02+0100\n"
+"PO-Revision-Date: 2022-03-17 10:05+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;translate\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: languages/additional-translations-string.php:3
+msgid ""
+"This plugin will allow you to connect your WooCommerce 4.0+ webshop with "
+"EffectConnect Marketplaces."
+msgstr ""
+"Deze plugin zorgt voor de communicatie van de WooCommerce 4.0+ webshop naar "
+"EffectConnect Marketplaces."
+
+#: src/Controller/ConfigController.php:31
+msgid "Save settings"
+msgstr "Instellingen opslaan"
+
+#: src/Controller/ConfigController.php:54
+msgid "Settings saved successfully."
+msgstr "Instellingen succesvol opgeslagen."
+
+#: src/Controller/ConnectionController.php:46
+msgid "Connection deleted successfully."
+msgstr "Connectie is verwijderd."
+
+#: src/Controller/ConnectionController.php:96
+msgid "Connection saved successfully."
+msgstr "Connectie is opgeslagen."
+
+#: src/Controller/ConnectionController.php:112
+msgid "Save connection"
+msgstr "Connectie opslaan"
+
+#: src/Controller/ECMenu.php:21
+msgid "EffectConnect"
+msgstr "EffectConnect"
+
+#: src/Controller/ECMenu.php:30 src/Controller/ECMenu.php:31
+msgid "Connections"
+msgstr "Connecties"
+
+#: src/Controller/ECMenu.php:39
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/Controller/ECMenu.php:47
+msgid "Logs"
+msgstr "Logbestanden"
+
+#: src/Controller/LogController.php:37
+msgid "Download log files"
+msgstr "Log bestanden downloaden"
+
+#: src/Helper/FileDownloadHelper.php:32
+msgid "Data directory not found"
+msgstr "Data folder niet gevonden"
+
+#: src/Helper/FileDownloadHelper.php:37
+msgid "Failed to open zip archive"
+msgstr "Fout tijdens openen ZIP archief"
+
+#: src/Helper/FileDownloadHelper.php:57
+msgid "Failed to add file to zip archive"
+msgstr "Fout tijdens toevoegen bestand aan ZIP archief"
+
+#: src/Helper/FileDownloadHelper.php:62
+msgid "Failed to close zip archive"
+msgstr "Fout tijdens sluiten ZIP archief"
+
+#: src/Helper/FileDownloadHelper.php:66
+msgid "No log files to download"
+msgstr "Geen logbestanden om te downloaden"
+
+#: src/Helper/LanguageHelper.php:16
+msgid "Abkhazian"
+msgstr "Abchazisch"
+
+#: src/Helper/LanguageHelper.php:17
+msgid "Afar"
+msgstr "Afar"
+
+#: src/Helper/LanguageHelper.php:18
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: src/Helper/LanguageHelper.php:19
+msgid "Akan"
+msgstr "Akan"
+
+#: src/Helper/LanguageHelper.php:20
+msgid "Albanian"
+msgstr "Albanees"
+
+#: src/Helper/LanguageHelper.php:21
+msgid "Amharic"
+msgstr "Amhaars"
+
+#: src/Helper/LanguageHelper.php:22
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: src/Helper/LanguageHelper.php:23
+msgid "Aragonese"
+msgstr "Aragonees"
+
+#: src/Helper/LanguageHelper.php:24
+msgid "Armenian"
+msgstr "Armeens"
+
+#: src/Helper/LanguageHelper.php:25
+msgid "Assamese"
+msgstr "Assamees"
+
+#: src/Helper/LanguageHelper.php:26
+msgid "Avaric"
+msgstr "Avaars"
+
+#: src/Helper/LanguageHelper.php:27
+msgid "Avestan"
+msgstr "Avestisch"
+
+#: src/Helper/LanguageHelper.php:28
+msgid "Aymara"
+msgstr "Aymara"
+
+#: src/Helper/LanguageHelper.php:29
+msgid "Azerbaijani"
+msgstr "Azerbeidzjaans"
+
+#: src/Helper/LanguageHelper.php:30
+msgid "Bambara"
+msgstr "Bambara"
+
+#: src/Helper/LanguageHelper.php:31
+msgid "Bashkir"
+msgstr "Basjkiers"
+
+#: src/Helper/LanguageHelper.php:32
+msgid "Basque"
+msgstr "Baskisch"
+
+#: src/Helper/LanguageHelper.php:33
+msgid "Belarusian"
+msgstr "Wit Russisch"
+
+#: src/Helper/LanguageHelper.php:34
+msgid "Bengali"
+msgstr "Bengalees"
+
+#: src/Helper/LanguageHelper.php:35
+msgid "Bislama"
+msgstr "Bislama"
+
+#: src/Helper/LanguageHelper.php:36
+msgid "Bosnian"
+msgstr "Bosnisch"
+
+#: src/Helper/LanguageHelper.php:37
+msgid "Breton"
+msgstr "Bretons"
+
+#: src/Helper/LanguageHelper.php:38
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
+#: src/Helper/LanguageHelper.php:39
+msgid "Burmese"
+msgstr "Birmees"
+
+#: src/Helper/LanguageHelper.php:40
+msgid "Catalan"
+msgstr "Catalaans"
+
+#: src/Helper/LanguageHelper.php:41
+msgid "Chamorro"
+msgstr "Chamorro"
+
+#: src/Helper/LanguageHelper.php:42
+msgid "Chechen"
+msgstr "Tsjetsjeens"
+
+#: src/Helper/LanguageHelper.php:43
+msgid "Chichewa"
+msgstr "Nyanja"
+
+#: src/Helper/LanguageHelper.php:44
+msgid "Chinese"
+msgstr "Chinees"
+
+#: src/Helper/LanguageHelper.php:45
+msgid "Chuvash"
+msgstr "Tsjoevasjisch"
+
+#: src/Helper/LanguageHelper.php:46
+msgid "Cornish"
+msgstr "Cornisch"
+
+#: src/Helper/LanguageHelper.php:47
+msgid "Corsican"
+msgstr "Corsicaans"
+
+#: src/Helper/LanguageHelper.php:48
+msgid "Cree"
+msgstr "Creools"
+
+#: src/Helper/LanguageHelper.php:49
+msgid "Croatian"
+msgstr "Kroatisch"
+
+#: src/Helper/LanguageHelper.php:50
+msgid "Czech"
+msgstr "Tsjechisch"
+
+#: src/Helper/LanguageHelper.php:51
+msgid "Danish"
+msgstr "Deens"
+
+#: src/Helper/LanguageHelper.php:52
+msgid "Divehi"
+msgstr "Divehi"
+
+#: src/Helper/LanguageHelper.php:53
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: src/Helper/LanguageHelper.php:54
+msgid "Dzongkha"
+msgstr "Dzongkha"
+
+#: src/Helper/LanguageHelper.php:55
+msgid "English"
+msgstr "Engels"
+
+#: src/Helper/LanguageHelper.php:56
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: src/Helper/LanguageHelper.php:57
+msgid "Estonian"
+msgstr "Ests"
+
+#: src/Helper/LanguageHelper.php:58
+msgid "Ewe"
+msgstr "Ewe"
+
+#: src/Helper/LanguageHelper.php:59
+msgid "Faroese"
+msgstr "Faeröers"
+
+#: src/Helper/LanguageHelper.php:60
+msgid "Fijian"
+msgstr "Fijisch"
+
+#: src/Helper/LanguageHelper.php:61
+msgid "Finnish"
+msgstr "Fins"
+
+#: src/Helper/LanguageHelper.php:62
+msgid "French"
+msgstr "Frans"
+
+#: src/Helper/LanguageHelper.php:63
+msgid "Fulah"
+msgstr "Fula"
+
+#: src/Helper/LanguageHelper.php:64
+msgid "Galician"
+msgstr "Galicisch"
+
+#: src/Helper/LanguageHelper.php:65
+msgid "Georgian"
+msgstr "Georgisch"
+
+#: src/Helper/LanguageHelper.php:66
+msgid "German"
+msgstr "Duits"
+
+#: src/Helper/LanguageHelper.php:67
+msgid "Greek"
+msgstr "Grieks"
+
+#: src/Helper/LanguageHelper.php:68
+msgid "Guarani"
+msgstr "Guaraní"
+
+#: src/Helper/LanguageHelper.php:69
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: src/Helper/LanguageHelper.php:70
+msgid "Haitian"
+msgstr "Haïtiaans Creools"
+
+#: src/Helper/LanguageHelper.php:71
+msgid "Hausa"
+msgstr "Hausa"
+
+#: src/Helper/LanguageHelper.php:72
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+#: src/Helper/LanguageHelper.php:73
+msgid "Herero"
+msgstr "Herero"
+
+#: src/Helper/LanguageHelper.php:74
+msgid "Hindi"
+msgstr "Hindi"
+
+#: src/Helper/LanguageHelper.php:75
+msgid "Hiri Motu"
+msgstr "Hiri Motu"
+
+#: src/Helper/LanguageHelper.php:76
+msgid "Hungarian"
+msgstr "Hongaars"
+
+#: src/Helper/LanguageHelper.php:77
+msgid "Interlingua"
+msgstr "Interlingua"
+
+#: src/Helper/LanguageHelper.php:78
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+#: src/Helper/LanguageHelper.php:79
+msgid "Interlingue"
+msgstr "Interlinie"
+
+#: src/Helper/LanguageHelper.php:80
+msgid "Irish"
+msgstr "Iers"
+
+#: src/Helper/LanguageHelper.php:81
+msgid "Igbo"
+msgstr "Igbo"
+
+#: src/Helper/LanguageHelper.php:82
+msgid "Inupiaq"
+msgstr "Inupiak"
+
+#: src/Helper/LanguageHelper.php:83
+msgid "Ido"
+msgstr "Ido"
+
+#: src/Helper/LanguageHelper.php:84
+msgid "Icelandic"
+msgstr "IJslands"
+
+#: src/Helper/LanguageHelper.php:85
+msgid "Italian"
+msgstr "Italiaans"
+
+#: src/Helper/LanguageHelper.php:86
+msgid "Inuktitut"
+msgstr "Inuktitut"
+
+#: src/Helper/LanguageHelper.php:87
+msgid "Japanese"
+msgstr "Japans"
+
+#: src/Helper/LanguageHelper.php:88
+msgid "Javanese"
+msgstr "Javaans"
+
+#: src/Helper/LanguageHelper.php:89
+msgid "Kalaallisut"
+msgstr "Groenlands"
+
+#: src/Helper/LanguageHelper.php:90
+msgid "Kannada"
+msgstr "Canada"
+
+#: src/Helper/LanguageHelper.php:91
+msgid "Kanuri"
+msgstr "Kanuri"
+
+#: src/Helper/LanguageHelper.php:92
+msgid "Kashmiri"
+msgstr "Kasjmirs"
+
+#: src/Helper/LanguageHelper.php:93
+msgid "Kazakh"
+msgstr "Kazachs"
+
+#: src/Helper/LanguageHelper.php:94
+msgid "Central Khmer"
+msgstr "Centraal Khmer"
+
+#: src/Helper/LanguageHelper.php:95
+msgid "Kikuyu"
+msgstr "Gikuyu"
+
+#: src/Helper/LanguageHelper.php:96
+msgid "Kinyarwanda"
+msgstr "Kinyarwanda"
+
+#: src/Helper/LanguageHelper.php:97
+msgid "Kirghiz"
+msgstr "Kirgizisch"
+
+#: src/Helper/LanguageHelper.php:98
+msgid "Komi"
+msgstr "Komi"
+
+#: src/Helper/LanguageHelper.php:99
+msgid "Kongo"
+msgstr "Kongo"
+
+#: src/Helper/LanguageHelper.php:100
+msgid "Korean"
+msgstr "Koreaans"
+
+#: src/Helper/LanguageHelper.php:101
+msgid "Kurdish"
+msgstr "Koerdisch"
+
+#: src/Helper/LanguageHelper.php:102
+msgid "Kuanyama"
+msgstr "Kuanyama"
+
+#: src/Helper/LanguageHelper.php:103
+msgid "Latin"
+msgstr "Latijn"
+
+#: src/Helper/LanguageHelper.php:104
+msgid "Luxembourgish"
+msgstr "Luxemburgs"
+
+#: src/Helper/LanguageHelper.php:105
+msgid "Ganda"
+msgstr "Ganda"
+
+#: src/Helper/LanguageHelper.php:106
+msgid "Limburgan"
+msgstr "Limburgs"
+
+#: src/Helper/LanguageHelper.php:107
+msgid "Lingala"
+msgstr "Lingala"
+
+#: src/Helper/LanguageHelper.php:108
+msgid "Lao"
+msgstr "LAO"
+
+#: src/Helper/LanguageHelper.php:109
+msgid "Lithuanian"
+msgstr "Litouws"
+
+#: src/Helper/LanguageHelper.php:110
+msgid "Luba-Katanga"
+msgstr "Luba Katanga"
+
+#: src/Helper/LanguageHelper.php:111
+msgid "Latvian"
+msgstr "Lets"
+
+#: src/Helper/LanguageHelper.php:112
+msgid "Manx"
+msgstr "Manx-Gaelisch"
+
+#: src/Helper/LanguageHelper.php:113
+msgid "Macedonian"
+msgstr "Macedonisch"
+
+#: src/Helper/LanguageHelper.php:114
+msgid "Malagasy"
+msgstr "Malagassisch"
+
+#: src/Helper/LanguageHelper.php:115
+msgid "Malay"
+msgstr "Maleis"
+
+#: src/Helper/LanguageHelper.php:116
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: src/Helper/LanguageHelper.php:117
+msgid "Maltese"
+msgstr "Maltees"
+
+#: src/Helper/LanguageHelper.php:118
+msgid "Maori"
+msgstr "Maori"
+
+#: src/Helper/LanguageHelper.php:119
+msgid "Marathi"
+msgstr "Marathi"
+
+#: src/Helper/LanguageHelper.php:120
+msgid "Marshallese"
+msgstr "Marshallees"
+
+#: src/Helper/LanguageHelper.php:121
+msgid "Mongolian"
+msgstr "Mongools"
+
+#: src/Helper/LanguageHelper.php:122
+msgid "Nauru"
+msgstr "Nauru"
+
+#: src/Helper/LanguageHelper.php:123
+msgid "Navajo"
+msgstr "Navajo"
+
+#: src/Helper/LanguageHelper.php:124
+msgid "North Ndebele"
+msgstr "Noord Ndebele"
+
+#: src/Helper/LanguageHelper.php:125
+msgid "Nepali"
+msgstr "Nepalees"
+
+#: src/Helper/LanguageHelper.php:126
+msgid "Ndonga"
+msgstr "Ndonga"
+
+#: src/Helper/LanguageHelper.php:127
+msgid "Norwegian Bokmål"
+msgstr "Noors (Bokmål)"
+
+#: src/Helper/LanguageHelper.php:128
+msgid "Norwegian Nynorsk"
+msgstr "Noors (Nynorsk)"
+
+#: src/Helper/LanguageHelper.php:129
+msgid "Norwegian"
+msgstr "Noors"
+
+#: src/Helper/LanguageHelper.php:130
+msgid "Sichuan Yi"
+msgstr "Sichuan Yi"
+
+#: src/Helper/LanguageHelper.php:131
+msgid "South Ndebele"
+msgstr "Zuid-Ndebele"
+
+#: src/Helper/LanguageHelper.php:132
+msgid "Occitan"
+msgstr "Occitaans"
+
+#: src/Helper/LanguageHelper.php:133
+msgid "Ojibwa"
+msgstr "Ojibwe"
+
+#: src/Helper/LanguageHelper.php:134
+msgid "Church Slavic"
+msgstr "Kerk Slavisch"
+
+#: src/Helper/LanguageHelper.php:135
+msgid "Oromo"
+msgstr "Oromo"
+
+#: src/Helper/LanguageHelper.php:136
+msgid "Oriya"
+msgstr "Oriya"
+
+#: src/Helper/LanguageHelper.php:137
+msgid "Ossetian"
+msgstr "Ossetisch"
+
+#: src/Helper/LanguageHelper.php:138
+msgid "Punjabi"
+msgstr "Punjabi"
+
+#: src/Helper/LanguageHelper.php:139
+msgid "Pali"
+msgstr "Pali"
+
+#: src/Helper/LanguageHelper.php:140
+msgid "Persian"
+msgstr "Perzisch"
+
+#: src/Helper/LanguageHelper.php:141
+msgid "Polish"
+msgstr "Pools"
+
+#: src/Helper/LanguageHelper.php:142
+msgid "Pashto"
+msgstr "Pasjtoe"
+
+#: src/Helper/LanguageHelper.php:143
+msgid "Portuguese"
+msgstr "Portugees"
+
+#: src/Helper/LanguageHelper.php:144
+msgid "Quechua"
+msgstr "Quechua"
+
+#: src/Helper/LanguageHelper.php:145
+msgid "Romansh"
+msgstr "Reto-Romaans"
+
+#: src/Helper/LanguageHelper.php:146
+msgid "Rundi"
+msgstr "Rundi"
+
+#: src/Helper/LanguageHelper.php:147
+msgid "Romanian"
+msgstr "Roemeens"
+
+#: src/Helper/LanguageHelper.php:148
+msgid "Russian"
+msgstr "Russisch"
+
+#: src/Helper/LanguageHelper.php:149
+msgid "Sanskrit"
+msgstr "Sanskriet"
+
+#: src/Helper/LanguageHelper.php:150
+msgid "Sardinian"
+msgstr "Sardijns"
+
+#: src/Helper/LanguageHelper.php:151
+msgid "Sindhi"
+msgstr "Sindhi"
+
+#: src/Helper/LanguageHelper.php:152
+msgid "Northern Sami"
+msgstr "Noord Samisch"
+
+#: src/Helper/LanguageHelper.php:153
+msgid "Samoan"
+msgstr "Samoaans"
+
+#: src/Helper/LanguageHelper.php:154
+msgid "Sango"
+msgstr "Sango"
+
+#: src/Helper/LanguageHelper.php:155
+msgid "Serbian"
+msgstr "Servisch"
+
+#: src/Helper/LanguageHelper.php:156
+msgid "Gaelic"
+msgstr "Gaelisch"
+
+#: src/Helper/LanguageHelper.php:157
+msgid "Shona"
+msgstr "Shona"
+
+#: src/Helper/LanguageHelper.php:158
+msgid "Sinhala"
+msgstr "Singalees"
+
+#: src/Helper/LanguageHelper.php:159
+msgid "Slovak"
+msgstr "Slowaaks"
+
+#: src/Helper/LanguageHelper.php:160
+msgid "Slovenian"
+msgstr "Sloveens"
+
+#: src/Helper/LanguageHelper.php:161
+msgid "Somali"
+msgstr "Somalisch"
+
+#: src/Helper/LanguageHelper.php:162
+msgid "Southern Sotho"
+msgstr "Zuid-Sotho"
+
+#: src/Helper/LanguageHelper.php:163
+msgid "Spanish"
+msgstr "Spaans"
+
+#: src/Helper/LanguageHelper.php:164
+msgid "Sundanese"
+msgstr "Sundanees"
+
+#: src/Helper/LanguageHelper.php:165
+msgid "Swahili"
+msgstr "Swahili"
+
+#: src/Helper/LanguageHelper.php:166
+msgid "Swati"
+msgstr "Swazi"
+
+#: src/Helper/LanguageHelper.php:167
+msgid "Swedish"
+msgstr "Zweeds"
+
+#: src/Helper/LanguageHelper.php:168
+msgid "Tamil"
+msgstr "Tamil"
+
+#: src/Helper/LanguageHelper.php:169
+msgid "Telugu"
+msgstr "Telugu"
+
+#: src/Helper/LanguageHelper.php:170
+msgid "Tajik"
+msgstr "Tadzjieks"
+
+#: src/Helper/LanguageHelper.php:171
+msgid "Thai"
+msgstr "Thais"
+
+#: src/Helper/LanguageHelper.php:172
+msgid "Tigrinya"
+msgstr "Tigrinya"
+
+#: src/Helper/LanguageHelper.php:173
+msgid "Tibetan"
+msgstr "Tibetaans"
+
+#: src/Helper/LanguageHelper.php:174
+msgid "Turkmen"
+msgstr "Turkmeens"
+
+#: src/Helper/LanguageHelper.php:175
+msgid "Tagalog"
+msgstr "Tagalog"
+
+#: src/Helper/LanguageHelper.php:176
+msgid "Tswana"
+msgstr "Tswana"
+
+#: src/Helper/LanguageHelper.php:177
+msgid "Tonga"
+msgstr "Tonga"
+
+#: src/Helper/LanguageHelper.php:178
+msgid "Turkish"
+msgstr "Turks"
+
+#: src/Helper/LanguageHelper.php:179
+msgid "Tsonga"
+msgstr "Tsonga"
+
+#: src/Helper/LanguageHelper.php:180
+msgid "Tatar"
+msgstr "Tataars"
+
+#: src/Helper/LanguageHelper.php:181
+msgid "Twi"
+msgstr "Twi"
+
+#: src/Helper/LanguageHelper.php:182
+msgid "Tahitian"
+msgstr "Tahitiaans"
+
+#: src/Helper/LanguageHelper.php:183
+msgid "Uighur"
+msgstr "Uyghur"
+
+#: src/Helper/LanguageHelper.php:184
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+#: src/Helper/LanguageHelper.php:185
+msgid "Urdu"
+msgstr "Urdu"
+
+#: src/Helper/LanguageHelper.php:186
+msgid "Uzbek"
+msgstr "Oezbeeks"
+
+#: src/Helper/LanguageHelper.php:187
+msgid "Venda"
+msgstr "Venda"
+
+#: src/Helper/LanguageHelper.php:188
+msgid "Vietnamese"
+msgstr "Vietnamees"
+
+#: src/Helper/LanguageHelper.php:189
+msgid "Volapük"
+msgstr "Volapük"
+
+#: src/Helper/LanguageHelper.php:190
+msgid "Walloon"
+msgstr "Waals"
+
+#: src/Helper/LanguageHelper.php:191
+msgid "Welsh"
+msgstr "Welsh"
+
+#: src/Helper/LanguageHelper.php:192
+msgid "Wolof"
+msgstr "Wolof"
+
+#: src/Helper/LanguageHelper.php:193
+msgid "Western Frisian"
+msgstr "West Fries"
+
+#: src/Helper/LanguageHelper.php:194
+msgid "Xhosa"
+msgstr "Xhosa"
+
+#: src/Helper/LanguageHelper.php:195
+msgid "Yiddish"
+msgstr "Jiddisch"
+
+#: src/Helper/LanguageHelper.php:196
+msgid "Yoruba"
+msgstr "Yoruba"
+
+#: src/Helper/LanguageHelper.php:197
+msgid "Zhuang"
+msgstr "Zhuang"
+
+#: src/Helper/LanguageHelper.php:198
+msgid "Zulu"
+msgstr "Zulu"
+
+#: src/Helper/WcHelper.php:35
+#: view/templates/connections/ec_connections_listview.html.twig:15
+#: view/templates/connections/ec_connections_listview.html.twig:49
+msgid "ID"
+msgstr "ID"
+
+#: src/Helper/WcHelper.php:36
+#: view/templates/connections/ec_connections_listview.html.twig:17
+#: view/templates/connections/ec_connections_listview.html.twig:51
+msgid "Name"
+msgstr "Naam"
+
+#: src/Helper/WcHelper.php:37
+msgid "Slug"
+msgstr "Slug"
+
+#: src/Helper/WcHelper.php:38
+msgid "Status"
+msgstr "Status"
+
+#: src/Helper/WcHelper.php:39
+msgid "Featured"
+msgstr "Uitgelicht"
+
+#: src/Helper/WcHelper.php:40
+msgid "Catalog visibility"
+msgstr "Catalogus zichtbaarheid"
+
+#: src/Helper/WcHelper.php:41
+msgid "Description"
+msgstr "Omschrijving"
+
+#: src/Helper/WcHelper.php:42
+msgid "Short description"
+msgstr "Korte omschrijving"
+
+#: src/Helper/WcHelper.php:43
+msgid "SKU"
+msgstr "SKU"
+
+#: src/Helper/WcHelper.php:44
+msgid "Regular price"
+msgstr "Reguliere prijs"
+
+#: src/Helper/WcHelper.php:45
+msgid "Sale price"
+msgstr "Actieprijs"
+
+#: src/Helper/WcHelper.php:46
+msgid "Date sale price starts"
+msgstr "Start actieperiode"
+
+#: src/Helper/WcHelper.php:47
+msgid "Date sale price ends"
+msgstr "Einde actieperiode"
+
+#: src/Helper/WcHelper.php:48
+msgid "Total sales"
+msgstr "Totale verkopen"
+
+#: src/Helper/WcHelper.php:49
+msgid "Tax status"
+msgstr "BTW-status"
+
+#: src/Helper/WcHelper.php:50
+msgid "Tax class"
+msgstr "Belastingklasse"
+
+#: src/Helper/WcHelper.php:51
+msgid "Manage stock?"
+msgstr "Voorraad beheren?"
+
+#: src/Helper/WcHelper.php:52
+msgid "In stock?"
+msgstr "Op voorraad?"
+
+#: src/Helper/WcHelper.php:53
+msgid "Stock status"
+msgstr "Voorraad status"
+
+#: src/Helper/WcHelper.php:54
+msgid "Backorders allowed?"
+msgstr "Nabestellingen toestaan?"
+
+#: src/Helper/WcHelper.php:55
+msgid "Low stock amount"
+msgstr "Drempel lage voorraad"
+
+#: src/Helper/WcHelper.php:56
+msgid "Sold individually?"
+msgstr "Wordt individueel verkocht?"
+
+#: src/Helper/WcHelper.php:57
+msgid "Weight"
+msgstr "Gewicht"
+
+#: src/Helper/WcHelper.php:58
+msgid "Length"
+msgstr "Lengte"
+
+#: src/Helper/WcHelper.php:59
+msgid "Width"
+msgstr "Breedte"
+
+#: src/Helper/WcHelper.php:60
+msgid "Height"
+msgstr "Hoogte"
+
+#: src/Helper/WcHelper.php:61
+msgid "Purchase note"
+msgstr "Aankoopnotitie"
+
+#: src/Helper/WcHelper.php:115
+msgid "Product Code"
+msgstr "Product Code"
+
+#: src/Helper/WcHelper.php:116
+msgid "Product Code 2"
+msgstr "Product Code 2"
+
+#: src/Helper/WcHelper.php:119
+msgid "Perfect Brands"
+msgstr "Perfect Brands"
+
+#: src/Logic/ConfigContainer.php:182 src/Logic/ConfigContainer.php:253
+msgid "Queue size"
+msgstr "Wachtrijgrootte"
+
+#: src/Logic/ConfigContainer.php:183 src/Logic/ConfigContainer.php:254
+msgid "Select how many calls can be queued up."
+msgstr "Het maximaal aantal items dat in één batch worden verwerkt."
+
+#: src/Logic/ConfigContainer.php:196 src/Logic/ConfigContainer.php:217
+#: src/Logic/ConfigContainer.php:287
+msgid "Schedule"
+msgstr "Schema"
+
+#: src/Logic/ConfigContainer.php:197
+msgid "Select the frequency the order import process will run at."
+msgstr ""
+"Selecteer de frequentie waarmee het order import proces dient te lopen."
+
+#: src/Logic/ConfigContainer.php:200 src/Logic/ConfigContainer.php:221
+#: src/Logic/ConfigContainer.php:291
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: src/Logic/ConfigContainer.php:201
+msgid "5 minutes"
+msgstr "Elke 5 minuten"
+
+#: src/Logic/ConfigContainer.php:202
+msgid "15 minutes"
+msgstr "Elke 15 minuten"
+
+#: src/Logic/ConfigContainer.php:203 src/Logic/ConfigContainer.php:222
+msgid "30 minutes"
+msgstr "Elke 30 minuten"
+
+#: src/Logic/ConfigContainer.php:204 src/Logic/ConfigContainer.php:223
+#: src/Logic/ConfigContainer.php:292
+msgid "1 hour"
+msgstr "Elk uur"
+
+#: src/Logic/ConfigContainer.php:205 src/Logic/ConfigContainer.php:297
+msgid "1 day"
+msgstr "Elke dag"
+
+#: src/Logic/ConfigContainer.php:218
+msgid "Select the frequency the offer export process will run at."
+msgstr ""
+"Selecteer de frequentie waarmee het voorraad (en prijzen) export proces "
+"dient te lopen."
+
+#: src/Logic/ConfigContainer.php:224 src/Logic/ConfigContainer.php:293
+msgid "2 hours"
+msgstr "Elke 2 uur"
+
+#: src/Logic/ConfigContainer.php:225
+msgid "3 hours"
+msgstr "Elke 3 uur"
+
+#: src/Logic/ConfigContainer.php:226 src/Logic/ConfigContainer.php:295
+msgid "6 hours"
+msgstr "Elke 6 uur"
+
+#: src/Logic/ConfigContainer.php:227
+msgid "8 hours"
+msgstr "Elke 8 uur"
+
+#: src/Logic/ConfigContainer.php:228 src/Logic/ConfigContainer.php:296
+msgid "12 hours"
+msgstr "Elke 12 uur"
+
+#: src/Logic/ConfigContainer.php:240
+msgid "Export on product change"
+msgstr "Exporteren bij productwijziging"
+
+#: src/Logic/ConfigContainer.php:241
+msgid ""
+"Select if an offer export should be executed after a product has seen "
+"changes."
+msgstr ""
+"Selecteer of het voorraad (en prijzen) export proces moet worden uitgevoerd "
+"bij elke productwijziging."
+
+#: src/Logic/ConfigContainer.php:267
+msgid "Log expiration time"
+msgstr "Logs wissen na"
+
+#: src/Logic/ConfigContainer.php:268
+msgid ""
+"Select how long the log should be preserved before the expired entries will "
+"automatically be removed from the log."
+msgstr ""
+"Selecteer hoe lang de log bewaart dient te blijven alvorens de vervallen log "
+"items automatisch worden verwijderd."
+
+#: src/Logic/ConfigContainer.php:271
+msgid "Expires in 1 day"
+msgstr "1 dag"
+
+#: src/Logic/ConfigContainer.php:272
+msgid "Expires in 3 days"
+msgstr "3 dagen"
+
+#: src/Logic/ConfigContainer.php:273
+msgid "Expires in 1 week"
+msgstr "1 week"
+
+#: src/Logic/ConfigContainer.php:274
+msgid "Expires in 2 weeks"
+msgstr "2 weken"
+
+#: src/Logic/ConfigContainer.php:275
+msgid "Expires in 4 weeks"
+msgstr "4 weken"
+
+#: src/Logic/ConfigContainer.php:288
+msgid "Select the frequency the catalog export process will run at."
+msgstr ""
+"Selecteer de frequentie waarmee het catalogus export proces dient te lopen."
+
+#: src/Logic/ConfigContainer.php:294
+msgid "4 hours"
+msgstr "Elke 4 uur"
+
+#: src/Logic/ConfigContainer.php:298
+msgid "2 days"
+msgstr "Elke 2 dagen"
+
+#: src/Logic/ConfigContainer.php:299
+msgid "5 days"
+msgstr "Elke 5 dagen"
+
+#: src/Logic/ConfigContainer.php:300
+msgid "1 week"
+msgstr "Elke week"
+
+#: src/Model/ConnectionResource.php:403
+msgid "WooCommerce order state changed to"
+msgstr "WooCommerce order status is gewijzigd naar"
+
+#: src/Model/ConnectionResource.php:407
+msgid "WooCommerce order received a Track and Trace code from MyParcel"
+msgstr ""
+"WooCommerce order heeft een Track and Trace code ontvangen vanuit MyParcel"
+
+#: src/Model/ConnectionResource.php:410
+msgid "Don't update orders"
+msgstr "Orders niet bijwerken"
+
+#: src/Model/ConnectionResource.php:433
+msgid "General"
+msgstr "Algemeen"
+
+#: src/Model/ConnectionResource.php:434
+msgid "Exclude from export"
+msgstr "Uitsluiten van export"
+
+#: src/Model/ConnectionResource.php:436
+msgid "Custom attributes"
+msgstr "Custom attributen"
+
+#: src/Model/ConnectionResource.php:437
+msgid "Default attributes"
+msgstr "Default attributen"
+
+#: src/Model/ConnectionResource.php:440
+msgid "External plugins"
+msgstr "Externe plugins"
+
+#: src/Model/ConnectionResource.php:459
+msgid "Import both internally and externally fulfilled orders"
+msgstr ""
+"Zowel interne orders als orders met logistiek door marketplace importeren"
+
+#: src/Model/ConnectionResource.php:460
+msgid "Import only internally fulfilled orders"
+msgstr "Alleen interne orders importeren"
+
+#: src/Model/ConnectionResource.php:461
+msgid "Import only externally fulfilled orders"
+msgstr "Alleen orders importeren met logistiek door marketplace"
+
+#: src/Model/ConnectionResource.php:474
+msgid "Please fill in a connection name"
+msgstr "Vul een eigen referentie in voor de connectie"
+
+#: src/Model/ConnectionResource.php:479
+msgid "Please fill in a public key"
+msgstr "Vul een publieke sleutel in"
+
+#: src/Model/ConnectionResource.php:484
+msgid "Please fill in a private key"
+msgstr "Vul een geheime sleutel in"
+
+#: src/Model/ConnectionResource.php:489
+msgid "The fictional stock amount should be between 0 and 9999"
+msgstr "Het fictieve voorraadbedrag moet tussen 0 en 9999 liggen"
+
+#: src/Model/ECPayment.php:15
+msgid "EffectConnect Marketplaces Payment"
+msgstr "EffectConnect Marketplaces betaalmethode"
+
+#: src/Model/ECPayment.php:16
+msgid "Custom payment method for imported EffectConnect orders."
+msgstr "Custom betaalmethode voor geïmporteerde EffectConnect orders."
+
+#: src/Model/ECShipping.php:20
+msgid "EffectConnect Marketplaces Shipping"
+msgstr "EffectConnect Marketplaces verzendmethode"
+
+#: src/Model/ECShipping.php:21
+msgid "Use the standard EffectConnect shipping method"
+msgstr "Gebruik de standaard EffectConnect verzendmethode"
+
+#: view/templates/connections/ec_connection.html.twig:3
+msgid "EffectConnect - Edit connection"
+msgstr "EffectConnect - Connectie bewerken"
+
+#: view/templates/connections/ec_connection.html.twig:5
+msgid "EffectConnect - Add connection"
+msgstr "EffectConnect - Connectie aanmaken"
+
+#: view/templates/connections/ec_connection.html.twig:13
+msgid "General settings"
+msgstr "Algemene instellingen"
+
+#: view/templates/connections/ec_connection.html.twig:17
+msgid "Connection name"
+msgstr "Naam connectie"
+
+#: view/templates/connections/ec_connection.html.twig:21
+msgid "Used for internal reference only."
+msgstr "Alleen gebruikt voor interne referentie."
+
+#: view/templates/connections/ec_connection.html.twig:26
+#: view/templates/connections/ec_connections_listview.html.twig:18
+#: view/templates/connections/ec_connections_listview.html.twig:52
+msgid "Public key"
+msgstr "Publieke sleutel"
+
+#: view/templates/connections/ec_connection.html.twig:30
+msgid ""
+"Find your public key in the API Key Management section in EffectConnect "
+"Marketplaces."
+msgstr ""
+"Vind je publieke sleutel in de API Sleutel Beheer sectie in EffectConnect "
+"Marketplaces."
+
+#: view/templates/connections/ec_connection.html.twig:35
+msgid "Secret key"
+msgstr "Geheime sleutel"
+
+#: view/templates/connections/ec_connection.html.twig:39
+msgid ""
+"Find your secret key in the API Key Management section in EffectConnect "
+"Marketplaces."
+msgstr ""
+"Vind je geheime sleutel in de API Sleutel Beheer sectie in EffectConnect "
+"Marketplaces."
+
+#: view/templates/connections/ec_connection.html.twig:44
+#: view/templates/connections/ec_connections_listview.html.twig:16
+#: view/templates/connections/ec_connections_listview.html.twig:50
+msgid "Active"
+msgstr "Actief"
+
+#: view/templates/connections/ec_connection.html.twig:50
+msgid "No export and import processes will run for inactive connections."
+msgstr ""
+"Er worden geen export- en importprocessen uitgevoerd voor inactieve "
+"connecties."
+
+#: view/templates/connections/ec_connection.html.twig:55
+msgid "Catalog export settings"
+msgstr "Instellingen voor de catalogus export"
+
+#: view/templates/connections/ec_connection.html.twig:60
+msgid "Export WPML languages"
+msgstr "WPML talen exporteren"
+
+#: view/templates/connections/ec_connection.html.twig:67
+msgid ""
+"We have detected the WPML plugin. Choose this option if you want to export "
+"all active WPML languages to EffectConnect. The default WML language will be "
+"used to choose which products to export and is used as fallback languages in "
+"case of missing translations."
+msgstr ""
+"We hebben de WPML plugin gedetecteerd. Selecteer deze optie indien alle WPML "
+"talen geëxporteerd moeten worden naar EffectConnect. The default WPML taal "
+"bepaalt welke producten worden geëxporteerd en wordt gebruikt als fallback "
+"taal in geval er vertalingen ontbreken."
+
+#: view/templates/connections/ec_connection.html.twig:68
+#, php-format
+msgid "Active WPML language codes: [%s]."
+msgstr "Actieve WPML taalcodes: [%s]."
+
+#: view/templates/connections/ec_connection.html.twig:69
+#, php-format
+msgid "Default WPML language code: [%s]."
+msgstr "Default WPML taalcode: [%s]."
+
+#: view/templates/connections/ec_connection.html.twig:78
+msgid "Catalog language"
+msgstr "Catalogus taal"
+
+#: view/templates/connections/ec_connection.html.twig:90
+msgid ""
+"Select the general language that product details are written in for the "
+"catalog (this does not change anything in the catalog and is only used as an "
+"indicator for EffectConnect)."
+msgstr ""
+"Selecteer de producttaal van de catalogus die wordt geëxporteerd (dit "
+"verandert niks aan de catalogus, maar wordt slechts gebruikt als indicator "
+"voor de producttaal in EffectConnect)."
+
+#: view/templates/connections/ec_connection.html.twig:95
+msgid "Only export active products"
+msgstr "Exporteer alleen actieve producten"
+
+#: view/templates/connections/ec_connection.html.twig:101
+msgid ""
+"If this setting is enabled only products that are enabled will be exported "
+"to EffectConnect."
+msgstr ""
+"Als deze instelling is ingeschakeld, worden alleen producten die zijn "
+"ingeschakeld geëxporteerd naar EffectConnect."
+
+#: view/templates/connections/ec_connection.html.twig:106
+msgid "Use special price"
+msgstr "Gebruik actieprijs"
+
+#: view/templates/connections/ec_connection.html.twig:112
+msgid ""
+"If enabled the original price will be exported to EffectConnect Marketplaces "
+"separately in case there is a sale price. If disabled only the original "
+"price is exported."
+msgstr ""
+"Indien ingeschakeld wordt de reguliere productprijs apart geëxporteerd van "
+"de aanbiedingsprijs (indien er een aanbiedingsprijs is). Indien "
+"uitgeschakeld wordt alleen de reguliere productprijs geëxporteerd."
+
+#: view/templates/connections/ec_connection.html.twig:117
+msgid "EAN attribute"
+msgstr "EAN attribuut"
+
+#: view/templates/connections/ec_connection.html.twig:137
+msgid "Exclude products with invalid EAN"
+msgstr "Producten met ongeldige EAN uitsluiten"
+
+#: view/templates/connections/ec_connection.html.twig:143
+msgid ""
+"When checked, products with invalid EAN will be excluded from export. "
+"Otherwise products will be exported without EAN, since EffectConnect won't "
+"except products with invalid EAN."
+msgstr ""
+"Indien ingeschakeld worden producten met een ongeldige EAN uitgesloten van "
+"export. Indien uitgeschakeld worden producten zonder EAN geëxporteerd. De "
+"reden hiervoor is dat EffectConnect de export zal afkeuren indien deze "
+"producten met een ongeldige EAN bevat."
+
+#: view/templates/connections/ec_connection.html.twig:148
+msgid "Add leading zero to EAN"
+msgstr "Voorloopnul toevoegen aan EAN"
+
+#: view/templates/connections/ec_connection.html.twig:154
+msgid ""
+"Select whether the plugin should automatically add a leading zero to an EAN "
+"that consists of 12 characters. Products with invalid EAN will be exported "
+"without EAN field."
+msgstr ""
+"Selecteer of een EAN waarde die uit 12 tekens bestaat aangevuld moet worden "
+"met een voorloopnul."
+
+#: view/templates/connections/ec_connection.html.twig:159
+msgid "Title attribute"
+msgstr "Titel attribuut"
+
+#: view/templates/connections/ec_connection.html.twig:179
+msgid "Description attribute"
+msgstr "Beschrijving attribuut"
+
+#: view/templates/connections/ec_connection.html.twig:199
+msgid "Cost attribute"
+msgstr "Kostprijs attribuut"
+
+#: view/templates/connections/ec_connection.html.twig:219
+msgid "Delivery attribute"
+msgstr "Levertijd attribuut"
+
+#: view/templates/connections/ec_connection.html.twig:239
+msgid "Brand attribute"
+msgstr "Merk attribuut"
+
+#: view/templates/connections/ec_connection.html.twig:259
+msgid "Offer export settings"
+msgstr "Instellingen voor de voorraad export"
+
+#: view/templates/connections/ec_connection.html.twig:263
+msgid "Fictional stock amount"
+msgstr "Fictief voorraadbedrag"
+
+#: view/templates/connections/ec_connection.html.twig:268
+msgid ""
+"The stock amount to export in case product is in stock, but stock amount is "
+"unknown (backorders are enabled or stock management is disabled)."
+msgstr ""
+"De voorraadhoeveelheid die wordt gebruikt als het product op voorraad is, "
+"maar de voorraadhoeveelheid onbekend is (nabestellingen zijn ingeschakeld of "
+"voorraadbeheer is uitgeschakeld)."
+
+#: view/templates/connections/ec_connection.html.twig:269
+msgid "Possible values: 0-9999."
+msgstr "Mogelijke waardes: 0-9999."
+
+#: view/templates/connections/ec_connection.html.twig:275
+msgid "Order import settings"
+msgstr "Instellingen voor de order import"
+
+#: view/templates/connections/ec_connection.html.twig:279
+msgid "Send emails"
+msgstr "Verzend e-mails"
+
+#: view/templates/connections/ec_connection.html.twig:285
+msgid ""
+"Whether or not to let WooCommerce send order update emails to the customer "
+"and admin for each imported order. When disabled, no emails are sent when "
+"importing orders. When enabled, the WooCommerce email settings dictate which "
+"emails are sent."
+msgstr ""
+"Het al dan niet verzenden van orderupdate e-mails naar de klant en de "
+"beheerder voor elke geïmporteerde order. Indien uitgeschakeld worden er bij "
+"het importeren van orders geen e-mails verstuurd. Indien ingeschakeld worden "
+"alleen e-mails verstuurd die staan ingeschakeld in de WooCommerce e-"
+"mailinstellingen."
+
+#: view/templates/connections/ec_connection.html.twig:290
+msgid "Order status"
+msgstr "Status van bestelling"
+
+#: view/templates/connections/ec_connection.html.twig:302
+msgid "Select what order status should be used for imported orders."
+msgstr ""
+"Selecteer welke orderstatus moet worden gebruikt voor geïmporteerde "
+"bestellingen."
+
+#: view/templates/connections/ec_connection.html.twig:307
+msgid "Payment method"
+msgstr "Betaalmethode"
+
+#: view/templates/connections/ec_connection.html.twig:319
+msgid "Select the payment method for imported orders."
+msgstr "Selecteer de betalingsmethode voor geïmporteerde bestellingen."
+
+#: view/templates/connections/ec_connection.html.twig:324
+msgid "Shipping method"
+msgstr "Verzendmethode"
+
+#: view/templates/connections/ec_connection.html.twig:336
+msgid "Select the shipping method for imported orders."
+msgstr "Selecteer de verzendmethode voor geïmporteerde bestellingen."
+
+#: view/templates/connections/ec_connection.html.twig:341
+msgid "External fulfilment"
+msgstr "Logistiek door marketplace"
+
+#: view/templates/connections/ec_connection.html.twig:353
+msgid ""
+"Whether to import orders that are externally fulfilled or not. Internally "
+"fulfilled orders have status paid in EffectConnect. Externally fulfilled "
+"orders have status completed and tag external_fulfilled."
+msgstr ""
+"Het al dan niet importeren van orders waarbij de logistiek door de "
+"Marketplace wordt verzorgd. Intern uitgevoerde bestellingen hebben de tag "
+"'paid' in EffectConnect. Extern uitgevoerde bestellingen hebben de tag "
+"'completed' en 'external_fulfilled'."
+
+#: view/templates/connections/ec_connection.html.twig:358
+msgid "Shipment export"
+msgstr "Verzendingen export"
+
+#: view/templates/connections/ec_connection.html.twig:362
+msgid "When to update order"
+msgstr "Wanneer order bijwerken"
+
+#: view/templates/connections/ec_connection.html.twig:374
+msgid "Select when to update the order status in EffectConnect to shipped."
+msgstr ""
+"Selecteer wanneer de order status in EffectConnect naar 'verzonden' gezet "
+"moet worden."
+
+#: view/templates/connections/ec_connections_listview.html.twig:2
+msgid "EffectConnect - Connections"
+msgstr "EffectConnect - Connecties"
+
+#: view/templates/connections/ec_connections_listview.html.twig:4
+msgid "Add new"
+msgstr "Nieuwe toevoegen"
+
+#: view/templates/connections/ec_connections_listview.html.twig:28
+msgid "Yes"
+msgstr "Ja"
+
+#: view/templates/connections/ec_connections_listview.html.twig:28
+msgid "No"
+msgstr "Nee"
+
+#: view/templates/connections/ec_connections_listview.html.twig:34
+msgid "Edit"
+msgstr "Bewerken"
+
+#: view/templates/connections/ec_connections_listview.html.twig:37
+msgid "Are you sure you want to delete this connection?"
+msgstr "Weet u zeker dat je deze connectie wilt verwijderen?"
+
+#: view/templates/connections/ec_connections_listview.html.twig:37
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: view/templates/connections/ec_connections_listview.html.twig:59
+msgid ""
+"This plugin allows your WooCommerce webshop to connect with EffectConnect "
+"Marketplaces."
+msgstr ""
+"Deze plugin zorgt voor de communicatie van de WooCommerce webshop naar "
+"EffectConnect Marketplaces."
+
+#: view/templates/connections/ec_connections_listview.html.twig:60
+msgid ""
+"You will need an EffectConnect Marketplaces API key and create a connection "
+"below to start using this plugin."
+msgstr ""
+"Om van start te kunnen gaan met deze plugin, is er een API sleutel nodig in "
+"EffectConnect Marketplaces, die ingevuld moet worden bij het aanmaken van "
+"een connectie hieronder."
+
+#: view/templates/connections/ec_connections_listview.html.twig:61
+msgid "Visit our support webite for more information on how to do this."
+msgstr "Raadpleeg onze website voor meer informatie."
+
+#: view/templates/connections/ec_connections_listview.html.twig:63
+msgid "Add new connection"
+msgstr "Nieuwe connectie toevoegen"
+
+#: view/templates/logs/ec_logs.html.twig:7
+msgid ""
+"The Effectconnect Markplaces plugin generates log and export files in the "
+"following folder:"
+msgstr ""
+"De Effectconnect Markplaces plugin genereert log- en exportbestanden in deze "
+"map:"
+
+#: view/templates/logs/ec_logs.html.twig:9
+msgid ""
+"These files can be used by the Effectconnect support team to inspect errors. "
+"Use the download button below."
+msgstr ""
+"Deze bestanden kunnen door het Effectconnect support team worden gebruikt om "
+"fouten op te sporen. Gebruik de download knop onderaan om de bestanden te "
+"downloaden."
+
+#: view/templates/logs/ec_logs.html.twig:10
+#, php-format
+msgid "The files are cleaned after %s day(s)."
+msgstr "Bestanden ouder dan %s dag(en) zullen automatisch worden opgeruimd."
+
+#: view/templates/options/ec_settings_list.html.twig:2
+msgid "EffectConnect - Global configuration"
+msgstr "EffectConnect - Algemene instellingen"
+
+#~ msgid "Manual actions"
+#~ msgstr "Handmatige acties"
+
+#~ msgid "No connections yet"
+#~ msgstr "Nog geen connecties"
+
+#~ msgid "3 days"
+#~ msgstr "Elke 3 dagen"
+
+#~ msgid "2 weeks"
+#~ msgstr "Elke 2 weken"
+
+#~ msgid "4 weeks"
+#~ msgstr "Elke 4 weken"
+
+#~ msgid "Select when logs can be cleaned up."
+#~ msgstr "Selecteer wanneer logbestanden automatisch worden opgeschoond."

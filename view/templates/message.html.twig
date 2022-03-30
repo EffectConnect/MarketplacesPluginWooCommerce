@@ -1,0 +1,18 @@
+{% if notices %}
+    <div class="notice notice-success">
+        <ul>
+            {% for notice in notices %}
+                <li>{{ notice }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% if errors %}
+    <div class="notice notice-error">
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

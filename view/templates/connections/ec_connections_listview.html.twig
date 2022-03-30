@@ -1,0 +1,66 @@
+<div class="wrap">
+    <h1 class="wp-heading-inline">{{ __('EffectConnect - Connections') }}</h1>
+    {% if connections|length > 0 %}
+        <a href="{{ url }}&add" class="page-title-action">{{ __('Add new') }}</a>
+    {% endif %}
+    <hr class="wp-header-end">
+
+    {% include 'message.html.twig' %}
+
+    {% if connections|length > 0 %}
+        <p>{{ connections|length }} item(s)</p>
+        <table class="wp-list-table widefat fixed striped table-view-list">
+            <thead>
+            <tr>
+                <th>{{ __('ID') }}</th>
+                <th>{{ __('Active') }}</th>
+                <th>{{ __('Name') }}</th>
+                <th>{{ __('Public key') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for conn in connections %}
+                <tr>
+                    <td>
+                        {{ conn.connection_id }}
+                    </td>
+                    <td>
+                        {{ conn.is_active ? __('Yes') : __('No') }}
+                    </td>
+                    <td>
+                        <a class="row-title" href="{{ url }}&edit&connection_id={{ conn.connection_id }}">{{ conn.connection_name }}</a>
+                        <div class="row-actions">
+                            <span class="edit">
+                                <a href="{{ url }}&edit&connection_id={{ conn.connection_id }}">{{ __('Edit') }}</a> |
+                            </span>
+                            <span class="trash">
+                                <a href="{{ url }}&delete&connection_id={{ conn.connection_id }}" onclick="return confirm('{{ __('Are you sure you want to delete this connection?') }}')">{{ __('Delete') }}</a>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        {{ conn.public_key }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>{{ __('ID') }}</th>
+                <th>{{ __('Active') }}</th>
+                <th>{{ __('Name') }}</th>
+                <th>{{ __('Public key') }}</th>
+            </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <div class="notice notice-success">
+            <p>
+                {{ __('This plugin allows your WooCommerce webshop to connect with EffectConnect Marketplaces.') }}
+                {{ __('You will need an EffectConnect Marketplaces API key and create a connection below to start using this plugin.') }}
+                <a target="_blank" href="https://www.effectconnect.com">{{ __('Visit our support webite for more information on how to do this.') }}</a>
+            </p>
+            <p><a class="button-primary" href="{{ url }}&add" class="page-title-action">{{ __('Add new connection') }}</a></p>
+        </div>
+    {% endif %}
+</div>

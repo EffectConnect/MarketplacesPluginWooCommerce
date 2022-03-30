@@ -1,0 +1,418 @@
+<div class="wrap">
+    {% if formData.getConnectionId() > 0 %}
+        <h1>{{ __('EffectConnect - Edit connection') }}</h1>
+    {% else %}
+        <h1>{{ __('EffectConnect - Add connection') }}</h1>
+    {% endif %}
+
+    {% include 'message.html.twig' %}
+
+    <form method="POST">
+        <input type="hidden" name="connection_id" value="{{ formData.getConnectionId() }}"/>
+
+        <h2 class="title">{{ __('General settings') }}</h2>
+        <table class="form-table">
+            <tr>
+                <th>
+                    <label for="connectionName">{{ __('Connection name') }}</label>
+                </th>
+                <td>
+                    <input type="text" id="connectionName" name="connection_name" value="{{ formData.getConnectionName() }}"/>
+                    <p class="description">{{ __('Used for internal reference only.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="publicKey">{{ __('Public key') }}</label>
+                </th>
+                <td>
+                    <input type="text" id="publicKey" name="public_key" value="{{ formData.getPublicKey() }}"/>
+                    <p class="description">{{ __('Find your public key in the API Key Management section in EffectConnect Marketplaces.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="privateKey">{{ __('Secret key') }}</label>
+                </th>
+                <td>
+                    <input type="password" id="privateKey" name="private_key" value="{{ formData.getPrivateKey() }}"/>
+                    <p class="description">{{ __('Find your secret key in the API Key Management section in EffectConnect Marketplaces.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="isActive">{{ __('Active') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getIsActive() %}checked{% endif %}
+                            type="checkbox" id="isActive" name="is_active" value="1"/>
+                    <p class="description">{{ __('No export and import processes will run for inactive connections.') }}</p>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="title">{{ __('Catalog export settings') }}</h2>
+        <table class="form-table">
+            {% if activeWpmlLanguages|length > 0 and defaultWpmlLanguage %}
+                <tr>
+                    <th>
+                        <label for="catalogExportWpmlLanguages">{{ __('Export WPML languages') }}</label>
+                    </th>
+                    <td>
+                        <input
+                                {% if formData.getCatalogExportWpmlLanguages() %}checked{% endif %}
+                                type="checkbox" id="catalogExportWpmlLanguages" name="catalog_export_wpml_languages" value="1"/>
+                        <p class="description">
+                            {{ __('We have detected the WPML plugin. Choose this option if you want to export all active WPML languages to EffectConnect. The default WML language will be used to choose which products to export and is used as fallback languages in case of missing translations.') }}<br/>
+                            {{ __('Active WPML language codes: [%s].', [activeWpmlLanguages|join(', ')]) }}<br/>
+                            {{ __('Default WPML language code: [%s].', [defaultWpmlLanguage]) }}
+                        </p>
+                    </td>
+                </tr>
+            {% else %}
+                <input type="hidden" id="catalogExportWpmlLanguages" value="0"/>
+            {% endif %}
+            <tr class="dependsOnInvertedCatalogExportWpmlLanguages">
+                <th>
+                    <label for="catalogExportLanguage">{{ __('Catalog language') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportLanguage" name="catalog_export_language">
+                        {% for languageId, languageName in formData.getLanguageOptions() %}
+                            <option
+                                    {% if languageId == formData.getCatalogExportLanguage() %}selected="selected"{% endif %}
+                                    value="{{ languageId }}">
+                                {{ languageName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Select the general language that product details are written in for the catalog (this does not change anything in the catalog and is only used as an indicator for EffectConnect).') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportOnlyActive">{{ __('Only export active products') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getCatalogExportOnlyActive() %}checked{% endif %}
+                            type="checkbox" id="catalogExportOnlyActive" name="catalog_export_only_active" value="1"/>
+                    <p class="description">{{ __('If this setting is enabled only products that are enabled will be exported to EffectConnect.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportSpecialPrice">{{ __('Use special price') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getCatalogExportSpecialPrice() %}checked{% endif %}
+                            type="checkbox" id="catalogExportSpecialPrice" name="catalog_export_special_price" value="1"/>
+                    <p class="description">{{ __('If enabled the original price will be exported to EffectConnect Marketplaces separately in case there is a sale price. If disabled only the original price is exported.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportEanAttribute">{{ __('EAN attribute') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportEanAttribute" name="catalog_export_ean_attribute">
+                        {% for groupName, attributeOptions in formData.getAttributeOptions() %}
+                            <optgroup label="{{ groupName }}">
+                                {% for attributeId, attributeName in attributeOptions %}
+                                    <option
+                                            {% if attributeId == formData.getCatalogExportEanAttribute() %}selected="selected"{% endif %}
+                                            value="{{ attributeId }}">
+                                        {{ attributeName }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr class="dependsOnCatalogExportEanAttribute">
+                <th>
+                    <label for="catalogExportSkipInvalidEan">{{ __('Exclude products with invalid EAN') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getCatalogExportSkipInvalidEan() %}checked{% endif %}
+                            type="checkbox" id="catalogExportSkipInvalidEan" name="catalog_export_skip_invalid_ean" value="1"/>
+                    <p class="description">{{ __('When checked, products with invalid EAN will be excluded from export. Otherwise products will be exported without EAN, since EffectConnect won\'t except products with invalid EAN.') }}</p>
+                </td>
+            </tr>
+            <tr class="dependsOnCatalogExportEanAttribute">
+                <th>
+                    <label for="catalogExportEanLeadingZero">{{ __('Add leading zero to EAN') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getCatalogExportEanLeadingZero() %}checked{% endif %}
+                            type="checkbox" id="catalogExportEanLeadingZero" name="catalog_export_ean_leading_zero" value="1"/>
+                    <p class="description">{{ __('Select whether the plugin should automatically add a leading zero to an EAN that consists of 12 characters. Products with invalid EAN will be exported without EAN field.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportTitleAttribute">{{ __('Title attribute') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportTitleAttribute" name="catalog_export_title_attribute">
+                        {% for groupName, attributeOptions in formData.getAttributeOptions() %}
+                            <optgroup label="{{ groupName }}">
+                                {% for attributeId, attributeName in attributeOptions %}
+                                    <option
+                                            {% if attributeId == formData.getCatalogExportTitleAttribute() %}selected="selected"{% endif %}
+                                            value="{{ attributeId }}">
+                                        {{ attributeName }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportDescriptionAttribute">{{ __('Description attribute') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportDescriptionAttribute" name="catalog_export_description_attribute">
+                        {% for groupName, attributeOptions in formData.getAttributeOptions() %}
+                            <optgroup label="{{ groupName }}">
+                                {% for attributeId, attributeName in attributeOptions %}
+                                    <option
+                                            {% if attributeId == formData.getCatalogExportDescriptionAttribute() %}selected="selected"{% endif %}
+                                            value="{{ attributeId }}">
+                                        {{ attributeName }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportCostAttribute">{{ __('Cost attribute') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportCostAttribute" name="catalog_export_cost_attribute">
+                        {% for groupName, attributeOptions in formData.getAttributeOptions() %}
+                            <optgroup label="{{ groupName }}">
+                                {% for attributeId, attributeName in attributeOptions %}
+                                    <option
+                                            {% if attributeId == formData.getCatalogExportCostAttribute() %}selected="selected"{% endif %}
+                                            value="{{ attributeId }}">
+                                        {{ attributeName }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportDeliveryAttribute">{{ __('Delivery attribute') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportDeliveryAttribute" name="catalog_export_delivery_attribute">
+                        {% for groupName, attributeOptions in formData.getAttributeOptions() %}
+                            <optgroup label="{{ groupName }}">
+                                {% for attributeId, attributeName in attributeOptions %}
+                                    <option
+                                            {% if attributeId == formData.getCatalogExportDeliveryAttribute() %}selected="selected"{% endif %}
+                                            value="{{ attributeId }}">
+                                        {{ attributeName }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="catalogExportBrandAttribute">{{ __('Brand attribute') }}</label>
+                </th>
+                <td>
+                    <select id="catalogExportBrandAttribute" name="catalog_export_brand_attribute">
+                        {% for groupName, attributeOptions in formData.getAttributeOptions() %}
+                            <optgroup label="{{ groupName }}">
+                                {% for attributeId, attributeName in attributeOptions %}
+                                    <option
+                                            {% if attributeId == formData.getCatalogExportBrandAttribute() %}selected="selected"{% endif %}
+                                            value="{{ attributeId }}">
+                                        {{ attributeName }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="title">{{ __('Offer export settings') }}</h2>
+        <table class="form-table">
+            <tr>
+                <th>
+                    <label for="offerExportVirtualStockAmount">{{ __('Fictional stock amount') }}</label>
+                </th>
+                <td>
+                    <input type="number" id="offerExportVirtualStockAmount" name="offer_export_virtual_stock_amount" value="{{ formData.getOfferExportVirtualStockAmount() }}"/>
+                    <p class="description">
+                        {{ __('The stock amount to export in case product is in stock, but stock amount is unknown (backorders are enabled or stock management is disabled).') }}
+                        {{ __('Possible values: 0-9999.') }}
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="title">{{ __('Order import settings') }}</h2>
+        <table class="form-table">
+            <tr>
+                <th>
+                    <label for="orderImportSendEmails">{{ __('Send emails') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getOrderImportSendEmails() %}checked{% endif %}
+                            type="checkbox" id="orderImportSendEmails" name="order_import_send_emails" value="1"/>
+                    <p class="description">{{ __('Whether or not to let WooCommerce send order update emails to the customer and admin for each imported order. When disabled, no emails are sent when importing orders. When enabled, the WooCommerce email settings dictate which emails are sent.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="orderImportOrderStatus">{{ __('Order status') }}</label>
+                </th>
+                <td>
+                    <select id="orderImportOrderStatus" name="order_import_order_status">
+                        {% for orderStatusId, orderStatusName in formData.getOrderStatusOptions() %}
+                            <option
+                                    {% if orderStatusId is same as(formData.getOrderImportOrderStatus()) %}selected="selected"{% endif %}
+                                    value="{{ orderStatusId }}">
+                                {{ orderStatusName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Select what order status should be used for imported orders.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="orderImportIdPaymentModule">{{ __('Payment method') }}</label>
+                </th>
+                <td>
+                    <select id="orderImportIdPaymentModule" name="order_import_id_payment_module">
+                        {% for paymentId, paymentName in formData.getPaymentOptions() %}
+                            <option
+                                    {% if paymentId is same as(formData.getOrderImportIdPaymentModule()) %}selected="selected"{% endif %}
+                                    value="{{ paymentId }}">
+                                {{ paymentName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Select the payment method for imported orders.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="orderImportIdCarrier">{{ __('Shipping method') }}</label>
+                </th>
+                <td>
+                    <select id="orderImportIdCarrier" name="order_import_id_carrier">
+                        {% for carrierId, carrierName in formData.getCarrierOptions() %}
+                            <option
+                                    {% if carrierId is same as(formData.getOrderImportIdCarrier()) %}selected="selected"{% endif %}
+                                    value="{{ carrierId }}">
+                                {{ carrierName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Select the shipping method for imported orders.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="orderImportExternalFulfilment">{{ __('External fulfilment') }}</label>
+                </th>
+                <td>
+                    <select id="orderImportExternalFulfilment" name="order_import_external_fulfilment">
+                        {% for externalFulfilmentId, externalFulfilmentName in formData.getExternalFulfilmentOptions() %}
+                            <option
+                                    {% if externalFulfilmentId is same as(formData.getOrderImportExternalFulfilment()) %}selected="selected"{% endif %}
+                                    value="{{ externalFulfilmentId }}">
+                                {{ externalFulfilmentName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Whether to import orders that are externally fulfilled or not. Internally fulfilled orders have status paid in EffectConnect. Externally fulfilled orders have status completed and tag external_fulfilled.') }}</p>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="title">{{ __('Shipment export') }}</h2>
+        <table class="form-table">
+            <tr>
+                <th>
+                    <label for="shipmentExportWhen">{{ __('When to update order') }}</label>
+                </th>
+                <td>
+                    <select id="shipmentExportWhen" name="shipment_export_when">
+                        {% for key, name in formData.getShipmentExportWhenOptions() %}
+                            <option
+                                    {% if key == formData.getShipmentExportWhen() %}selected="selected"{% endif %}
+                                    value="{{ key }}">
+                                {{ name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Select when to update the order status in EffectConnect to shipped.') }}</p>
+                </td>
+            </tr>
+        </table>
+
+        {{ button|raw }}
+    </form>
+</div>
+
+<style>
+    .dependsOnInvertedCatalogExportWpmlLanguages,
+    .dependsOnCatalogExportEanAttribute {
+        display: none;
+    }
+</style>
+
+<script>
+    jQuery(document).ready(function() {
+        let catalogExportEanAttributeElement = jQuery('#catalogExportEanAttribute');
+        function setStates() {
+            if (catalogExportEanAttributeElement.val()) {
+                jQuery('.dependsOnCatalogExportEanAttribute').show();
+            } else {
+                jQuery('.dependsOnCatalogExportEanAttribute').hide();
+            }
+        }
+        catalogExportEanAttributeElement.on('change', function() {
+            setStates();
+        });
+        setStates();
+
+        let catalogExportWpmlLanguagesElement = jQuery('#catalogExportWpmlLanguages');
+        function setLanguages() {
+            if (catalogExportWpmlLanguagesElement.is(':checked')) {
+                jQuery('.dependsOnInvertedCatalogExportWpmlLanguages').hide();
+            } else {
+                jQuery('.dependsOnInvertedCatalogExportWpmlLanguages').show();
+            }
+        }
+        catalogExportWpmlLanguagesElement.on('change', function() {
+            setLanguages();
+        });
+        setLanguages();
+    });
+</script>

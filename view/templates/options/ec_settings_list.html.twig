@@ -1,0 +1,46 @@
+<div class="wrap">
+    <h1>{{ __('EffectConnect - Global configuration') }}</h1>
+
+    {% include 'message.html.twig' %}
+
+    <form method="POST">
+        {% for category, optionValue in options %}
+            <h2 class="title">{{ category }}</h2>
+                <table class="form-table">
+                    {% for key, setting in optionValue %}
+                        <tr>
+                            <th>
+                                <label for="{{ key }}">{{ setting.getName() }}</label>
+                            </th>
+                            <td>
+                                {% if setting.typeIsSelect() %}
+                                    <select id="{{ key }}" name="{{ key }}">
+                                        {% for optionId, optionName in setting.getOptions() %}
+                                            <option
+                                                    {% if optionId == setting.getValue() %}selected="selected"{% endif %}
+                                                    value="{{ optionId }}"
+                                            >
+                                                {{ optionName }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                {% elseif setting.typeIsText() %}
+                                    <input type="text" id="{{ key }}" name="{{ key }}" value="{{ setting.getValue() }}" class="regular-text"/>
+                                {% elseif setting.typeIsNumber() %}
+                                    <input type="number" id="{{ key }}" name="{{ key }}" value="{{ setting.getValue() }}" class="small-text"/>
+                                {% elseif setting.typeIsCheckbox() %}
+                                    <input type="checkbox" id="{{ key }}" name="{{ key }}" value="1"
+                                           {% if setting.getValue() == '1' %}checked{% endif %}
+                                    />
+                                {% endif %}
+                                {% if setting.getDescription() %}
+                                    <p class="description">{{ setting.getDescription() }}</p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+        {% endfor %}
+        {{ button|raw }}
+    </form>
+</div>

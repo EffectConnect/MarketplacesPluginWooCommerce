@@ -1,0 +1,30 @@
+{
+    "name": "effectconnect/marketplaces-plugin-wc4",
+    "description": "EffectConnect Marketplaces WooCommerce 4 plugin",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Koek&Peer",
+            "email": "info@koekenpeer.nl",
+            "homepage": "https://www.koekenpeer.nl/"
+        },
+        {
+            "name": "EffectConnect",
+            "email": "info@effectconnect.com",
+            "homepage": "https://www.effectconnect.com/"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "effectconnect/php-sdk": "^3.2",
+        "twig/twig": "^3.0",
+        "laminas/laminas-validator": "2.15.x-dev",
+        "monolog/monolog": "2.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "EffectConnect\\Marketplaces\\": "./src/"
+        }
+    }
+}

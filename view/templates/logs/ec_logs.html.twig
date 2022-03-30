@@ -1,0 +1,17 @@
+<div class="wrap">
+    <h1>EffectConnect - Logs</h1>
+
+    {% include 'message.html.twig' %}
+
+    <div>
+        <p>{{ __('The Effectconnect Markplaces plugin generates log and export files in the following folder:') }}</p>
+        <pre>{{ dataFolder }}</pre>
+        <p>{{ __('These files can be used by the Effectconnect support team to inspect errors. Use the download button below.') }}</p>
+        <p>{{ __('The files are cleaned after %s day(s).', [logExpirationDays]) }}</p>
+    </div>
+    <div>
+        <form method="POST">
+            {{ downloadButton|raw }}
+        </form>
+    </div>
+</div>
