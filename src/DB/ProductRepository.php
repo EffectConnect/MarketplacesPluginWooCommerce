@@ -146,8 +146,8 @@ class ProductRepository
 
         $this->wpdb->query(
             $this->wpdb->prepare(
-                "INSERT IGNORE INTO $this->productOptionsTable(variation_id, product_id, product_name, attribute_data, hash) VALUES (%d, %d,%s,%s,%s)",
-                $variationId, $productId, $name, $attributes, $hash
+                "INSERT IGNORE INTO $this->productOptionsTable(variation_id, product_id, product_name, attribute_data, hash) VALUES (%d, %d, %s, %s, %s) ON DUPLICATE KEY UPDATE variation_id = %d, product_name = %s",
+                $variationId, $productId, $name, $attributes, $hash, $variationId, $name
             )
         );
         return $hash;
