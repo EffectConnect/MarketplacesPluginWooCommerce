@@ -4,14 +4,13 @@ namespace EffectConnect\Marketplaces\DB;
 
 class ECTables
 {
-    private $wpdb;
+    protected $wpdb;
     static $instance;
 
     private function __construct()
     {
         global $wpdb;
         $this->wpdb = $wpdb;
-
     }
 
     static function getInstance(): ECTables
@@ -32,7 +31,7 @@ class ECTables
 
         //* Create the connections table
         $table_name = $this->wpdb->prefix . 'ec_connections';
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name 
+        $sql = "CREATE TABLE $table_name 
     (
          connection_id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
          connection_name VARCHAR(256) NOT NULL,
@@ -41,6 +40,7 @@ class ECTables
          is_active TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_wpml_languages TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_only_active TINYINT(1) UNSIGNED NOT NULL,
+         catalog_export_taxonomies TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_special_price TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_ean_leading_zero TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_skip_invalid_ean TINYINT(1) UNSIGNED NOT NULL,
@@ -74,7 +74,7 @@ class ECTables
 
         //* Create the product options table
         $table_name = $this->wpdb->prefix . 'ec_product_options';
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name 
+        $sql = "CREATE TABLE $table_name 
     (
          option_id int(11) unsigned NOT NULL AUTO_INCREMENT,
          variation_id int(11) unsigned NULL,
@@ -98,7 +98,7 @@ class ECTables
 
         //* Create the queue table
         $table_name = $this->wpdb->prefix . 'ec_offer_update_queue';
-        $sql = "CREATE TABLE IF NOT EXISTS $table_name 
+        $sql = "CREATE TABLE $table_name 
     (
          offer_id int(11) unsigned NOT NULL AUTO_INCREMENT,
          product_id int(11) unsigned NOT NULL UNIQUE,
@@ -114,7 +114,7 @@ class ECTables
 
         //* Create the queue table
         $table_name = $this->wpdb->prefix . 'ec_shipment_export_queue';
-        $sql = "CREATE TABLE IF NOT EXISTS `$table_name` 
+        $sql = "CREATE TABLE `$table_name` 
     (
         `shipping_export_queue_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
         `order_id` INT(11) UNSIGNED NOT NULL UNIQUE,
@@ -132,7 +132,6 @@ class ECTables
 
         dbDelta($sql);
     }
-
 
     public function ecDeleteConnectionsTable()
     {
@@ -161,5 +160,4 @@ class ECTables
         $sql = "DROP TABLE IF EXISTS $table_name";
         $this->wpdb->query($sql);
     }
-
 }

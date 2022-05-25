@@ -378,13 +378,56 @@ class ProductRepository
     }
 
     /**
+     * @param int $productId
+     * @param array $taxonomies
+     * @return array
+     */
+    public function getProductTaxonomies(int $productId, array $taxonomies): array
+    {
+        if (count($taxonomies) === 0) {
+            return [];
+        }
+
+        $valueString = implode(', ', array_fill(0, count($taxonomies), '%s'));
+        $sql = "
+            SELECT DISTINCT {$this->wpdb->prefix}term_taxonomy.taxonomy
+            FROM {$this->wpdb->prefix}term_relationships 
+            INNER JOIN {$this->wpdb->prefix}term_taxonomy
+            ON {$this->wpdb->prefix}term_relationships.term_taxonomy_id = {$this->wpdb->prefix}term_taxonomy.term_taxonomy_id
+            WHERE {$this->wpdb->prefix}term_relationships.object_id = $productId
+            AND {$this->wpdb->prefix}term_taxonomy.taxonomy IN($valueString)
+        ";
+        $results = $this->wpdb->get_results(
+            $this->wpdb->prepare($sql,
+                array_keys($taxonomies)
+            ));
+        if (!is_array($results)) {
+            return [];
+        }
+
+        $productTaxonomies = [];
+        foreach ($results as $result) {
+            $productTaxonomies[] = $result->taxonomy;
+        }
+        return $productTaxonomies;
+    }
+
+    /**
      * @param WC_Product $product
      * @param string $attributeName
      * @return string
      */
     protected function getProductAttribute(WC_Product $product, string $attributeName): string
     {
-        if (strpos($attributeName, WcHelper::WC_DEFAULT_ATTRIBUTE_PREFIX) === 0) {
+        if (strpos($attributeName, WcHelper::WC_DEFAULT_TAXONOMY_PREFIX) === 0) {
+            // Fetch product data from WC taxonomy if $attributeName starts with <default-product-taxonomy-prefix>
+            $wcTaxonomyName = str_replace(WcHelper::WC_DEFAULT_TAXONOMY_PREFIX, '', $attributeName);
+            // Get taxonomies (multiple) - these are always related to the parent product ID.
+            $terms = wp_get_object_terms($product->get_parent_id() > 0 ? $product->get_parent_id() : $product->get_id(), $wcTaxonomyName, ['fields' => 'names']);
+            if (is_array($terms) && count($terms) > 0) {
+                return strval(reset($terms));
+            }
+        } elseif (strpos($attributeName, WcHelper::WC_DEFAULT_ATTRIBUTE_PREFIX) === 0) {
             // Fetch product data from core WC attribute if $attributeName starts with <default-product-attribute-prefix>
             $wcAttributeName = str_replace(WcHelper::WC_DEFAULT_ATTRIBUTE_PREFIX, '', $attributeName);
             $method          = 'get_' . $wcAttributeName;

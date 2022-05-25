@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.12
+ * Version: 3.0.13
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */

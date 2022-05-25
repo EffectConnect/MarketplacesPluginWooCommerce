@@ -49,6 +49,11 @@ class ConnectionResource implements ConfigConstants
     /**
      * @var int
      */
+    protected $catalogExportTaxonomies;
+
+    /**
+     * @var int
+     */
     protected $catalogExportSpecialPrice;
 
     /**
@@ -145,6 +150,7 @@ class ConnectionResource implements ConfigConstants
         $this->isActive                            = intval($data['is_active'] ?? 1);
         $this->catalogExportWpmlLanguages          = intval($data['catalog_export_wpml_languages'] ?? 1);
         $this->catalogExportOnlyActive             = intval($data['catalog_export_only_active'] ?? 1);
+        $this->catalogExportTaxonomies             = intval($data['catalog_export_taxonomies'] ?? 0);
         $this->catalogExportSpecialPrice           = intval($data['catalog_export_special_price'] ?? 1);
         $this->catalogExportEanLeadingZero         = intval($data['catalog_export_ean_leading_zero'] ?? 0);
         $this->catalogExportSkipInvalidEan         = intval($data['catalog_export_skip_invalid_ean'] ?? 0);
@@ -218,6 +224,14 @@ class ConnectionResource implements ConfigConstants
     public function getCatalogExportOnlyActive(): int
     {
         return $this->catalogExportOnlyActive;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCatalogExportTaxonomies(): int
+    {
+        return $this->catalogExportTaxonomies;
     }
 
     /**
@@ -417,6 +431,9 @@ class ConnectionResource implements ConfigConstants
      */
     public static function getAttributeOptions(): array
     {
+        // Get product taxonomies
+        $taxonomies = self::sort(WcHelper::getTaxonomies());
+
         // Get custom product attributes
         $customAttributes = self::sort(WcHelper::getCustomProductAttributes());
 
@@ -435,6 +452,7 @@ class ConnectionResource implements ConfigConstants
             ],
             TranslationHelper::translate('Custom attributes') => $customAttributes,
             TranslationHelper::translate('Default attributes') => $defaultAttributes,
+            TranslationHelper::translate('Taxonomies') => $taxonomies,
         ];
         if (count($pluginAttributes) > 0) {
             $attributes[TranslationHelper::translate('External plugins')] = $pluginAttributes;
@@ -513,6 +531,7 @@ class ConnectionResource implements ConfigConstants
             'is_active' => $this->isActive,
             'catalog_export_wpml_languages' => $this->catalogExportWpmlLanguages,
             'catalog_export_only_active' => $this->catalogExportOnlyActive,
+            'catalog_export_taxonomies' => $this->catalogExportTaxonomies,
             'catalog_export_special_price' => $this->catalogExportSpecialPrice,
             'catalog_export_ean_leading_zero' => $this->catalogExportEanLeadingZero,
             'catalog_export_skip_invalid_ean' => $this->catalogExportSkipInvalidEan,

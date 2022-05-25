@@ -41,31 +41,6 @@ class ConnectionRepository
     }
 
     /**
-     * Gets the connection specific payment module setting value.
-     * @param $connectionId
-     * @return string|null
-     */
-    public function getPaymentModuleIdForConnection($connectionId): ?string
-    {
-        return $this->wpdb->get_var("SELECT order_import_id_payment_module FROM $this->tableName WHERE connection_id = $connectionId"); // Get payment method from connections table.
-    }
-
-    /**
-     * Checks whether only published products should be exported.
-     * @param $connectionId
-     * @return bool
-     */
-    public function getExportPublishedProductsOnly($connectionId): bool
-    {
-        $boolString = $this->wpdb->get_var(
-            $this->wpdb->prepare("SELECT catalog_export_only_active FROM $this->tableName WHERE connection_id = %s",
-                $connectionId)
-        );
-
-        return filter_var($boolString, FILTER_VALIDATE_BOOLEAN);
-    }
-
-    /**
      * @param $connectionId
      */
     public function deleteConnection($connectionId)

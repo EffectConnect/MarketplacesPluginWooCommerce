@@ -103,6 +103,17 @@
             </tr>
             <tr>
                 <th>
+                    <label for="catalogExportTaxonomies">{{ __('Export taxonomies as attributes') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getCatalogExportTaxonomies() %}checked{% endif %}
+                            type="checkbox" id="catalogExportTaxonomies" name="catalog_export_taxonomies" value="1"/>
+                    <p class="description">{{ __('If this setting is enabled all product taxonomies will be exported to EffectConnect as attributes.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
                     <label for="catalogExportSpecialPrice">{{ __('Use special price') }}</label>
                 </th>
                 <td>

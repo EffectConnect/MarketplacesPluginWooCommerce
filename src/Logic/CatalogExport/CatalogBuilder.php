@@ -412,6 +412,7 @@ class CatalogBuilder
 
         // Attributes
         $attributes = array_merge(
+            $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
             $this->getProductAttributes($wcProductVariationWrapper->getWcAttributes()),
             $this->getProductAttributesFixed(),
             $this->getProductPerfectBrandsAttributes()
@@ -828,6 +829,83 @@ class CatalogBuilder
     }
 
     /**
+     * Gets all taxonomies attached to a product.
+     *
+     * @return array
+     */
+    public function getProductTaxonomies(): array
+    {
+        $taxonomiesExport = [];
+        $product = $this->getDefaultProductTranslation();
+        $productId = $product->get_parent_id() > 0 ? $product->get_parent_id() : $product->get_id();
+        $allTaxonomies = WcHelper::getTaxonomies(true);
+        $wcProductTaxonomies = $this->productOptionsRepo->getProductTaxonomies($productId, $allTaxonomies);
+
+        foreach ($wcProductTaxonomies as $wcProductTaxonomy) {
+
+            //
+            // Get taxonomy names for each language (fixed)
+            // TODO: take WPML into account
+            //
+
+            $taxonomyLocaleExport = [];
+            foreach ($this->languages as $language) {
+                $taxonomyLocaleExport[] = [
+                    '_attributes' => ['language' => $language],
+                    '_cdata'      =>  $allTaxonomies[$wcProductTaxonomy] ?? $wcProductTaxonomy,
+                ];
+            }
+
+            //
+            // Get taxonomy values for each language (fixed)
+            // TODO: take WPML into account
+            //
+
+            $taxonomyValuesExport = [];
+
+            $values = wp_get_object_terms($productId, $wcProductTaxonomy, ['fields' => 'names']);
+            foreach ($values as $value) {
+                $taxonomyLocaleValuesExport = [];
+                foreach ($this->languages as $language) {
+                    if (!empty($value)) {
+                        $taxonomyLocaleValuesExport[] = [
+                            '_attributes' => ['language' => $language],
+                            '_cdata'      => $value,
+                        ];
+                    }
+                }
+
+                if (count($taxonomyLocaleValuesExport) == 0) {
+                    continue;
+                }
+
+                $taxonomyValuesExport[] = [
+                    'code'  => $product->get_slug() . '-' . $wcProductTaxonomy . '-' . $this->sanitize($value),
+                    'names' => [
+                        'name' => $taxonomyLocaleValuesExport,
+                    ],
+                ];
+            }
+
+            if (count($taxonomyValuesExport) == 0) {
+                continue;
+            }
+
+            $taxonomiesExport[] = [
+                'code'   => $wcProductTaxonomy,
+                'names' => [
+                    'name' => $taxonomyLocaleExport,
+                ],
+                'values' => [
+                    'value' => $taxonomyValuesExport,
+                ],
+            ];
+        }
+
+        return $taxonomiesExport;
+    }
+
+    /**
      * Gets all attributes attached to a product.
      *
      * @param WC_Product_Attribute[] $wcAttributes
@@ -846,18 +924,18 @@ class CatalogBuilder
 
             $attributeLocaleExport = [];
             foreach ($this->languages as $language) {
-                    // Our equivalent of WPML's translated_attribute_label
-                    if (WcHelper::isGlobalAttribute($wcAttributeKey)) {
-                        $name = $this->getGlobalAttributeLabelTranslation($wcAttributeKey, $language);
-                    } else {
-                        $name = $this->getLocalAttributeLabelTranslation($wcAttributeKey, $language);
-                    }
-                    if (!empty($name)) {
-                        $attributeLocaleExport[] = [
-                            '_attributes' => ['language' => $language],
-                            '_cdata'      => $name,
-                        ];
-                    }
+                // Our equivalent of WPML's translated_attribute_label
+                if (WcHelper::isGlobalAttribute($wcAttributeKey)) {
+                    $name = $this->getGlobalAttributeLabelTranslation($wcAttributeKey, $language);
+                } else {
+                    $name = $this->getLocalAttributeLabelTranslation($wcAttributeKey, $language);
+                }
+                if (!empty($name)) {
+                    $attributeLocaleExport[] = [
+                        '_attributes' => ['language' => $language],
+                        '_cdata'      => $name,
+                    ];
+                }
             }
 
             //

@@ -8,6 +8,7 @@ namespace EffectConnect\Marketplaces\Helper;
 class WcHelper
 {
     const WC_DEFAULT_ATTRIBUTE_PREFIX = 'ecdefault_';
+    const WC_DEFAULT_TAXONOMY_PREFIX  = 'ectaxonomy_';
 
     /**
      * @var array
@@ -23,6 +24,19 @@ class WcHelper
      * @var array
      */
     protected static $productAttributes = [];
+
+    /**
+     * @var array
+     */
+    protected static $taxonomies = [];
+
+    /**
+     * Taxonomies to exclude from global taxonomy list.
+     * (currently PWB Brands is excluded since these brands are exported as an attribute separately - for now keep it like this for backwards compatibility)
+     *
+     * @var string[]
+     */
+    protected static $excludedTaxonomies = ['pwb-brand'];
 
     /**
      * Get array of all available default product attributes (such as 'price') and prefix them to make 'sure' that they won't overlap with local custom attributes.
@@ -60,6 +74,28 @@ class WcHelper
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'height' => TranslationHelper::translate('Height'),
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'purchase_note' => TranslationHelper::translate('Purchase note'),
         ];
+    }
+
+    /**
+     * Get array of all available product taxonomies.
+     * Since global attributes are also taxonomies, and they are fetched separately, they are excluded here
+     * (by only fetching public taxonomies).
+     *
+     * @param bool $withoutPrefix
+     * @return array
+     */
+    public static function getTaxonomies(bool $withoutPrefix = false): array
+    {
+        if (count(self::$taxonomies) == 0) {
+            $taxonomies = [];
+            foreach (get_object_taxonomies('product', 'objects') as $taxonomy) {
+                if ($taxonomy->public && !in_array($taxonomy->name, self::$excludedTaxonomies)) {
+                    $taxonomies[($withoutPrefix ? '' : self::WC_DEFAULT_TAXONOMY_PREFIX) . $taxonomy->name] = $taxonomy->label;
+                }
+            }
+            self::$taxonomies = $taxonomies;
+        }
+        return self::$taxonomies;
     }
 
     /**
