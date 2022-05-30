@@ -81,7 +81,7 @@ class ECTables
          product_id int(11) unsigned NOT NULL,
          product_name TEXT NOT NULL,
          attribute_data TEXT NULL,
-         hash VARCHAR(255) UNIQUE,
+         hash VARCHAR(32) UNIQUE,
          PRIMARY KEY (option_id)
     ) $charset_collate;";
 
