@@ -33,6 +33,12 @@ class CatalogBuilder
     protected $_processedEANs = [];
 
     /**
+     * Contains an array of processed product identifiers (from plugin database ec_product_options) in order to keep track of duplicates.
+     * @var array
+     */
+    protected $_processedIdentifiers = [];
+
+    /**
      * Type of logger that should be used for this instance.
      * @var
      */
@@ -319,6 +325,20 @@ class CatalogBuilder
             ]);
             return [];
         }
+
+        // Never export duplicate identifiers
+        if (in_array($identifier, $this->_processedIdentifiers))
+        {
+            LoggerContainer::getLogger($this->loggerType)->warning('Skipping product because of duplicate identifier.', [
+                'process' => LoggerConstants::CATALOG_EXPORT,
+                'identifier' => $identifier,
+                'id'         => $productOption->get_id(),
+                'sku'        => $productOption->get_sku(),
+                'connection' => $this->connection->getConnectionId(),
+            ]);
+            return [];
+        }
+        $this->_processedIdentifiers[] = $identifier;
 
         // Default/required product options values
         $productOptionExport = [
