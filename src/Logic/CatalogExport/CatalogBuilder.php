@@ -845,6 +845,14 @@ class CatalogBuilder
             }
         }
 
+        // Make sure the order of attributes is always the same
+        foreach ($attributeArray as &$attributeValue) {
+            if (is_array($attributeValue)) {
+                sort($attributeValue); // Don't maintain array keys, because sequential array
+            }
+        }
+        asort($attributeArray); // Do maintain keys
+
         return $attributeArray;
     }
 
