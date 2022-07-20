@@ -263,7 +263,7 @@ class ProductRepository
     public function getProductDescription(WC_Product $product, ConnectionResource $connection): string
     {
         $attribute = $connection->getCatalogExportDescriptionAttribute();
-        return $this->getProductAttribute($product, $attribute);
+        return nl2br($this->getProductAttribute($product, $attribute));
     }
 
     /**
