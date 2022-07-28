@@ -121,6 +121,9 @@ class OrderBuilder
 
     /**
      * Creates the necessary PostMeta in the WordPress DB for the imported order.
+     * In case the ACF plugin is enabled, we have to make sure the fields are explicitly created in order to make the
+     * 'update_post_meta' requests work properly (please refer to the registerAcfFields method).
+     *
      * @throws OrderImportFailedException
      */
     protected function setOrderPostMeta(EffectConnectOrder $ecOrder)

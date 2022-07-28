@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.18
+ * Version: 3.0.19
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */
@@ -35,6 +35,7 @@ class PluginActivationClass
         $this->addPluginMenus();
         $this->addCronSchedules();
         $this->loadTextDomain();
+        $this->registerAcfFields();
     }
 
     private function addPluginMenus()
@@ -96,6 +97,20 @@ class PluginActivationClass
             $methods[] = new ECPayment();
         }
         return $methods;
+    }
+
+    /**
+     * Support for plugin https://www.advancedcustomfields.com/
+     * Create custom fields for saving additional data to an order such as channel and channel order number.
+     * The contents of those additional fields are described in JSON files in folder /acf-json.
+     *
+     * @return void
+     */
+    public function registerAcfFields() {
+        add_filter('acf/settings/load_json', function($paths) {
+            $paths[] = dirname(__FILE__) . '/acf-json';
+            return $paths;
+        });
     }
 
     /**
