@@ -996,7 +996,7 @@ class CatalogBuilder
                 }
 
                 $attributeValuesExport[] = [
-                    'code'   => $product->get_slug() . '-' . $wcAttributeKey . '-' . $this->sanitize($option),
+                    'code'   => $wcAttributeKey . '-' . $this->sanitize($option),
                     'names' => [
                         'name' => $attributeLocaleValuesExport,
                     ],
