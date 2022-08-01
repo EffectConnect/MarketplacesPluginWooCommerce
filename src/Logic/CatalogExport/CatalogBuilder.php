@@ -435,7 +435,8 @@ class CatalogBuilder
             $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
             $this->getProductAttributes($wcProductVariationWrapper->getWcAttributes()),
             $this->getProductAttributesFixed(),
-            $this->getProductPerfectBrandsAttributes()
+            $this->getProductPerfectBrandsAttributes(),
+            $this->getProductFields()
         );
         if (count($attributes) > 0) {
             $productOptionExport['attributes']['attribute'] = $attributes;
@@ -908,7 +909,7 @@ class CatalogBuilder
                 }
 
                 $taxonomyValuesExport[] = [
-                    'code'  => $product->get_slug() . '-' . $wcProductTaxonomy . '-' . $this->sanitize($value),
+                    'code'  => $wcProductTaxonomy . '-' . $this->sanitize($value),
                     'names' => [
                         'name' => $taxonomyLocaleValuesExport,
                     ],
@@ -931,6 +932,98 @@ class CatalogBuilder
         }
 
         return $taxonomiesExport;
+    }
+
+    /**
+     * Gets all meta fields attached to a product.
+     * Note that we only take ACF fields into account (https://www.advancedcustomfields.com).
+     *
+     * @return array
+     */
+    public function getProductFields(): array
+    {
+        if (!function_exists('get_fields') || !function_exists('get_field_object')) {
+            return [];
+        }
+
+        $fieldsExport = [];
+        $product = $this->getDefaultProductTranslation();
+        $productId = $product->get_parent_id() > 0 ? $product->get_parent_id() : $product->get_id();
+        $fields = get_fields($productId);
+        if (!$fields) {
+            return [];
+        }
+
+        foreach (array_keys($fields) as $fieldName) {
+
+            $fieldInfo = get_field_object($fieldName, $productId);
+            if (!$fieldInfo) {
+                continue;
+            }
+
+            //
+            // Get field names for each language (fixed)
+            // TODO: take WPML into account
+            //
+
+            $fieldLocaleExport = [];
+            foreach ($this->languages as $language) {
+                $fieldLocaleExport[] = [
+                    '_attributes' => ['language' => $language],
+                    '_cdata'      =>  $fieldInfo['label'] ?? $fieldName,
+                ];
+            }
+
+            //
+            // Get field values for each language (fixed)
+            // TODO: take WPML into account
+            //
+
+            $fieldValuesExport = [];
+
+            $values = $fieldInfo['value'] ?? [];
+            if (!is_array($values)) {
+                $values = [$values];
+            }
+            foreach ($values as $value) {
+                $fieldLocaleValuesExport = [];
+                foreach ($this->languages as $language) {
+                    if (!empty($value) && is_scalar($value)) {
+                        $fieldLocaleValuesExport[] = [
+                            '_attributes' => ['language' => $language],
+                            '_cdata'      => strval($value),
+                        ];
+                    }
+                }
+
+                if (count($fieldLocaleValuesExport) == 0) {
+                    continue;
+                }
+
+                $fieldValuesExport[] = [
+                    'code'  => $fieldName . '-' . $this->sanitize($value),
+                    'names' => [
+                        'name' => $fieldLocaleValuesExport,
+                    ],
+                ];
+            }
+
+            if (count($fieldValuesExport) == 0) {
+                continue;
+            }
+
+            $fieldsExport[] = [
+                'code'   => $fieldName,
+                'names' => [
+                    'name' => $fieldLocaleExport,
+                ],
+                'values' => [
+                    'value' => $fieldValuesExport,
+                ],
+            ];
+        }
+
+        return $fieldsExport;
     }
 
     /**
@@ -1069,7 +1162,7 @@ class CatalogBuilder
             }
 
             $attributeValuesExport[] = [
-                'code'   => $product->get_slug() . '-' . $attributeKey . '-' . $this->sanitize($value),
+                'code'   => $attributeKey . '-' . $this->sanitize($value),
                 'names' => [
                     'name' => $attributeLocaleValuesExport,
                 ],
