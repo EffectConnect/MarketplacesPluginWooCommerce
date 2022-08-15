@@ -5,6 +5,7 @@ namespace EffectConnect\Marketplaces\Logic\ShipmentExport;
 use EffectConnect\Marketplaces\DB\ConnectionRepository;
 use EffectConnect\Marketplaces\DB\ShippingExportQueueRepository;
 use EffectConnect\Marketplaces\Helper\MyParcelHelper;
+use EffectConnect\Marketplaces\Helper\TrackingCodeFromOrderCommentHelper;
 
 class ShipmentWatcher
 {
@@ -50,6 +51,13 @@ class ShipmentWatcher
             // Check if new order state corresponds with the connection setting.
             if ($whenToUpdate === $newStatus) {
                 $shipmentExportQueueResource->setIsShipped(1);
+
+                // Read tracking code from order comment
+                $trackingCode = TrackingCodeFromOrderCommentHelper::getOrderTrackingCode($orderId, $connection->getShipmentExportTrackingCodes());
+                if ($trackingCode) {
+                    $shipmentExportQueueResource->setTrackingNumber($trackingCode);
+                }
+
                 $this->shippingExportQueueRepository->update($shipmentExportQueueResource);
             }
         }

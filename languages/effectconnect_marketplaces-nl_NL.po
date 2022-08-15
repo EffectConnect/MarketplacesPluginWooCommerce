@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-05-24 16:31+0200\n"
-"PO-Revision-Date: 2022-05-24 16:32+0200\n"
+"POT-Creation-Date: 2022-08-15 09:19+0200\n"
+"PO-Revision-Date: 2022-08-15 09:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -59,7 +59,7 @@ msgstr "Instellingen"
 msgid "Logs"
 msgstr "Logbestanden"
 
-#: src/Controller/LogController.php:55
+#: src/Controller/LogController.php:46
 msgid "Download log files"
 msgstr "Log bestanden downloaden"
 
@@ -1074,69 +1074,69 @@ msgstr "Elke 5 dagen"
 msgid "1 week"
 msgstr "Elke week"
 
-#: src/Model/ConnectionResource.php:417
+#: src/Model/ConnectionResource.php:432
 msgid "WooCommerce order state changed to"
 msgstr "WooCommerce order status is gewijzigd naar"
 
-#: src/Model/ConnectionResource.php:421
+#: src/Model/ConnectionResource.php:436
 msgid "WooCommerce order received a Track and Trace code from MyParcel"
 msgstr ""
 "WooCommerce order heeft een Track and Trace code ontvangen vanuit MyParcel"
 
-#: src/Model/ConnectionResource.php:424
+#: src/Model/ConnectionResource.php:439
 msgid "Don't update orders"
 msgstr "Orders niet bijwerken"
 
-#: src/Model/ConnectionResource.php:450
+#: src/Model/ConnectionResource.php:465
 msgid "General"
 msgstr "Algemeen"
 
-#: src/Model/ConnectionResource.php:451
+#: src/Model/ConnectionResource.php:466
 msgid "Exclude from export"
 msgstr "Uitsluiten van export"
 
-#: src/Model/ConnectionResource.php:453
+#: src/Model/ConnectionResource.php:468
 msgid "Custom attributes"
 msgstr "Custom attributen"
 
-#: src/Model/ConnectionResource.php:454
+#: src/Model/ConnectionResource.php:469
 msgid "Default attributes"
 msgstr "Default attributen"
 
-#: src/Model/ConnectionResource.php:455
+#: src/Model/ConnectionResource.php:470
 msgid "Taxonomies"
 msgstr "Taxonomieën"
 
-#: src/Model/ConnectionResource.php:458
+#: src/Model/ConnectionResource.php:473
 msgid "External plugins"
 msgstr "Externe plugins"
 
-#: src/Model/ConnectionResource.php:477
+#: src/Model/ConnectionResource.php:492
 msgid "Import both internally and externally fulfilled orders"
 msgstr ""
 "Zowel interne orders als orders met logistiek door marketplace importeren"
 
-#: src/Model/ConnectionResource.php:478
+#: src/Model/ConnectionResource.php:493
 msgid "Import only internally fulfilled orders"
 msgstr "Alleen interne orders importeren"
 
-#: src/Model/ConnectionResource.php:479
+#: src/Model/ConnectionResource.php:494
 msgid "Import only externally fulfilled orders"
 msgstr "Alleen orders importeren met logistiek door marketplace"
 
-#: src/Model/ConnectionResource.php:492
+#: src/Model/ConnectionResource.php:507
 msgid "Please fill in a connection name"
 msgstr "Vul een eigen referentie in voor de connectie"
 
-#: src/Model/ConnectionResource.php:497
+#: src/Model/ConnectionResource.php:512
 msgid "Please fill in a public key"
 msgstr "Vul een publieke sleutel in"
 
-#: src/Model/ConnectionResource.php:502
+#: src/Model/ConnectionResource.php:517
 msgid "Please fill in a private key"
 msgstr "Vul een geheime sleutel in"
 
-#: src/Model/ConnectionResource.php:507
+#: src/Model/ConnectionResource.php:522
 msgid "The fictional stock amount should be between 0 and 9999"
 msgstr "Het fictieve voorraadbedrag moet tussen 0 en 9999 liggen"
 
@@ -1444,6 +1444,21 @@ msgid "Select when to update the order status in EffectConnect to shipped."
 msgstr ""
 "Selecteer wanneer de order status in EffectConnect naar 'verzonden' gezet "
 "moet worden."
+
+#: view/templates/connections/ec_connection.html.twig:390
+msgid "Tracking code format"
+msgstr "Tracking code format"
+
+#: view/templates/connections/ec_connection.html.twig:394
+msgid ""
+"Tracking codes format to look for in order comments. Use [code] as "
+"placeholder for the tracking code. For example: \"Tracking code: [code]\". "
+"Separate multitple format by new lines."
+msgstr ""
+"Het tracking code format waarnaar gezocht moet worden in order notities. "
+"Gebruik [code] als placeholder voor de tracking code. Voorbeeld: \"Tracking "
+"code: [code]\". Gebruik meerdere regels om meerdere formats te kunnen "
+"gebruiken."
 
 #: view/templates/connections/ec_connections_listview.html.twig:2
 msgid "EffectConnect - Connections"

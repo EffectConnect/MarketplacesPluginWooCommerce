@@ -58,6 +58,7 @@ class ECTables
          order_import_external_fulfilment VARCHAR(64) NOT NULL,   
          order_import_send_emails TINYINT(1) NOT NULL,
          shipment_export_when VARCHAR(64) NOT NULL,   
+         shipment_export_tracking_codes VARCHAR(256) NOT NULL,   
          PRIMARY KEY (connection_id)
     ) $charset_collate;";
 

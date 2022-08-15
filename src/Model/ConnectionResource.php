@@ -6,6 +6,7 @@ use EffectConnect\Marketplaces\Constants\ConfigConstants;
 use EffectConnect\Marketplaces\Enums\ExternalFulfilmentEnum;
 use EffectConnect\Marketplaces\Helper\LanguageHelper;
 use EffectConnect\Marketplaces\Helper\MyParcelHelper;
+use EffectConnect\Marketplaces\Helper\TrackingCodeFromOrderCommentHelper;
 use EffectConnect\Marketplaces\Helper\TranslationHelper;
 use EffectConnect\Marketplaces\Helper\WcHelper;
 
@@ -137,6 +138,11 @@ class ConnectionResource implements ConfigConstants
     protected $shipmentExportWhen;
 
     /**
+     * @var string
+     */
+    protected $shipmentExportTrackingCodes;
+
+    /**
      * @var array
      */
     protected $errors = [];
@@ -168,6 +174,7 @@ class ConnectionResource implements ConfigConstants
         $this->orderImportExternalFulfilment       = strval($data['order_import_external_fulfilment'] ?? 'any');
         $this->orderImportSendEmails               = intval($data['order_import_send_emails'] ?? 0);
         $this->shipmentExportWhen                  = strval($data['shipment_export_when'] ?? 'wc-completed');
+        $this->shipmentExportTrackingCodes         = strval($data['shipment_export_tracking_codes'] ?? TrackingCodeFromOrderCommentHelper::getDefaultSearchString());
     }
 
     /**
@@ -377,6 +384,14 @@ class ConnectionResource implements ConfigConstants
     }
 
     /**
+     * @return string
+     */
+    public function getShipmentExportTrackingCodes(): string
+    {
+        return $this->shipmentExportTrackingCodes;
+    }
+
+    /**
      * Gets available WC carriers for shipment.
      *
      * @return array
@@ -549,6 +564,7 @@ class ConnectionResource implements ConfigConstants
             'order_import_external_fulfilment' => $this->orderImportExternalFulfilment,
             'order_import_send_emails' => $this->orderImportSendEmails,
             'shipment_export_when' => $this->shipmentExportWhen,
+            'shipment_export_tracking_codes' => $this->shipmentExportTrackingCodes,
         ];
     }
 

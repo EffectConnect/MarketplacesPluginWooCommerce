@@ -385,6 +385,15 @@
                     <p class="description">{{ __('Select when to update the order status in EffectConnect to shipped.') }}</p>
                 </td>
             </tr>
+            <tr class="dependsOnShipmentExportWhen">
+                <th>
+                    <label for="shipmentExportTrackingCodes">{{ __('Tracking code format') }}</label>
+                </th>
+                <td>
+                    <textarea id="shipmentExportTrackingCodes" name="shipment_export_tracking_codes" rows="5" cols="60">{{ formData.getShipmentExportTrackingCodes() }}</textarea>
+                    <p class="description">{{ __('Tracking codes format to look for in order comments. Use [code] as placeholder for the tracking code. For example: "Tracking code: [code]". Separate multitple format by new lines.') }}</p>
+                </td>
+            </tr>
         </table>
 
         {{ button|raw }}
@@ -392,6 +401,7 @@
 </div>
 
 <style>
+    .dependsOnShipmentExportWhen,
     .dependsOnInvertedCatalogExportWpmlLanguages,
     .dependsOnCatalogExportEanAttribute {
         display: none;
@@ -425,5 +435,18 @@
             setLanguages();
         });
         setLanguages();
+
+        let shipmentExportWhenElement = jQuery('#shipmentExportWhen');
+        function setTrackingCodes() {
+            if (shipmentExportWhenElement.val().startsWith('wc-')) {
+                jQuery('.dependsOnShipmentExportWhen').show();
+            } else {
+                jQuery('.dependsOnShipmentExportWhen').hide();
+            }
+        }
+        shipmentExportWhenElement.on('change', function() {
+            setTrackingCodes();
+        });
+        setTrackingCodes();
     });
 </script>
