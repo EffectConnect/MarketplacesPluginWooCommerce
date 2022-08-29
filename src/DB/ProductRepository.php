@@ -3,6 +3,7 @@
 namespace EffectConnect\Marketplaces\DB;
 
 use EffectConnect\Marketplaces\Exception\InvalidProductOptionIdException;
+use EffectConnect\Marketplaces\Helper\EanForWooCommercePluginHelper;
 use EffectConnect\Marketplaces\Helper\PerfectBrandsPluginHelper;
 use EffectConnect\Marketplaces\Helper\ProductCodePluginHelper;
 use EffectConnect\Marketplaces\Helper\WcHelper;
@@ -444,6 +445,9 @@ class ProductRepository
             if (count($brands) > 0) {
                 return strval(reset($brands));
             }
+        } elseif (strpos($attributeName, EanForWooCommercePluginHelper::WC_PLUGINS_EAN_PREFIX) === 0) {
+            // Get attribute from external plugin "EAN for WooCommerce"
+            return EanForWooCommercePluginHelper::getValue($product);
         } else {
             // Fetch product data from custom attribute
             return strval($product->get_attribute($attributeName));

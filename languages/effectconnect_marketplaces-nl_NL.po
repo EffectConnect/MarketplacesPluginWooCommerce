@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-08-15 09:19+0200\n"
-"PO-Revision-Date: 2022-08-15 09:19+0200\n"
+"POT-Creation-Date: 2022-08-29 11:07+0200\n"
+"PO-Revision-Date: 2022-08-29 11:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -938,6 +938,10 @@ msgstr "Product Code 2"
 #: src/Helper/WcHelper.php:155
 msgid "Perfect Brands"
 msgstr "Perfect Brands"
+
+#: src/Helper/WcHelper.php:158
+msgid "EAN for WooCommerce"
+msgstr "EAN for WooCommerce"
 
 #: src/Logic/ConfigContainer.php:182 src/Logic/ConfigContainer.php:253
 msgid "Queue size"

@@ -154,6 +154,9 @@ class WcHelper
         if (PerfectBrandsPluginHelper::perfectBrandsPluginActivated()) {
             $attributes[PerfectBrandsPluginHelper::WC_PLUGINS_PERFECT_BRANDS_PREFIX . PerfectBrandsPluginHelper::WC_PLUGINS_PERFECT_BRANDS_ATTRIBUTE] = TranslationHelper::translate('Perfect Brands');
         }
+        if (EanForWooCommercePluginHelper::eanPluginActivated()) {
+            $attributes[EanForWooCommercePluginHelper::WC_PLUGINS_EAN_PREFIX . EanForWooCommercePluginHelper::WC_PLUGINS_EAN_ATTRIBUTE] = TranslationHelper::translate('EAN for WooCommerce');
+        }
         return $attributes;
     }
 
