@@ -52,9 +52,9 @@ class TrackingCodeFromOrderCommentHelper
         // Search each order comment
         foreach ($notes as $note) {
             // Search for multiple search strings (delimited by a newline)
-            foreach (explode(PHP_EOL, $trackingCodeSearchString) as $trackingSearchItem) {
+            foreach (explode("\n", $trackingCodeSearchString) as $trackingSearchItem) {
                 // Search for '[code]' string which should contain the tracking code
-                $regex = '/' . preg_quote($trackingSearchItem, '/') . '/';
+                $regex = '/' . preg_quote(str_replace("\r", "", $trackingSearchItem), '/') . '/';
                 $regex = str_replace('\[code\]', '(.*)', $regex);
                 if (preg_match($regex, htmlspecialchars_decode($note->comment_content), $matches)) {
                     $trackingCode = end($matches);
