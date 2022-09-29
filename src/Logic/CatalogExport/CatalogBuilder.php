@@ -1200,6 +1200,7 @@ class CatalogBuilder
             'weight'          => 'get_weight',
             'parent_title'    => 'get_title',
             'variation_title' => 'get_name',
+            'backorders'      => 'get_backorders',
         ];
         foreach ($fixedAttributes as $fixedAttributeKey => $fixedAttributeFunction)
         {

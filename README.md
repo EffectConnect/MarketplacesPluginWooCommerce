@@ -8,8 +8,8 @@ The plugin has been tested with the following requirements:
 
 | Source      | Compatible versions |
 |-------------|---------------------|
-| WooCommerce | 4.0 - 6.1.1         |
-| PHP | 7.1 - 8.1 |
+| WooCommerce | 4.0 - 6.9.4         |
+| PHP | 7.1 - 8.1           |
 
 You can check your default PHP version by running `php -v` in your SSH console.
 If the default version does not match the table above, ask your server administrator how to run commands in another PHP version.
