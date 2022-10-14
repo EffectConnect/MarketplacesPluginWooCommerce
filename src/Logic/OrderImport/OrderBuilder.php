@@ -134,11 +134,11 @@ class OrderBuilder
             $channelType .= ' (' . $channelSubtype . ')';
         }
         if (
-            update_post_meta($this->order->get_order_number(), 'order_source', 'effectconnect') === false
-            || update_post_meta($this->order->get_order_number(), 'effectconnect_order_number', $ecOrder->getIdentifiers()->getEffectConnectNumber()) === false
-            || update_post_meta($this->order->get_order_number(), 'effectconnect_order_number_channel', $ecOrder->getIdentifiers()->getChannelNumber()) === false
-            || update_post_meta($this->order->get_order_number(), 'effectconnect_channel_name', $ecOrder->getChannelInfo()->getTitle()) === false
-            || update_post_meta($this->order->get_order_number(), 'effectconnect_channel_type', $channelType) === false
+            update_post_meta($this->order->get_id(), 'order_source', 'effectconnect') === false
+            || update_post_meta($this->order->get_id(), 'effectconnect_order_number', $ecOrder->getIdentifiers()->getEffectConnectNumber()) === false
+            || update_post_meta($this->order->get_id(), 'effectconnect_order_number_channel', $ecOrder->getIdentifiers()->getChannelNumber()) === false
+            || update_post_meta($this->order->get_id(), 'effectconnect_channel_name', $ecOrder->getChannelInfo()->getTitle()) === false
+            || update_post_meta($this->order->get_id(), 'effectconnect_channel_type', $channelType) === false
         ) {
             throw new OrderImportFailedException($this->connection->getConnectionId(), 'Post meta update failed.');
         }
