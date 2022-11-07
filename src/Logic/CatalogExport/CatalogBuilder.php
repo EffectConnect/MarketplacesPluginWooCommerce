@@ -970,7 +970,7 @@ class CatalogBuilder
             foreach ($this->languages as $language) {
                 $fieldLocaleExport[] = [
                     '_attributes' => ['language' => $language],
-                    '_cdata'      =>  $fieldInfo['label'] ?? $fieldName,
+                    '_cdata'      =>  isset($fieldInfo['label']) && !empty($fieldInfo['label']) ? $fieldInfo['label'] : $fieldName
                 ];
             }
 
