@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2022-08-29 11:07+0200\n"
-"PO-Revision-Date: 2022-08-29 11:07+0200\n"
+"PO-Revision-Date: 2022-11-28 14:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;translate\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1142,7 +1142,7 @@ msgstr "Vul een geheime sleutel in"
 
 #: src/Model/ConnectionResource.php:522
 msgid "The fictional stock amount should be between 0 and 9999"
-msgstr "Het fictieve voorraadbedrag moet tussen 0 en 9999 liggen"
+msgstr "Het fictieve voorraad aantal moet tussen 0 en 9999 liggen"
 
 #: src/Model/ECPayment.php:15
 msgid "EffectConnect Marketplaces Payment"
@@ -1358,7 +1358,7 @@ msgstr "Instellingen voor de voorraad export"
 
 #: view/templates/connections/ec_connection.html.twig:274
 msgid "Fictional stock amount"
-msgstr "Fictief voorraadbedrag"
+msgstr "Fictieve voorraad aantal"
 
 #: view/templates/connections/ec_connection.html.twig:279
 msgid ""

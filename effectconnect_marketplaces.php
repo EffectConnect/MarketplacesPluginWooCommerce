@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.27
+ * Version: 3.0.28
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */
@@ -21,6 +21,8 @@ if (!defined('ABSPATH')) {
 
 class PluginActivationClass
 {
+    private CronSchedules $cronSchedules;
+
     public function __construct()
     {
         require_once __DIR__ . '/vendor/autoload.php';
@@ -36,6 +38,7 @@ class PluginActivationClass
         $this->addCronSchedules();
         $this->loadTextDomain();
         $this->registerAcfFields();
+        $this->registerCliTasks();
     }
 
     private function addPluginMenus()
@@ -51,7 +54,7 @@ class PluginActivationClass
 
     private function addCronSchedules()
     {
-        new CronSchedules();
+        $this->cronSchedules = new CronSchedules();
     }
 
     /**
@@ -86,14 +89,14 @@ class PluginActivationClass
     }
 
     public function addShippingMethod($methods) {
-        if ((function_exists('is_admin') && is_admin()) || (function_exists('wp_doing_cron') && wp_doing_cron())) {
+        if ((function_exists('is_admin') && is_admin()) || (function_exists('wp_doing_cron') && wp_doing_cron()) || (defined( 'WP_CLI' ) && WP_CLI)) {
             $methods[] = new ECShipping();
         }
         return $methods;
     }
 
     public function addPaymentMethod($methods) {
-        if ((function_exists('is_admin') && is_admin()) || (function_exists('wp_doing_cron') && wp_doing_cron())) {
+        if ((function_exists('is_admin') && is_admin()) || (function_exists('wp_doing_cron') && wp_doing_cron()) || (defined( 'WP_CLI' ) && WP_CLI)) {
             $methods[] = new ECPayment();
         }
         return $methods;
@@ -111,6 +114,22 @@ class PluginActivationClass
             $paths[] = dirname(__FILE__) . '/acf-json';
             return $paths;
         });
+    }
+
+    /**
+     * Make cron tasks available through WP_CLI for testing (https://make.wordpress.org/cli/).
+     * Command line example: wp ec_catalog_export
+     *
+     * @return void
+     */
+    public function registerCliTasks() {
+        if (class_exists( 'WP_CLI')) {
+            WP_CLI::add_command('ec_clean_logs', [$this->cronSchedules, 'runCleanLogsCommand']);
+            WP_CLI::add_command('ec_catalog_export', [$this->cronSchedules, 'runCatalogExportCommand']);
+            WP_CLI::add_command('ec_queued_shipment_export', [$this->cronSchedules, 'runQueuedShipmentExportCommand']);
+            WP_CLI::add_command('ec_full_offer_export', [$this->cronSchedules, 'runFullOfferExportCommand']);
+            WP_CLI::add_command('ec_order_import', [$this->cronSchedules, 'runOrderImportCommand']);
+        }
     }
 
     /**
