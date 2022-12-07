@@ -1,9 +1,8 @@
 <?php
 namespace EffectConnect\Marketplaces\Logic\OfferExport;
 
-use EffectConnect\Marketplaces\Constants\LoggerConstants;
 use EffectConnect\Marketplaces\DB\ProductRepository;
-use EffectConnect\Marketplaces\Helper\WpmlHelper;
+use EffectConnect\Marketplaces\Helper\Languages\LanguagePluginHelper;
 use EffectConnect\Marketplaces\Logging\LoggerContainer;
 use EffectConnect\Marketplaces\Logic\ConfigContainer;
 use EffectConnect\Marketplaces\Model\ConnectionCollection;
@@ -110,11 +109,9 @@ class ProductWatcher
             $productIds[$product->get_id()] = true;
 
             // In case of WPML let's also queue all translations of the current product.
-            $productTranslations = WpmlHelper::getProductTranslations($product->get_id());
-            if (is_array($productTranslations)) {
-                foreach ($productTranslations as $productTranslation) {
-                    $productIds[$productTranslation->element_id] = true;
-                }
+            $translationIds = LanguagePluginHelper::getProductTranslationIds($product->get_id());
+            foreach ($translationIds as $id) {
+                $productIds[$id] = true;
             }
 
             // Queue the products.

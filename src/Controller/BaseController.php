@@ -33,7 +33,7 @@ class BaseController
         $loader = new FilesystemLoader(__DIR__ . '/../../view/templates');
         $this->twig = new Environment($loader);
         $this->twig->addFunction(new TwigFunction('__', function (string $text, array $parameters = []) {
-            return __(sprintf($text, ...$parameters), TranslationHelper::getTextDomain());
+            return sprintf(__($text, TranslationHelper::getTextDomain()), ...$parameters);
         }));
 
         $this->messagesContainer = new SessionMessageHelper();

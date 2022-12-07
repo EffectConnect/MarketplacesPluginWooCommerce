@@ -4,8 +4,8 @@ namespace EffectConnect\Marketplaces\Controller;
 
 use EffectConnect\Marketplaces\Constants\ConfigConstants;
 use EffectConnect\Marketplaces\DB\ConnectionRepository;
+use EffectConnect\Marketplaces\Helper\Languages\LanguagePluginHelper;
 use EffectConnect\Marketplaces\Helper\TranslationHelper;
-use EffectConnect\Marketplaces\Helper\WpmlHelper;
 use EffectConnect\Marketplaces\Interfaces\ControllerInterface;
 use EffectConnect\Marketplaces\Model\ConnectionResource;
 
@@ -106,8 +106,9 @@ class ConnectionController extends BaseController implements ControllerInterface
         }
 
         $this->render('connections/ec_connection.html.twig', [
-            'activeWpmlLanguages' => WpmlHelper::getActiveLanguageCodes(),
-            'defaultWpmlLanguage' => WpmlHelper::getDefaultLanguage(),
+            'activeWpmlLanguages' => LanguagePluginHelper::getActiveLanguageCodes(),
+            'defaultWpmlLanguage' => LanguagePluginHelper::getDefaultLanguage(),
+            'wpmlPluginName'      => LanguagePluginHelper::getPluginName(),
             'formData'            => $formData,
             'button'              => get_submit_button(TranslationHelper::translate('Save connection'), 'primary', 'connection_submit'),
         ]);

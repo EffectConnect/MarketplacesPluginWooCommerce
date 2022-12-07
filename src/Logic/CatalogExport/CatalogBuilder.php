@@ -8,9 +8,9 @@ use EffectConnect\Marketplaces\Exception\InvalidProductOptionIdException;
 use EffectConnect\Marketplaces\Exception\InvalidSkuException;
 use EffectConnect\Marketplaces\Exception\ProductVariationsCreationFailedException;
 use EffectConnect\Marketplaces\Helper\LanguageHelper;
+use EffectConnect\Marketplaces\Helper\Languages\LanguagePluginHelper;
 use EffectConnect\Marketplaces\Helper\PerfectBrandsPluginHelper;
 use EffectConnect\Marketplaces\Helper\WcHelper;
-use EffectConnect\Marketplaces\Helper\WpmlHelper;
 use EffectConnect\Marketplaces\Logging\LoggerContainer;
 use EffectConnect\Marketplaces\Constants\LoggerConstants;
 use EffectConnect\Marketplaces\Logic\ConfigContainer;
@@ -193,7 +193,7 @@ class CatalogBuilder
             {
                 // Get parent category
                 $parentCategoryId = $currentCategory->parent;
-                $currentCategory  = get_term($parentCategoryId, 'product_cat'); // Assign the parent to the $currentCategory variable so the while loop can continue.
+                $currentCategory  = LanguagePluginHelper::getTerm($parentCategoryId, 'product_cat'); // Assign the parent to the $currentCategory variable so the while loop can continue.
 
                 // Put parent category as first element in $categoryTreeItems array
                 array_unshift($categoryTreeItems, $this->getCategoryStructure($currentCategory));
@@ -689,7 +689,7 @@ class CatalogBuilder
             /** @var WC_Product_Attribute $wcAttribute */
             foreach ($wcAttribute->get_options() as $option) {
                 if (WcHelper::isGlobalAttribute($wcAttributeKey)) {
-                    $term = get_term($option);
+                    $term = LanguagePluginHelper::getTerm($option);
                     $termIdBySlug[$wcAttributeKey][$term->slug] = $option;
                 } else {
                     $termIdBySlug[$wcAttributeKey][$option] = $option;
@@ -809,7 +809,7 @@ class CatalogBuilder
 
         foreach ($options as $option) {
             if (is_integer($option)) { // When the option value is an integer, it means it is the term id, so we need to call the get_term function for the value.
-                $option = get_term($option);
+                $option = LanguagePluginHelper::getTerm($option);
                 $values[] = $option->slug;
             } else if (strlen($option) !== 0) {
                 $values[] = $option;
@@ -1288,7 +1288,7 @@ class CatalogBuilder
     protected function getDefaultLanguage(): string
     {
         if ($this->connection->getCatalogExportWpmlLanguages()) {
-            return WpmlHelper::getDefaultLanguage();
+            return LanguagePluginHelper::getDefaultLanguage();
         } else {
             return $this->connection->getCatalogExportLanguage();
         }
@@ -1344,17 +1344,14 @@ class CatalogBuilder
         ];
 
         // Get available languages for current product.
-        $translations = WpmlHelper::getProductTranslations($product->get_id());
+        $translationIds = LanguagePluginHelper::getProductTranslationIds($product->get_id());
 
         // Get translated products for all available locales.
-        if (is_array($translations) && count($translations) > 0) {
-            foreach ($translations as $locale => $translation) {
-                if ($locale !== $defaultLocale) {
-                    $id = $translation->element_id;
-                    $productTranslation = wc_get_product($id);
-                    if ($productTranslation instanceof WC_Product) {
-                        $productTranslations[$locale] = $productTranslation;
-                    }
+        foreach ($translationIds as $locale => $id) {
+            if ($locale !== $defaultLocale) {
+                $productTranslation = wc_get_product($id);
+                if ($productTranslation instanceof WC_Product) {
+                    $productTranslations[$locale] = $productTranslation;
                 }
             }
         }
@@ -1377,16 +1374,13 @@ class CatalogBuilder
             }
 
             // Get available languages for current product.
-            $translations = WpmlHelper::getProductCategoryTranslations($id);
+            $translationIds = LanguagePluginHelper::getProductCategoryTranslationsIds($id);
 
             // Get translated products for all available locales.
-            if (is_array($translations)) {
-                foreach ($translations as $locale => $translation) {
-                    $id = $translation->element_id;
-                    $categoryTranslation = get_term($id);
-                    if ($categoryTranslation instanceof WP_Term) {
-                        $categoryTranslations[$locale] = $categoryTranslation;
-                    }
+            foreach ($translationIds as $locale => $id) {
+                $categoryTranslation = LanguagePluginHelper::getTerm($id);
+                if ($categoryTranslation instanceof WP_Term) {
+                    $categoryTranslations[$locale] = $categoryTranslation;
                 }
             }
 
@@ -1404,7 +1398,7 @@ class CatalogBuilder
     protected function getGlobalAttributeValueTranslation(int $selectedTermId, string $selectedLocale): string
     {
         if (!isset($this->attributeTranslationsByIdAndLocale[$selectedTermId])) {
-            $term = get_term($selectedTermId);
+            $term = LanguagePluginHelper::getTerm($selectedTermId);
             $labelsTranslated = [];
             if ($term instanceof WP_Term) {
                 // Always include default values for all available languages for fallback.
@@ -1413,11 +1407,9 @@ class CatalogBuilder
                 }
 
                 // In case of translations the default value for default locale will be overwritten.
-                $termTranslations = WpmlHelper::getTranslations($term->term_taxonomy_id, 'tax_' . $term->taxonomy);
-                if (is_array($termTranslations)) {
-                    foreach ($termTranslations as $locale => $termTranslation) {
-                        $labelsTranslated[$locale] = $termTranslation->name;
-                    }
+                $termTranslations = LanguagePluginHelper::getTermTranslations($term->term_taxonomy_id, 'tax_' . $term->taxonomy);
+                foreach ($termTranslations as $locale => $termTranslation) {
+                    $labelsTranslated[$locale] = $termTranslation;
                 }
             }
             $this->attributeTranslationsByIdAndLocale[$selectedTermId] = $labelsTranslated;
@@ -1494,7 +1486,7 @@ class CatalogBuilder
         // Don't fetch translated product, because it might not exist.
         // The translations of global attribute names do not depend on product language, so they might exist even if the product translation is missing.
         $product = $this->getDefaultProductTranslation();
-        return WpmlHelper::getGlobalAttributeLabelTranslation($attributeKey, $product, $language);
+        return LanguagePluginHelper::getGlobalAttributeLabelTranslation($attributeKey, $product, $language);
     }
 
     /**
@@ -1505,7 +1497,7 @@ class CatalogBuilder
     protected function getLocalAttributeLabelTranslation(string $attributeKey, string $language): string
     {
         $productTranslation = $this->getProductTranslation($language);
-        return WpmlHelper::getLocalAttributeLabelTranslation($attributeKey, $productTranslation, $language);
+        return LanguagePluginHelper::getLocalAttributeLabelTranslation($attributeKey, $productTranslation, $language);
     }
 
     /**
@@ -1539,6 +1531,6 @@ class CatalogBuilder
         }
 
         // Note: in case of WPML this won't fetch products that have a main language set differs from the language we set below.
-        WpmlHelper::setLanguage($this->getDefaultLanguage());
+        LanguagePluginHelper::setLanguage($this->getDefaultLanguage());
     }
 }

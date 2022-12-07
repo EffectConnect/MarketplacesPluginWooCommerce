@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-08-29 11:07+0200\n"
-"PO-Revision-Date: 2022-11-28 14:36+0100\n"
+"POT-Creation-Date: 2022-12-06 15:59+0100\n"
+"PO-Revision-Date: 2022-12-06 15:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -39,7 +39,7 @@ msgstr "Connectie is verwijderd."
 msgid "Connection saved successfully."
 msgstr "Connectie is opgeslagen."
 
-#: src/Controller/ConnectionController.php:112
+#: src/Controller/ConnectionController.php:113
 msgid "Save connection"
 msgstr "Connectie opslaan"
 
@@ -59,7 +59,7 @@ msgstr "Instellingen"
 msgid "Logs"
 msgstr "Logbestanden"
 
-#: src/Controller/LogController.php:46
+#: src/Controller/LogController.php:37
 msgid "Download log files"
 msgstr "Log bestanden downloaden"
 
@@ -83,735 +83,735 @@ msgstr "Fout tijdens sluiten ZIP archief"
 msgid "No log files to download"
 msgstr "Geen logbestanden om te downloaden"
 
-#: src/Helper/LanguageHelper.php:16
+#: src/Helper/LanguageHelper.php:18
 msgid "Abkhazian"
 msgstr "Abchazisch"
 
-#: src/Helper/LanguageHelper.php:17
+#: src/Helper/LanguageHelper.php:19
 msgid "Afar"
 msgstr "Afar"
 
-#: src/Helper/LanguageHelper.php:18
+#: src/Helper/LanguageHelper.php:20
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: src/Helper/LanguageHelper.php:19
+#: src/Helper/LanguageHelper.php:21
 msgid "Akan"
 msgstr "Akan"
 
-#: src/Helper/LanguageHelper.php:20
+#: src/Helper/LanguageHelper.php:22
 msgid "Albanian"
 msgstr "Albanees"
 
-#: src/Helper/LanguageHelper.php:21
+#: src/Helper/LanguageHelper.php:23
 msgid "Amharic"
 msgstr "Amhaars"
 
-#: src/Helper/LanguageHelper.php:22
+#: src/Helper/LanguageHelper.php:24
 msgid "Arabic"
 msgstr "Arabisch"
 
-#: src/Helper/LanguageHelper.php:23
+#: src/Helper/LanguageHelper.php:25
 msgid "Aragonese"
 msgstr "Aragonees"
 
-#: src/Helper/LanguageHelper.php:24
+#: src/Helper/LanguageHelper.php:26
 msgid "Armenian"
 msgstr "Armeens"
 
-#: src/Helper/LanguageHelper.php:25
+#: src/Helper/LanguageHelper.php:27
 msgid "Assamese"
 msgstr "Assamees"
 
-#: src/Helper/LanguageHelper.php:26
+#: src/Helper/LanguageHelper.php:28
 msgid "Avaric"
 msgstr "Avaars"
 
-#: src/Helper/LanguageHelper.php:27
+#: src/Helper/LanguageHelper.php:29
 msgid "Avestan"
 msgstr "Avestisch"
 
-#: src/Helper/LanguageHelper.php:28
+#: src/Helper/LanguageHelper.php:30
 msgid "Aymara"
 msgstr "Aymara"
 
-#: src/Helper/LanguageHelper.php:29
+#: src/Helper/LanguageHelper.php:31
 msgid "Azerbaijani"
 msgstr "Azerbeidzjaans"
 
-#: src/Helper/LanguageHelper.php:30
+#: src/Helper/LanguageHelper.php:32
 msgid "Bambara"
 msgstr "Bambara"
 
-#: src/Helper/LanguageHelper.php:31
+#: src/Helper/LanguageHelper.php:33
 msgid "Bashkir"
 msgstr "Basjkiers"
 
-#: src/Helper/LanguageHelper.php:32
+#: src/Helper/LanguageHelper.php:34
 msgid "Basque"
 msgstr "Baskisch"
 
-#: src/Helper/LanguageHelper.php:33
+#: src/Helper/LanguageHelper.php:35
 msgid "Belarusian"
 msgstr "Wit Russisch"
 
-#: src/Helper/LanguageHelper.php:34
+#: src/Helper/LanguageHelper.php:36
 msgid "Bengali"
 msgstr "Bengalees"
 
-#: src/Helper/LanguageHelper.php:35
+#: src/Helper/LanguageHelper.php:37
 msgid "Bislama"
 msgstr "Bislama"
 
-#: src/Helper/LanguageHelper.php:36
+#: src/Helper/LanguageHelper.php:38
 msgid "Bosnian"
 msgstr "Bosnisch"
 
-#: src/Helper/LanguageHelper.php:37
+#: src/Helper/LanguageHelper.php:39
 msgid "Breton"
 msgstr "Bretons"
 
-#: src/Helper/LanguageHelper.php:38
+#: src/Helper/LanguageHelper.php:40
 msgid "Bulgarian"
 msgstr "Bulgaars"
 
-#: src/Helper/LanguageHelper.php:39
+#: src/Helper/LanguageHelper.php:41
 msgid "Burmese"
 msgstr "Birmees"
 
-#: src/Helper/LanguageHelper.php:40
+#: src/Helper/LanguageHelper.php:42
 msgid "Catalan"
 msgstr "Catalaans"
 
-#: src/Helper/LanguageHelper.php:41
+#: src/Helper/LanguageHelper.php:43
 msgid "Chamorro"
 msgstr "Chamorro"
 
-#: src/Helper/LanguageHelper.php:42
+#: src/Helper/LanguageHelper.php:44
 msgid "Chechen"
 msgstr "Tsjetsjeens"
 
-#: src/Helper/LanguageHelper.php:43
+#: src/Helper/LanguageHelper.php:45
 msgid "Chichewa"
 msgstr "Nyanja"
 
-#: src/Helper/LanguageHelper.php:44
+#: src/Helper/LanguageHelper.php:46
 msgid "Chinese"
 msgstr "Chinees"
 
-#: src/Helper/LanguageHelper.php:45
+#: src/Helper/LanguageHelper.php:47
 msgid "Chuvash"
 msgstr "Tsjoevasjisch"
 
-#: src/Helper/LanguageHelper.php:46
+#: src/Helper/LanguageHelper.php:48
 msgid "Cornish"
 msgstr "Cornisch"
 
-#: src/Helper/LanguageHelper.php:47
+#: src/Helper/LanguageHelper.php:49
 msgid "Corsican"
 msgstr "Corsicaans"
 
-#: src/Helper/LanguageHelper.php:48
+#: src/Helper/LanguageHelper.php:50
 msgid "Cree"
 msgstr "Creools"
 
-#: src/Helper/LanguageHelper.php:49
+#: src/Helper/LanguageHelper.php:51
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: src/Helper/LanguageHelper.php:50
+#: src/Helper/LanguageHelper.php:52
 msgid "Czech"
 msgstr "Tsjechisch"
 
-#: src/Helper/LanguageHelper.php:51
+#: src/Helper/LanguageHelper.php:53
 msgid "Danish"
 msgstr "Deens"
 
-#: src/Helper/LanguageHelper.php:52
+#: src/Helper/LanguageHelper.php:54
 msgid "Divehi"
 msgstr "Divehi"
 
-#: src/Helper/LanguageHelper.php:53
+#: src/Helper/LanguageHelper.php:55
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: src/Helper/LanguageHelper.php:54
+#: src/Helper/LanguageHelper.php:56
 msgid "Dzongkha"
 msgstr "Dzongkha"
 
-#: src/Helper/LanguageHelper.php:55
+#: src/Helper/LanguageHelper.php:57
 msgid "English"
 msgstr "Engels"
 
-#: src/Helper/LanguageHelper.php:56
+#: src/Helper/LanguageHelper.php:58
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: src/Helper/LanguageHelper.php:57
+#: src/Helper/LanguageHelper.php:59
 msgid "Estonian"
 msgstr "Ests"
 
-#: src/Helper/LanguageHelper.php:58
+#: src/Helper/LanguageHelper.php:60
 msgid "Ewe"
 msgstr "Ewe"
 
-#: src/Helper/LanguageHelper.php:59
+#: src/Helper/LanguageHelper.php:61
 msgid "Faroese"
 msgstr "Faeröers"
 
-#: src/Helper/LanguageHelper.php:60
+#: src/Helper/LanguageHelper.php:62
 msgid "Fijian"
 msgstr "Fijisch"
 
-#: src/Helper/LanguageHelper.php:61
+#: src/Helper/LanguageHelper.php:63
 msgid "Finnish"
 msgstr "Fins"
 
-#: src/Helper/LanguageHelper.php:62
+#: src/Helper/LanguageHelper.php:64
 msgid "French"
 msgstr "Frans"
 
-#: src/Helper/LanguageHelper.php:63
+#: src/Helper/LanguageHelper.php:65
 msgid "Fulah"
 msgstr "Fula"
 
-#: src/Helper/LanguageHelper.php:64
+#: src/Helper/LanguageHelper.php:66
 msgid "Galician"
 msgstr "Galicisch"
 
-#: src/Helper/LanguageHelper.php:65
+#: src/Helper/LanguageHelper.php:67
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: src/Helper/LanguageHelper.php:66
+#: src/Helper/LanguageHelper.php:68
 msgid "German"
 msgstr "Duits"
 
-#: src/Helper/LanguageHelper.php:67
+#: src/Helper/LanguageHelper.php:69
 msgid "Greek"
 msgstr "Grieks"
 
-#: src/Helper/LanguageHelper.php:68
+#: src/Helper/LanguageHelper.php:70
 msgid "Guarani"
 msgstr "Guaraní"
 
-#: src/Helper/LanguageHelper.php:69
+#: src/Helper/LanguageHelper.php:71
 msgid "Gujarati"
 msgstr "Gujarati"
 
-#: src/Helper/LanguageHelper.php:70
+#: src/Helper/LanguageHelper.php:72
 msgid "Haitian"
 msgstr "Haïtiaans Creools"
 
-#: src/Helper/LanguageHelper.php:71
+#: src/Helper/LanguageHelper.php:73
 msgid "Hausa"
 msgstr "Hausa"
 
-#: src/Helper/LanguageHelper.php:72
+#: src/Helper/LanguageHelper.php:74
 msgid "Hebrew"
 msgstr "Hebreeuws"
 
-#: src/Helper/LanguageHelper.php:73
+#: src/Helper/LanguageHelper.php:75
 msgid "Herero"
 msgstr "Herero"
 
-#: src/Helper/LanguageHelper.php:74
+#: src/Helper/LanguageHelper.php:76
 msgid "Hindi"
 msgstr "Hindi"
 
-#: src/Helper/LanguageHelper.php:75
+#: src/Helper/LanguageHelper.php:77
 msgid "Hiri Motu"
 msgstr "Hiri Motu"
 
-#: src/Helper/LanguageHelper.php:76
+#: src/Helper/LanguageHelper.php:78
 msgid "Hungarian"
 msgstr "Hongaars"
 
-#: src/Helper/LanguageHelper.php:77
+#: src/Helper/LanguageHelper.php:79
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: src/Helper/LanguageHelper.php:78
+#: src/Helper/LanguageHelper.php:80
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-#: src/Helper/LanguageHelper.php:79
+#: src/Helper/LanguageHelper.php:81
 msgid "Interlingue"
 msgstr "Interlinie"
 
-#: src/Helper/LanguageHelper.php:80
+#: src/Helper/LanguageHelper.php:82
 msgid "Irish"
 msgstr "Iers"
 
-#: src/Helper/LanguageHelper.php:81
+#: src/Helper/LanguageHelper.php:83
 msgid "Igbo"
 msgstr "Igbo"
 
-#: src/Helper/LanguageHelper.php:82
+#: src/Helper/LanguageHelper.php:84
 msgid "Inupiaq"
 msgstr "Inupiak"
 
-#: src/Helper/LanguageHelper.php:83
+#: src/Helper/LanguageHelper.php:85
 msgid "Ido"
 msgstr "Ido"
 
-#: src/Helper/LanguageHelper.php:84
+#: src/Helper/LanguageHelper.php:86
 msgid "Icelandic"
 msgstr "IJslands"
 
-#: src/Helper/LanguageHelper.php:85
+#: src/Helper/LanguageHelper.php:87
 msgid "Italian"
 msgstr "Italiaans"
 
-#: src/Helper/LanguageHelper.php:86
+#: src/Helper/LanguageHelper.php:88
 msgid "Inuktitut"
 msgstr "Inuktitut"
 
-#: src/Helper/LanguageHelper.php:87
+#: src/Helper/LanguageHelper.php:89
 msgid "Japanese"
 msgstr "Japans"
 
-#: src/Helper/LanguageHelper.php:88
+#: src/Helper/LanguageHelper.php:90
 msgid "Javanese"
 msgstr "Javaans"
 
-#: src/Helper/LanguageHelper.php:89
+#: src/Helper/LanguageHelper.php:91
 msgid "Kalaallisut"
 msgstr "Groenlands"
 
-#: src/Helper/LanguageHelper.php:90
+#: src/Helper/LanguageHelper.php:92
 msgid "Kannada"
 msgstr "Canada"
 
-#: src/Helper/LanguageHelper.php:91
+#: src/Helper/LanguageHelper.php:93
 msgid "Kanuri"
 msgstr "Kanuri"
 
-#: src/Helper/LanguageHelper.php:92
+#: src/Helper/LanguageHelper.php:94
 msgid "Kashmiri"
 msgstr "Kasjmirs"
 
-#: src/Helper/LanguageHelper.php:93
+#: src/Helper/LanguageHelper.php:95
 msgid "Kazakh"
 msgstr "Kazachs"
 
-#: src/Helper/LanguageHelper.php:94
+#: src/Helper/LanguageHelper.php:96
 msgid "Central Khmer"
 msgstr "Centraal Khmer"
 
-#: src/Helper/LanguageHelper.php:95
+#: src/Helper/LanguageHelper.php:97
 msgid "Kikuyu"
 msgstr "Gikuyu"
 
-#: src/Helper/LanguageHelper.php:96
+#: src/Helper/LanguageHelper.php:98
 msgid "Kinyarwanda"
 msgstr "Kinyarwanda"
 
-#: src/Helper/LanguageHelper.php:97
+#: src/Helper/LanguageHelper.php:99
 msgid "Kirghiz"
 msgstr "Kirgizisch"
 
-#: src/Helper/LanguageHelper.php:98
+#: src/Helper/LanguageHelper.php:100
 msgid "Komi"
 msgstr "Komi"
 
-#: src/Helper/LanguageHelper.php:99
+#: src/Helper/LanguageHelper.php:101
 msgid "Kongo"
 msgstr "Kongo"
 
-#: src/Helper/LanguageHelper.php:100
+#: src/Helper/LanguageHelper.php:102
 msgid "Korean"
 msgstr "Koreaans"
 
-#: src/Helper/LanguageHelper.php:101
+#: src/Helper/LanguageHelper.php:103
 msgid "Kurdish"
 msgstr "Koerdisch"
 
-#: src/Helper/LanguageHelper.php:102
+#: src/Helper/LanguageHelper.php:104
 msgid "Kuanyama"
 msgstr "Kuanyama"
 
-#: src/Helper/LanguageHelper.php:103
+#: src/Helper/LanguageHelper.php:105
 msgid "Latin"
 msgstr "Latijn"
 
-#: src/Helper/LanguageHelper.php:104
+#: src/Helper/LanguageHelper.php:106
 msgid "Luxembourgish"
 msgstr "Luxemburgs"
 
-#: src/Helper/LanguageHelper.php:105
+#: src/Helper/LanguageHelper.php:107
 msgid "Ganda"
 msgstr "Ganda"
 
-#: src/Helper/LanguageHelper.php:106
+#: src/Helper/LanguageHelper.php:108
 msgid "Limburgan"
 msgstr "Limburgs"
 
-#: src/Helper/LanguageHelper.php:107
+#: src/Helper/LanguageHelper.php:109
 msgid "Lingala"
 msgstr "Lingala"
 
-#: src/Helper/LanguageHelper.php:108
+#: src/Helper/LanguageHelper.php:110
 msgid "Lao"
 msgstr "LAO"
 
-#: src/Helper/LanguageHelper.php:109
+#: src/Helper/LanguageHelper.php:111
 msgid "Lithuanian"
 msgstr "Litouws"
 
-#: src/Helper/LanguageHelper.php:110
+#: src/Helper/LanguageHelper.php:112
 msgid "Luba-Katanga"
 msgstr "Luba Katanga"
 
-#: src/Helper/LanguageHelper.php:111
+#: src/Helper/LanguageHelper.php:113
 msgid "Latvian"
 msgstr "Lets"
 
-#: src/Helper/LanguageHelper.php:112
+#: src/Helper/LanguageHelper.php:114
 msgid "Manx"
 msgstr "Manx-Gaelisch"
 
-#: src/Helper/LanguageHelper.php:113
+#: src/Helper/LanguageHelper.php:115
 msgid "Macedonian"
 msgstr "Macedonisch"
 
-#: src/Helper/LanguageHelper.php:114
+#: src/Helper/LanguageHelper.php:116
 msgid "Malagasy"
 msgstr "Malagassisch"
 
-#: src/Helper/LanguageHelper.php:115
+#: src/Helper/LanguageHelper.php:117
 msgid "Malay"
 msgstr "Maleis"
 
-#: src/Helper/LanguageHelper.php:116
+#: src/Helper/LanguageHelper.php:118
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: src/Helper/LanguageHelper.php:117
+#: src/Helper/LanguageHelper.php:119
 msgid "Maltese"
 msgstr "Maltees"
 
-#: src/Helper/LanguageHelper.php:118
+#: src/Helper/LanguageHelper.php:120
 msgid "Maori"
 msgstr "Maori"
 
-#: src/Helper/LanguageHelper.php:119
+#: src/Helper/LanguageHelper.php:121
 msgid "Marathi"
 msgstr "Marathi"
 
-#: src/Helper/LanguageHelper.php:120
+#: src/Helper/LanguageHelper.php:122
 msgid "Marshallese"
 msgstr "Marshallees"
 
-#: src/Helper/LanguageHelper.php:121
+#: src/Helper/LanguageHelper.php:123
 msgid "Mongolian"
 msgstr "Mongools"
 
-#: src/Helper/LanguageHelper.php:122
+#: src/Helper/LanguageHelper.php:124
 msgid "Nauru"
 msgstr "Nauru"
 
-#: src/Helper/LanguageHelper.php:123
+#: src/Helper/LanguageHelper.php:125
 msgid "Navajo"
 msgstr "Navajo"
 
-#: src/Helper/LanguageHelper.php:124
+#: src/Helper/LanguageHelper.php:126
 msgid "North Ndebele"
 msgstr "Noord Ndebele"
 
-#: src/Helper/LanguageHelper.php:125
+#: src/Helper/LanguageHelper.php:127
 msgid "Nepali"
 msgstr "Nepalees"
 
-#: src/Helper/LanguageHelper.php:126
+#: src/Helper/LanguageHelper.php:128
 msgid "Ndonga"
 msgstr "Ndonga"
 
-#: src/Helper/LanguageHelper.php:127
+#: src/Helper/LanguageHelper.php:129
 msgid "Norwegian Bokmål"
 msgstr "Noors (Bokmål)"
 
-#: src/Helper/LanguageHelper.php:128
+#: src/Helper/LanguageHelper.php:130
 msgid "Norwegian Nynorsk"
 msgstr "Noors (Nynorsk)"
 
-#: src/Helper/LanguageHelper.php:129
+#: src/Helper/LanguageHelper.php:131
 msgid "Norwegian"
 msgstr "Noors"
 
-#: src/Helper/LanguageHelper.php:130
+#: src/Helper/LanguageHelper.php:132
 msgid "Sichuan Yi"
 msgstr "Sichuan Yi"
 
-#: src/Helper/LanguageHelper.php:131
+#: src/Helper/LanguageHelper.php:133
 msgid "South Ndebele"
 msgstr "Zuid-Ndebele"
 
-#: src/Helper/LanguageHelper.php:132
+#: src/Helper/LanguageHelper.php:134
 msgid "Occitan"
 msgstr "Occitaans"
 
-#: src/Helper/LanguageHelper.php:133
+#: src/Helper/LanguageHelper.php:135
 msgid "Ojibwa"
 msgstr "Ojibwe"
 
-#: src/Helper/LanguageHelper.php:134
+#: src/Helper/LanguageHelper.php:136
 msgid "Church Slavic"
 msgstr "Kerk Slavisch"
 
-#: src/Helper/LanguageHelper.php:135
+#: src/Helper/LanguageHelper.php:137
 msgid "Oromo"
 msgstr "Oromo"
 
-#: src/Helper/LanguageHelper.php:136
+#: src/Helper/LanguageHelper.php:138
 msgid "Oriya"
 msgstr "Oriya"
 
-#: src/Helper/LanguageHelper.php:137
+#: src/Helper/LanguageHelper.php:139
 msgid "Ossetian"
 msgstr "Ossetisch"
 
-#: src/Helper/LanguageHelper.php:138
+#: src/Helper/LanguageHelper.php:140
 msgid "Punjabi"
 msgstr "Punjabi"
 
-#: src/Helper/LanguageHelper.php:139
+#: src/Helper/LanguageHelper.php:141
 msgid "Pali"
 msgstr "Pali"
 
-#: src/Helper/LanguageHelper.php:140
+#: src/Helper/LanguageHelper.php:142
 msgid "Persian"
 msgstr "Perzisch"
 
-#: src/Helper/LanguageHelper.php:141
+#: src/Helper/LanguageHelper.php:143
 msgid "Polish"
 msgstr "Pools"
 
-#: src/Helper/LanguageHelper.php:142
+#: src/Helper/LanguageHelper.php:144
 msgid "Pashto"
 msgstr "Pasjtoe"
 
-#: src/Helper/LanguageHelper.php:143
+#: src/Helper/LanguageHelper.php:145
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: src/Helper/LanguageHelper.php:144
+#: src/Helper/LanguageHelper.php:146
 msgid "Quechua"
 msgstr "Quechua"
 
-#: src/Helper/LanguageHelper.php:145
+#: src/Helper/LanguageHelper.php:147
 msgid "Romansh"
 msgstr "Reto-Romaans"
 
-#: src/Helper/LanguageHelper.php:146
+#: src/Helper/LanguageHelper.php:148
 msgid "Rundi"
 msgstr "Rundi"
 
-#: src/Helper/LanguageHelper.php:147
+#: src/Helper/LanguageHelper.php:149
 msgid "Romanian"
 msgstr "Roemeens"
 
-#: src/Helper/LanguageHelper.php:148
+#: src/Helper/LanguageHelper.php:150
 msgid "Russian"
 msgstr "Russisch"
 
-#: src/Helper/LanguageHelper.php:149
+#: src/Helper/LanguageHelper.php:151
 msgid "Sanskrit"
 msgstr "Sanskriet"
 
-#: src/Helper/LanguageHelper.php:150
+#: src/Helper/LanguageHelper.php:152
 msgid "Sardinian"
 msgstr "Sardijns"
 
-#: src/Helper/LanguageHelper.php:151
+#: src/Helper/LanguageHelper.php:153
 msgid "Sindhi"
 msgstr "Sindhi"
 
-#: src/Helper/LanguageHelper.php:152
+#: src/Helper/LanguageHelper.php:154
 msgid "Northern Sami"
 msgstr "Noord Samisch"
 
-#: src/Helper/LanguageHelper.php:153
+#: src/Helper/LanguageHelper.php:155
 msgid "Samoan"
 msgstr "Samoaans"
 
-#: src/Helper/LanguageHelper.php:154
+#: src/Helper/LanguageHelper.php:156
 msgid "Sango"
 msgstr "Sango"
 
-#: src/Helper/LanguageHelper.php:155
+#: src/Helper/LanguageHelper.php:157
 msgid "Serbian"
 msgstr "Servisch"
 
-#: src/Helper/LanguageHelper.php:156
+#: src/Helper/LanguageHelper.php:158
 msgid "Gaelic"
 msgstr "Gaelisch"
 
-#: src/Helper/LanguageHelper.php:157
+#: src/Helper/LanguageHelper.php:159
 msgid "Shona"
 msgstr "Shona"
 
-#: src/Helper/LanguageHelper.php:158
+#: src/Helper/LanguageHelper.php:160
 msgid "Sinhala"
 msgstr "Singalees"
 
-#: src/Helper/LanguageHelper.php:159
+#: src/Helper/LanguageHelper.php:161
 msgid "Slovak"
 msgstr "Slowaaks"
 
-#: src/Helper/LanguageHelper.php:160
+#: src/Helper/LanguageHelper.php:162
 msgid "Slovenian"
 msgstr "Sloveens"
 
-#: src/Helper/LanguageHelper.php:161
+#: src/Helper/LanguageHelper.php:163
 msgid "Somali"
 msgstr "Somalisch"
 
-#: src/Helper/LanguageHelper.php:162
+#: src/Helper/LanguageHelper.php:164
 msgid "Southern Sotho"
 msgstr "Zuid-Sotho"
 
-#: src/Helper/LanguageHelper.php:163
+#: src/Helper/LanguageHelper.php:165
 msgid "Spanish"
 msgstr "Spaans"
 
-#: src/Helper/LanguageHelper.php:164
+#: src/Helper/LanguageHelper.php:166
 msgid "Sundanese"
 msgstr "Sundanees"
 
-#: src/Helper/LanguageHelper.php:165
+#: src/Helper/LanguageHelper.php:167
 msgid "Swahili"
 msgstr "Swahili"
 
-#: src/Helper/LanguageHelper.php:166
+#: src/Helper/LanguageHelper.php:168
 msgid "Swati"
 msgstr "Swazi"
 
-#: src/Helper/LanguageHelper.php:167
+#: src/Helper/LanguageHelper.php:169
 msgid "Swedish"
 msgstr "Zweeds"
 
-#: src/Helper/LanguageHelper.php:168
+#: src/Helper/LanguageHelper.php:170
 msgid "Tamil"
 msgstr "Tamil"
 
-#: src/Helper/LanguageHelper.php:169
+#: src/Helper/LanguageHelper.php:171
 msgid "Telugu"
 msgstr "Telugu"
 
-#: src/Helper/LanguageHelper.php:170
+#: src/Helper/LanguageHelper.php:172
 msgid "Tajik"
 msgstr "Tadzjieks"
 
-#: src/Helper/LanguageHelper.php:171
+#: src/Helper/LanguageHelper.php:173
 msgid "Thai"
 msgstr "Thais"
 
-#: src/Helper/LanguageHelper.php:172
+#: src/Helper/LanguageHelper.php:174
 msgid "Tigrinya"
 msgstr "Tigrinya"
 
-#: src/Helper/LanguageHelper.php:173
+#: src/Helper/LanguageHelper.php:175
 msgid "Tibetan"
 msgstr "Tibetaans"
 
-#: src/Helper/LanguageHelper.php:174
+#: src/Helper/LanguageHelper.php:176
 msgid "Turkmen"
 msgstr "Turkmeens"
 
-#: src/Helper/LanguageHelper.php:175
+#: src/Helper/LanguageHelper.php:177
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: src/Helper/LanguageHelper.php:176
+#: src/Helper/LanguageHelper.php:178
 msgid "Tswana"
 msgstr "Tswana"
 
-#: src/Helper/LanguageHelper.php:177
+#: src/Helper/LanguageHelper.php:179
 msgid "Tonga"
 msgstr "Tonga"
 
-#: src/Helper/LanguageHelper.php:178
+#: src/Helper/LanguageHelper.php:180
 msgid "Turkish"
 msgstr "Turks"
 
-#: src/Helper/LanguageHelper.php:179
+#: src/Helper/LanguageHelper.php:181
 msgid "Tsonga"
 msgstr "Tsonga"
 
-#: src/Helper/LanguageHelper.php:180
+#: src/Helper/LanguageHelper.php:182
 msgid "Tatar"
 msgstr "Tataars"
 
-#: src/Helper/LanguageHelper.php:181
+#: src/Helper/LanguageHelper.php:183
 msgid "Twi"
 msgstr "Twi"
 
-#: src/Helper/LanguageHelper.php:182
+#: src/Helper/LanguageHelper.php:184
 msgid "Tahitian"
 msgstr "Tahitiaans"
 
-#: src/Helper/LanguageHelper.php:183
+#: src/Helper/LanguageHelper.php:185
 msgid "Uighur"
 msgstr "Uyghur"
 
-#: src/Helper/LanguageHelper.php:184
+#: src/Helper/LanguageHelper.php:186
 msgid "Ukrainian"
 msgstr "Oekraïens"
 
-#: src/Helper/LanguageHelper.php:185
+#: src/Helper/LanguageHelper.php:187
 msgid "Urdu"
 msgstr "Urdu"
 
-#: src/Helper/LanguageHelper.php:186
+#: src/Helper/LanguageHelper.php:188
 msgid "Uzbek"
 msgstr "Oezbeeks"
 
-#: src/Helper/LanguageHelper.php:187
+#: src/Helper/LanguageHelper.php:189
 msgid "Venda"
 msgstr "Venda"
 
-#: src/Helper/LanguageHelper.php:188
+#: src/Helper/LanguageHelper.php:190
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: src/Helper/LanguageHelper.php:189
+#: src/Helper/LanguageHelper.php:191
 msgid "Volapük"
 msgstr "Volapük"
 
-#: src/Helper/LanguageHelper.php:190
+#: src/Helper/LanguageHelper.php:192
 msgid "Walloon"
 msgstr "Waals"
 
-#: src/Helper/LanguageHelper.php:191
+#: src/Helper/LanguageHelper.php:193
 msgid "Welsh"
 msgstr "Welsh"
 
-#: src/Helper/LanguageHelper.php:192
+#: src/Helper/LanguageHelper.php:194
 msgid "Wolof"
 msgstr "Wolof"
 
-#: src/Helper/LanguageHelper.php:193
+#: src/Helper/LanguageHelper.php:195
 msgid "Western Frisian"
 msgstr "West Fries"
 
-#: src/Helper/LanguageHelper.php:194
+#: src/Helper/LanguageHelper.php:196
 msgid "Xhosa"
 msgstr "Xhosa"
 
-#: src/Helper/LanguageHelper.php:195
+#: src/Helper/LanguageHelper.php:197
 msgid "Yiddish"
 msgstr "Jiddisch"
 
-#: src/Helper/LanguageHelper.php:196
+#: src/Helper/LanguageHelper.php:198
 msgid "Yoruba"
 msgstr "Yoruba"
 
-#: src/Helper/LanguageHelper.php:197
+#: src/Helper/LanguageHelper.php:199
 msgid "Zhuang"
 msgstr "Zhuang"
 
-#: src/Helper/LanguageHelper.php:198
+#: src/Helper/LanguageHelper.php:200
 msgid "Zulu"
 msgstr "Zulu"
 
@@ -1223,36 +1223,42 @@ msgid "Catalog export settings"
 msgstr "Instellingen voor de catalogus export"
 
 #: view/templates/connections/ec_connection.html.twig:60
-msgid "Export WPML languages"
-msgstr "WPML talen exporteren"
+#, php-format
+msgid "Export %s languages"
+msgstr "%s talen exporteren"
 
 #: view/templates/connections/ec_connection.html.twig:67
+#, php-format
 msgid ""
-"We have detected the WPML plugin. Choose this option if you want to export "
-"all active WPML languages to EffectConnect. The default WML language will be "
-"used to choose which products to export and is used as fallback languages in "
-"case of missing translations."
+"We have detected the %s plugin. Choose this option if you want to export all "
+"active %s languages to EffectConnect. The default %s language will be used "
+"to choose which products to export and is used as fallback languages in case "
+"of missing translations."
 msgstr ""
-"We hebben de WPML plugin gedetecteerd. Selecteer deze optie indien alle WPML "
-"talen geëxporteerd moeten worden naar EffectConnect. The default WPML taal "
+"We hebben de %s plugin gedetecteerd. Selecteer deze optie indien alle %s "
+"talen geëxporteerd moeten worden naar EffectConnect. The default %s taal "
 "bepaalt welke producten worden geëxporteerd en wordt gebruikt als fallback "
 "taal in geval er vertalingen ontbreken."
 
 #: view/templates/connections/ec_connection.html.twig:68
 #, php-format
-msgid "Active WPML language codes: [%s]."
-msgstr "Actieve WPML taalcodes: [%s]."
+msgid "Active %s language codes: [%s]."
+msgstr "Actieve %s taalcodes: [%s]."
 
 #: view/templates/connections/ec_connection.html.twig:69
 #, php-format
-msgid "Default WPML language code: [%s]."
-msgstr "Default WPML taalcode: [%s]."
+msgid "Default %s language code: [%s]."
+msgstr "Default %s taalcode: [%s]."
 
-#: view/templates/connections/ec_connection.html.twig:78
+#: view/templates/connections/ec_connection.html.twig:71
+msgid "Test translation"
+msgstr "Test vertaling"
+
+#: view/templates/connections/ec_connection.html.twig:80
 msgid "Catalog language"
 msgstr "Catalogus taal"
 
-#: view/templates/connections/ec_connection.html.twig:90
+#: view/templates/connections/ec_connection.html.twig:92
 msgid ""
 "Select the general language that product details are written in for the "
 "catalog (this does not change anything in the catalog and is only used as an "
@@ -1262,11 +1268,11 @@ msgstr ""
 "verandert niks aan de catalogus, maar wordt slechts gebruikt als indicator "
 "voor de producttaal in EffectConnect)."
 
-#: view/templates/connections/ec_connection.html.twig:95
+#: view/templates/connections/ec_connection.html.twig:97
 msgid "Only export active products"
 msgstr "Exporteer alleen actieve producten"
 
-#: view/templates/connections/ec_connection.html.twig:101
+#: view/templates/connections/ec_connection.html.twig:103
 msgid ""
 "If this setting is enabled only products that are enabled will be exported "
 "to EffectConnect."
@@ -1274,11 +1280,11 @@ msgstr ""
 "Als deze instelling is ingeschakeld, worden alleen producten die zijn "
 "ingeschakeld geëxporteerd naar EffectConnect."
 
-#: view/templates/connections/ec_connection.html.twig:106
+#: view/templates/connections/ec_connection.html.twig:108
 msgid "Export taxonomies as attributes"
 msgstr "Taxonomieën exporteren als attributen"
 
-#: view/templates/connections/ec_connection.html.twig:112
+#: view/templates/connections/ec_connection.html.twig:114
 msgid ""
 "If this setting is enabled all product taxonomies will be exported to "
 "EffectConnect as attributes."
@@ -1286,11 +1292,11 @@ msgstr ""
 "Als deze instelling is ingeschakeld, worden alle taxonomieën geëxporteerd "
 "naar EffectConnect (als product attribuut)."
 
-#: view/templates/connections/ec_connection.html.twig:117
+#: view/templates/connections/ec_connection.html.twig:119
 msgid "Use special price"
 msgstr "Gebruik actieprijs"
 
-#: view/templates/connections/ec_connection.html.twig:123
+#: view/templates/connections/ec_connection.html.twig:125
 msgid ""
 "If enabled the original price will be exported to EffectConnect Marketplaces "
 "separately in case there is a sale price. If disabled only the original "
@@ -1300,15 +1306,15 @@ msgstr ""
 "de aanbiedingsprijs (indien er een aanbiedingsprijs is). Indien "
 "uitgeschakeld wordt alleen de reguliere productprijs geëxporteerd."
 
-#: view/templates/connections/ec_connection.html.twig:128
+#: view/templates/connections/ec_connection.html.twig:130
 msgid "EAN attribute"
 msgstr "EAN attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:148
+#: view/templates/connections/ec_connection.html.twig:150
 msgid "Exclude products with invalid EAN"
 msgstr "Producten met ongeldige EAN uitsluiten"
 
-#: view/templates/connections/ec_connection.html.twig:154
+#: view/templates/connections/ec_connection.html.twig:156
 msgid ""
 "When checked, products with invalid EAN will be excluded from export. "
 "Otherwise products will be exported without EAN, since EffectConnect won't "
@@ -1319,11 +1325,11 @@ msgstr ""
 "reden hiervoor is dat EffectConnect de export zal afkeuren indien deze "
 "producten met een ongeldige EAN bevat."
 
-#: view/templates/connections/ec_connection.html.twig:159
+#: view/templates/connections/ec_connection.html.twig:161
 msgid "Add leading zero to EAN"
 msgstr "Voorloopnul toevoegen aan EAN"
 
-#: view/templates/connections/ec_connection.html.twig:165
+#: view/templates/connections/ec_connection.html.twig:167
 msgid ""
 "Select whether the plugin should automatically add a leading zero to an EAN "
 "that consists of 12 characters. Products with invalid EAN will be exported "
@@ -1332,35 +1338,35 @@ msgstr ""
 "Selecteer of een EAN waarde die uit 12 tekens bestaat aangevuld moet worden "
 "met een voorloopnul."
 
-#: view/templates/connections/ec_connection.html.twig:170
+#: view/templates/connections/ec_connection.html.twig:172
 msgid "Title attribute"
 msgstr "Titel attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:190
+#: view/templates/connections/ec_connection.html.twig:192
 msgid "Description attribute"
 msgstr "Beschrijving attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:210
+#: view/templates/connections/ec_connection.html.twig:212
 msgid "Cost attribute"
 msgstr "Kostprijs attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:230
+#: view/templates/connections/ec_connection.html.twig:232
 msgid "Delivery attribute"
 msgstr "Levertijd attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:250
+#: view/templates/connections/ec_connection.html.twig:252
 msgid "Brand attribute"
 msgstr "Merk attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:270
+#: view/templates/connections/ec_connection.html.twig:272
 msgid "Offer export settings"
 msgstr "Instellingen voor de voorraad export"
 
-#: view/templates/connections/ec_connection.html.twig:274
+#: view/templates/connections/ec_connection.html.twig:276
 msgid "Fictional stock amount"
 msgstr "Fictieve voorraad aantal"
 
-#: view/templates/connections/ec_connection.html.twig:279
+#: view/templates/connections/ec_connection.html.twig:281
 msgid ""
 "The stock amount to export in case product is in stock, but stock amount is "
 "unknown (backorders are enabled or stock management is disabled)."
@@ -1369,19 +1375,19 @@ msgstr ""
 "maar de voorraadhoeveelheid onbekend is (nabestellingen zijn ingeschakeld of "
 "voorraadbeheer is uitgeschakeld)."
 
-#: view/templates/connections/ec_connection.html.twig:280
+#: view/templates/connections/ec_connection.html.twig:282
 msgid "Possible values: 0-9999."
 msgstr "Mogelijke waardes: 0-9999."
 
-#: view/templates/connections/ec_connection.html.twig:286
+#: view/templates/connections/ec_connection.html.twig:288
 msgid "Order import settings"
 msgstr "Instellingen voor de order import"
 
-#: view/templates/connections/ec_connection.html.twig:290
+#: view/templates/connections/ec_connection.html.twig:292
 msgid "Send emails"
 msgstr "Verzend e-mails"
 
-#: view/templates/connections/ec_connection.html.twig:296
+#: view/templates/connections/ec_connection.html.twig:298
 msgid ""
 "Whether or not to let WooCommerce send order update emails to the customer "
 "and admin for each imported order. When disabled, no emails are sent when "
@@ -1394,37 +1400,37 @@ msgstr ""
 "alleen e-mails verstuurd die staan ingeschakeld in de WooCommerce e-"
 "mailinstellingen."
 
-#: view/templates/connections/ec_connection.html.twig:301
+#: view/templates/connections/ec_connection.html.twig:303
 msgid "Order status"
 msgstr "Status van bestelling"
 
-#: view/templates/connections/ec_connection.html.twig:313
+#: view/templates/connections/ec_connection.html.twig:315
 msgid "Select what order status should be used for imported orders."
 msgstr ""
 "Selecteer welke orderstatus moet worden gebruikt voor geïmporteerde "
 "bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:318
+#: view/templates/connections/ec_connection.html.twig:320
 msgid "Payment method"
 msgstr "Betaalmethode"
 
-#: view/templates/connections/ec_connection.html.twig:330
+#: view/templates/connections/ec_connection.html.twig:332
 msgid "Select the payment method for imported orders."
 msgstr "Selecteer de betalingsmethode voor geïmporteerde bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:335
+#: view/templates/connections/ec_connection.html.twig:337
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
-#: view/templates/connections/ec_connection.html.twig:347
+#: view/templates/connections/ec_connection.html.twig:349
 msgid "Select the shipping method for imported orders."
 msgstr "Selecteer de verzendmethode voor geïmporteerde bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:352
+#: view/templates/connections/ec_connection.html.twig:354
 msgid "External fulfilment"
 msgstr "Logistiek door marketplace"
 
-#: view/templates/connections/ec_connection.html.twig:364
+#: view/templates/connections/ec_connection.html.twig:366
 msgid ""
 "Whether to import orders that are externally fulfilled or not. Internally "
 "fulfilled orders have status paid in EffectConnect. Externally fulfilled "
@@ -1435,25 +1441,25 @@ msgstr ""
 "'paid' in EffectConnect. Extern uitgevoerde bestellingen hebben de tag "
 "'completed' en 'external_fulfilled'."
 
-#: view/templates/connections/ec_connection.html.twig:369
+#: view/templates/connections/ec_connection.html.twig:371
 msgid "Shipment export"
 msgstr "Verzendingen export"
 
-#: view/templates/connections/ec_connection.html.twig:373
+#: view/templates/connections/ec_connection.html.twig:375
 msgid "When to update order"
 msgstr "Wanneer order bijwerken"
 
-#: view/templates/connections/ec_connection.html.twig:385
+#: view/templates/connections/ec_connection.html.twig:387
 msgid "Select when to update the order status in EffectConnect to shipped."
 msgstr ""
 "Selecteer wanneer de order status in EffectConnect naar 'verzonden' gezet "
 "moet worden."
 
-#: view/templates/connections/ec_connection.html.twig:390
+#: view/templates/connections/ec_connection.html.twig:392
 msgid "Tracking code format"
 msgstr "Tracking code format"
 
-#: view/templates/connections/ec_connection.html.twig:394
+#: view/templates/connections/ec_connection.html.twig:396
 msgid ""
 "Tracking codes format to look for in order comments. Use [code] as "
 "placeholder for the tracking code. For example: \"Tracking code: [code]\". "

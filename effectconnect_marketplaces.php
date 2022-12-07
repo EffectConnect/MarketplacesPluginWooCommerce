@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.28
+ * Version: 3.0.29
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */
@@ -21,7 +21,10 @@ if (!defined('ABSPATH')) {
 
 class PluginActivationClass
 {
-    private CronSchedules $cronSchedules;
+    /**
+     * @var CronSchedules
+     */
+    private $cronSchedules;
 
     public function __construct()
     {

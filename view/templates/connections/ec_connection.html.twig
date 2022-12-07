@@ -57,16 +57,16 @@
             {% if activeWpmlLanguages|length > 0 and defaultWpmlLanguage %}
                 <tr>
                     <th>
-                        <label for="catalogExportWpmlLanguages">{{ __('Export WPML languages') }}</label>
+                        <label for="catalogExportWpmlLanguages">{{ __('Export %s languages', [wpmlPluginName]) }}</label>
                     </th>
                     <td>
                         <input
                                 {% if formData.getCatalogExportWpmlLanguages() %}checked{% endif %}
                                 type="checkbox" id="catalogExportWpmlLanguages" name="catalog_export_wpml_languages" value="1"/>
                         <p class="description">
-                            {{ __('We have detected the WPML plugin. Choose this option if you want to export all active WPML languages to EffectConnect. The default WML language will be used to choose which products to export and is used as fallback languages in case of missing translations.') }}<br/>
-                            {{ __('Active WPML language codes: [%s].', [activeWpmlLanguages|join(', ')]) }}<br/>
-                            {{ __('Default WPML language code: [%s].', [defaultWpmlLanguage]) }}
+                            {{ __('We have detected the %s plugin. Choose this option if you want to export all active %s languages to EffectConnect. The default %s language will be used to choose which products to export and is used as fallback languages in case of missing translations.', [wpmlPluginName, wpmlPluginName, wpmlPluginName]) }}<br/>
+                            {{ __('Active %s language codes: [%s].', [wpmlPluginName, activeWpmlLanguages|join(', ')]) }}<br/>
+                            {{ __('Default %s language code: [%s].', [wpmlPluginName, defaultWpmlLanguage]) }}
                         </p>
                     </td>
                 </tr>

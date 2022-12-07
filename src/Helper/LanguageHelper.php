@@ -2,6 +2,8 @@
 
 namespace EffectConnect\Marketplaces\Helper;
 
+use EffectConnect\Marketplaces\Helper\Languages\LanguagePluginHelper;
+
 /**
  * Fetched list from: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  */
@@ -204,9 +206,9 @@ class LanguageHelper
      */
     public static function getAvailableLanguages(): array
     {
-        $wpmlLanguages = WpmlHelper::getActiveLanguages();
-        if (count($wpmlLanguages) > 0) {
-            return $wpmlLanguages;
+        $languages = LanguagePluginHelper::getActiveLanguages();
+        if (count($languages) > 0) {
+            return $languages;
         }
         return self::getLanguages();
     }
