@@ -62,6 +62,16 @@ class ShipmentExportQueueResource
      */
     protected $trackingExportedAt;
 
+    /**
+     * @var bool
+     */
+    protected $importSuccess;
+
+    /**
+     * @var bool
+     */
+    protected $importError;
+
     public function __construct(array $data = [])
     {
         $this->shippingExportQueueId              = intval($data['shipping_export_queue_id'] ?? 0);
@@ -70,6 +80,8 @@ class ShipmentExportQueueResource
         $this->ecMarketplacesIdentificationNumber = strval($data['ec_marketplaces_identification_number'] ?? '');
         $this->ecMarketplacesOrderLineIds         = (array)json_decode($data['ec_marketplaces_order_line_ids'] ?? '');
         $this->isShipped                          = intval($data['is_shipped'] ?? 0);
+        $this->importSuccess                      = intval($data['import_success'] ?? 0);
+        $this->importError                        = intval($data['import_error'] ?? 0);
         $this->carrierName                        = isset($data['carrier_name']) ? strval($data['carrier_name']) : null;
         $this->trackingNumber                     = isset($data['tracking_number']) ? strval($data['tracking_number']) : null;
         try {
@@ -146,6 +158,22 @@ class ShipmentExportQueueResource
     }
 
     /**
+     * @return int
+     */
+    public function getImportSuccess(): int
+    {
+        return $this->importSuccess;
+    }
+
+    /**
+     * @return int
+     */
+    public function getImportError(): int
+    {
+        return $this->importError;
+    }
+
+    /**
      * @param int $orderId
      * @return void
      */
@@ -188,6 +216,24 @@ class ShipmentExportQueueResource
     public function setIsShipped(int $isShipped)
     {
         $this->isShipped = $isShipped;
+    }
+
+    /**
+     * @param int $importSuccess
+     * @return void
+     */
+    public function setImportSuccess(int $importSuccess)
+    {
+        $this->importSuccess = $importSuccess;
+    }
+
+    /**
+     * @param int $importError
+     * @return void
+     */
+    public function setImportError(int $importError)
+    {
+        $this->importError = $importError;
     }
 
     /**
@@ -238,6 +284,8 @@ class ShipmentExportQueueResource
             'ec_marketplaces_identification_number' => $this->ecMarketplacesIdentificationNumber,
             'ec_marketplaces_order_line_ids' => json_encode($this->ecMarketplacesOrderLineIds),
             'is_shipped' => $this->isShipped,
+            'import_success' => $this->importSuccess,
+            'import_error' => $this->importError,
         ];
 
         if (!is_null($this->carrierName)) {

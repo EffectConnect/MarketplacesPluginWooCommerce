@@ -56,16 +56,21 @@ class ShippingExportQueueRepository
 
     /**
      * @param string $ecNumber
-     * @return ShipmentExportQueueResource
+     * @return ShipmentExportQueueResource[]
      */
-    public function getByEffectConnectIdentificationNumber(string $ecNumber): ShipmentExportQueueResource
+    public function getListByEffectConnectIdentificationNumber(string $ecNumber): array
     {
-        $result = $this->wpdb->get_row(
+        $results = $this->wpdb->get_results(
             $this->wpdb->prepare("SELECT * FROM `$this->tableName` WHERE `ec_marketplaces_identification_number` = %s",
                 $ecNumber), 'ARRAY_A'
         );
 
-        return new ShipmentExportQueueResource((array)$result);
+        $shipmentExportQueueResources = [];
+        foreach ($results as $result) {
+            $shipmentExportQueueResources[] = new ShipmentExportQueueResource((array)$result);
+        }
+
+        return $shipmentExportQueueResources;
     }
 
     /**
@@ -103,7 +108,7 @@ class ShippingExportQueueRepository
 
     /**
      * @param int $queueSize
-     * @return array
+     * @return ShipmentExportQueueResource[]
      */
     public function getListToExport(int $queueSize = 10): array
     {

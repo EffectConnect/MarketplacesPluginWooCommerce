@@ -77,13 +77,14 @@ class ECTables
         $table_name = $this->wpdb->prefix . 'ec_product_options';
         $sql = "CREATE TABLE $table_name 
     (
-         option_id int(11) unsigned NOT NULL AUTO_INCREMENT,
-         variation_id int(11) unsigned NULL,
-         product_id int(11) unsigned NOT NULL,
+         option_id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+         variation_id INT(11) UNSIGNED NULL,
+         product_id INT(11) UNSIGNED NOT NULL,
          product_name TEXT NOT NULL,
          attribute_data TEXT NULL,
-         hash VARCHAR(32) UNIQUE,
-         PRIMARY KEY (option_id)
+         hash VARCHAR(32),
+         PRIMARY KEY (option_id),
+         UNIQUE KEY hash_unique (hash),
     ) $charset_collate;";
 
         dbDelta($sql);
@@ -101,9 +102,10 @@ class ECTables
         $table_name = $this->wpdb->prefix . 'ec_offer_update_queue';
         $sql = "CREATE TABLE $table_name 
     (
-         offer_id int(11) unsigned NOT NULL AUTO_INCREMENT,
-         product_id int(11) unsigned NOT NULL UNIQUE,
-         PRIMARY KEY (offer_id)
+         offer_id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+         product_id INT(11) UNSIGNED NOT NULL,
+         PRIMARY KEY (offer_id),
+         UNIQUE KEY product_id_unique (product_id),
     ) $charset_collate;";
 
         dbDelta($sql);
@@ -115,20 +117,23 @@ class ECTables
 
         //* Create the queue table
         $table_name = $this->wpdb->prefix . 'ec_shipment_export_queue';
-        $sql = "CREATE TABLE `$table_name` 
+        $sql = "CREATE TABLE $table_name 
     (
-        `shipping_export_queue_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `order_id` INT(11) UNSIGNED NOT NULL UNIQUE,
-        `connection_id` int(10) unsigned NOT NULL,
-        `ec_marketplaces_identification_number` varchar(128) NOT NULL,
-        `ec_marketplaces_order_line_ids` text NOT NULL,
-        `is_shipped` tinyint(1) unsigned NOT NULL DEFAULT '0',
-        `carrier_name` varchar(64) DEFAULT NULL,
-        `tracking_number` varchar(64) DEFAULT NULL,
-        `order_imported_at` datetime DEFAULT NULL,
-        `shipped_exported_at` datetime DEFAULT NULL,
-        `tracking_exported_at` datetime DEFAULT NULL,
-        PRIMARY KEY (`shipping_export_queue_id`)
+        shipping_export_queue_id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+        order_id INT(11) UNSIGNED NOT NULL,
+        connection_id INT(10) UNSIGNED NOT NULL,
+        ec_marketplaces_identification_number VARCHAR(128) NOT NULL,
+        ec_marketplaces_order_line_ids text NOT NULL,
+        is_shipped TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+        carrier_name VARCHAR(64) DEFAULT NULL,
+        tracking_number VARCHAR(64) DEFAULT NULL,
+        order_imported_at datetime DEFAULT NULL,
+        shipped_exported_at datetime DEFAULT NULL,
+        tracking_exported_at datetime DEFAULT NULL,
+        import_success TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+        import_error TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+        PRIMARY KEY (shipping_export_queue_id),
+        UNIQUE KEY order_id_unique (order_id),
     ) $charset_collate;";
 
         dbDelta($sql);

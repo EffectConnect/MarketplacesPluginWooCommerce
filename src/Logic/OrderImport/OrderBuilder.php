@@ -88,6 +88,9 @@ class OrderBuilder
             throw new OrderImportFailedException($this->connection->getConnectionId(), 'Error while creating error.');
         }
 
+        // Save that we are currently importing $ecOrder to prevent duplicate imports when this script is called twice at the same time.
+        $this->setOrderIdentifiers($ecOrder);
+
         // Set all order attributes.
         try {
             $this->setOrderAddresses($ecOrder);
@@ -96,6 +99,7 @@ class OrderBuilder
             $this->setTotals($ecOrder);
         } catch (OrderImportFailedException $e) {
             // Rollback order creation in case of errors.
+            $this->setOrderIdentifierError();
             if (!$this->order->delete()) {
                 LoggerContainer::getLogger(LoggerConstants::ORDER_IMPORT)->error('Order rollback failed.', [
                     'process'    => LoggerConstants::ORDER_IMPORT,
@@ -111,7 +115,7 @@ class OrderBuilder
 
         $this->lastImportedOrderId        = $this->order->get_id();
         $this->lastImportedOrderReference = $this->order->get_order_key();
-        $this->setOrderIdentifiers($ecOrder);
+        $this->setOrderIdentifierSuccess();
 
         // Backwards compatibility with old plugin.
         apply_filters('effectconnect_created_order', $this->order);
@@ -375,9 +379,9 @@ class OrderBuilder
      */
     protected function skipOrderImport(EffectConnectOrder $ecOrder): bool
     {
-        // Check if order was already imported - identify by EC order number.
+        // Check if order was already imported (or is currently importing - no success or failed flag) - identify by EC order number.
         $effectConnectNumber = $ecOrder->getIdentifiers()->getEffectConnectNumber();
-        if ($this->orderRepo->checkIfOrderExists($effectConnectNumber)) {
+        if ($this->orderRepo->checkIfOrderIsImportedOrImporting($effectConnectNumber)) {
             LoggerContainer::getLogger(LoggerConstants::ORDER_IMPORT)->info('Order ' . $effectConnectNumber . ' skipped because it was already imported.', [
                 'process'    => LoggerConstants::ORDER_IMPORT,
                 'connection' => $this->connection->getConnectionId(),
@@ -444,6 +448,8 @@ class OrderBuilder
     }
 
     /**
+     * Added the imported order info to plugin database table (at the beginning of the import).
+     *
      * @param EffectConnectOrder $ecOrder
      * @return void
      */
@@ -455,11 +461,35 @@ class OrderBuilder
         }
 
         $shipmentExportQueueResource = new ShipmentExportQueueResource();
-        $shipmentExportQueueResource->setOrderId($this->getLastImportedOrderId());
+        $shipmentExportQueueResource->setOrderId($this->order->get_id());
         $shipmentExportQueueResource->setConnectionId($this->connection->getConnectionId());
         $shipmentExportQueueResource->setEcMarketplacesIdentificationNumber($ecOrder->getIdentifiers()->getEffectConnectNumber());
         $shipmentExportQueueResource->setEcMarketplacesOrderLineIds($orderLineIds);
         $shipmentExportQueueResource->setOrderImportedAt(new DateTime);
+        $this->shippingExportQueueRepo->upsert($shipmentExportQueueResource);
+    }
+
+    /**
+     * Set that the order import has succeeded.
+     *
+     * @return void
+     */
+    protected function setOrderIdentifierSuccess()
+    {
+        $shipmentExportQueueResource = $this->shippingExportQueueRepo->getByOrderId($this->order->get_id());
+        $shipmentExportQueueResource->setImportSuccess(1);
+        $this->shippingExportQueueRepo->upsert($shipmentExportQueueResource);
+    }
+
+    /**
+     * Set that the order import has failed.
+     *
+     * @return void
+     */
+    protected function setOrderIdentifierError()
+    {
+        $shipmentExportQueueResource = $this->shippingExportQueueRepo->getByOrderId($this->order->get_id());
+        $shipmentExportQueueResource->setImportError(1);
         $this->shippingExportQueueRepo->upsert($shipmentExportQueueResource);
     }
 

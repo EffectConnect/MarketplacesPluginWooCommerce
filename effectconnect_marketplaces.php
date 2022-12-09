@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.29
+ * Version: 3.0.30
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */
@@ -17,6 +17,10 @@ use EffectConnect\Marketplaces\Model\ECShipping;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
+}
+
+if (!defined('EFFECTCONNECT_MARKETPLACES_VERSION')) {
+    define('EFFECTCONNECT_MARKETPLACES_VERSION', '3.0.30');
 }
 
 class PluginActivationClass
@@ -36,6 +40,7 @@ class PluginActivationClass
         add_action('woocommerce_shipping_init', [$this, 'registerECShippingMethod']);
         add_action('woocommerce_after_register_post_type', [$this, 'registerECPaymentMethods']);
         add_action('woocommerce_after_register_post_type', [$this, 'addWatchers']);
+        add_action('plugins_loaded', [$this, 'checkVersion']);
 
         $this->addPluginMenus();
         $this->addCronSchedules();
@@ -76,11 +81,7 @@ class PluginActivationClass
      */
     public function ec_plugin_activate()
     {
-        $tables = ECTables::getInstance();
-        $tables->ecCreateConnectionsTable();
-        $tables->ecCreateProductOptionsTable();
-        $tables->ecCreateOfferUpdateQueueTable();
-        $tables->ecCreateShipmentExportQueueTable();
+        $this->updateDatabase();
     }
 
     public function registerECShippingMethod() {
@@ -132,6 +133,32 @@ class PluginActivationClass
             WP_CLI::add_command('ec_queued_shipment_export', [$this->cronSchedules, 'runQueuedShipmentExportCommand']);
             WP_CLI::add_command('ec_full_offer_export', [$this->cronSchedules, 'runFullOfferExportCommand']);
             WP_CLI::add_command('ec_order_import', [$this->cronSchedules, 'runOrderImportCommand']);
+        }
+    }
+
+    /**
+     * Create plugin database tables (includes database updates in case of changes).
+     *
+     * @return void
+     */
+    public function updateDatabase()
+    {
+        $tables = ECTables::getInstance();
+        $tables->ecCreateConnectionsTable();
+        $tables->ecCreateProductOptionsTable();
+        $tables->ecCreateOfferUpdateQueueTable();
+        $tables->ecCreateShipmentExportQueueTable();
+    }
+
+    /**
+     * In case plugin was updated, also update the database.
+     *
+     * @return void
+     */
+    public function checkVersion() {
+        if (EFFECTCONNECT_MARKETPLACES_VERSION !== get_option('ec_version')) {
+            $this->updateDatabase();
+            update_option('ec_version', EFFECTCONNECT_MARKETPLACES_VERSION);
         }
     }
 
