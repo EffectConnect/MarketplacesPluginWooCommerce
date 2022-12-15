@@ -84,7 +84,7 @@ class ECTables
          attribute_data TEXT NULL,
          hash VARCHAR(32),
          PRIMARY KEY (option_id),
-         UNIQUE KEY hash_unique (hash),
+         UNIQUE KEY hash_unique (hash)
     ) $charset_collate;";
 
         dbDelta($sql);
@@ -105,7 +105,7 @@ class ECTables
          offer_id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
          product_id INT(11) UNSIGNED NOT NULL,
          PRIMARY KEY (offer_id),
-         UNIQUE KEY product_id_unique (product_id),
+         UNIQUE KEY product_id_unique (product_id)
     ) $charset_collate;";
 
         dbDelta($sql);
@@ -133,7 +133,7 @@ class ECTables
         import_success TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
         import_error TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
         PRIMARY KEY (shipping_export_queue_id),
-        UNIQUE KEY order_id_unique (order_id),
+        UNIQUE KEY order_id_unique (order_id)
     ) $charset_collate;";
 
         dbDelta($sql);
