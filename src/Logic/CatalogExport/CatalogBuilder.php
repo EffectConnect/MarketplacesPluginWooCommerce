@@ -137,7 +137,7 @@ class CatalogBuilder
             ];
 
             // Brand
-            $brand = $this->getProductBrand();
+            $brand = $this->getProductBrand($product);
             if (!empty($brand)) {
                 $productData['brand'] = $brand;
             }
@@ -597,12 +597,13 @@ class CatalogBuilder
 
     /**
      * Returns a product's associated brand.
+     * The brand in EC has no translations (and is an attribute on the parent product).
      *
+     * @param WC_Product $product
      * @return string
      */
-    protected function getProductBrand(): string
+    protected function getProductBrand(WC_Product $product): string
     {
-        $product = $this->getDefaultProductTranslation();
         return $this->productOptionsRepo->getProductBrand($product, $this->connection);
     }
 
