@@ -18,6 +18,7 @@ use EffectConnect\Marketplaces\Model\ConnectionResource;
 use EffectConnect\Marketplaces\Model\WcProductVariationWrapper;
 use Exception;
 use Laminas\Validator\Barcode;
+use WC_Meta_Data;
 use WC_Product;
 use WC_Product_Attribute;
 use WC_Product_Variable;
@@ -431,12 +432,14 @@ class CatalogBuilder
         }
 
         // Attributes
+        $productFields = $this->getProductFields();
         $attributes = array_merge(
             $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
             $this->getProductAttributes($wcProductVariationWrapper->getWcAttributes()),
             $this->getProductAttributesFixed(),
             $this->getProductPerfectBrandsAttributes(),
-            $this->getProductFields()
+            $productFields,
+            $this->getProductMetaFields($productFields)
         );
         if (count($attributes) > 0) {
             $productOptionExport['attributes']['attribute'] = $attributes;
@@ -936,8 +939,9 @@ class CatalogBuilder
     }
 
     /**
-     * Gets all meta fields attached to a product.
-     * Note that we only take ACF fields into account (https://www.advancedcustomfields.com).
+     * Gets meta fields attached to a product.
+     * Note that in this function we only take ACF fields into account (https://www.advancedcustomfields.com).
+     * Meta fields that are generated 'on-the-fly' (for example by other plugins code base) are fetched with 'getProductMetaFields'.
      *
      * @return array
      */
@@ -1015,6 +1019,101 @@ class CatalogBuilder
 
             $fieldsExport[] = [
                 'code'   => $fieldName,
+                'names' => [
+                    'name' => $fieldLocaleExport,
+                ],
+                'values' => [
+                    'value' => $fieldValuesExport,
+                ],
+            ];
+        }
+
+        return $fieldsExport;
+    }
+
+    /**
+     * Gets extra meta fields attached to a product.
+     * In the function 'getProductFields' we already fetched ACF fields (https://www.advancedcustomfields.com).
+     * In this function we also fetch fields that are generated 'on-the-fly' (for example by other plugins code base).
+     * To make sure we don't return duplicate fields, we check the already processed $productFields.
+     *
+     * @param array $productFields
+     * @return array
+     */
+    public function getProductMetaFields(array $productFields): array
+    {
+        $fieldsExport = [];
+        $product = $this->getDefaultProductTranslation();
+
+        // Only add meta that were not included yet in the export are don't start with an underscore (those are internal fields).
+        $metas = [];
+        $allMetas = $product->get_meta_data();
+        $processedMetaKeys = [];
+        foreach ($productFields as $productField) {
+            $processedMetaKeys[] = $productField['code'];
+        }
+        foreach ($allMetas as $meta) {
+            /** @var WC_Meta_Data $meta */
+            if (!empty($meta->key) && is_string($meta->key) && !in_array($meta->key, $processedMetaKeys) && substr($meta->key, 0, 1) !== '_') {
+                $metas[] = $meta;
+            }
+        }
+
+        foreach ($metas as $meta) {
+
+            //
+            // Get field names for each language (fixed)
+            // TODO: take WPML into account
+            //
+
+            $fieldLocaleExport = [];
+            foreach ($this->languages as $language) {
+                $fieldLocaleExport[] = [
+                    '_attributes' => ['language' => $language],
+                    '_cdata'      =>  $meta->key,
+                ];
+            }
+
+            //
+            // Get field values for each language (fixed)
+            // TODO: take WPML into account
+            //
+
+            $fieldValuesExport = [];
+
+            $values = $meta->value ?? [];
+            if (!is_array($values)) {
+                $values = [$values];
+            }
+            foreach ($values as $value) {
+                $fieldLocaleValuesExport = [];
+                foreach ($this->languages as $language) {
+                    if (!empty($value) && is_scalar($value)) {
+                        $fieldLocaleValuesExport[] = [
+                            '_attributes' => ['language' => $language],
+                            '_cdata'      => strval($value),
+                        ];
+                    }
+                }
+
+                if (count($fieldLocaleValuesExport) == 0) {
+                    continue;
+                }
+
+                $fieldValuesExport[] = [
+                    'code'  => $meta->key . '-' . $this->sanitize($value),
+                    'names' => [
+                        'name' => $fieldLocaleValuesExport,
+                    ],
+                ];
+            }
+
+            if (count($fieldValuesExport) == 0) {
+                continue;
+            }
+
+            $fieldsExport[] = [
+                'code'   => $meta->key,
                 'names' => [
                     'name' => $fieldLocaleExport,
                 ],
