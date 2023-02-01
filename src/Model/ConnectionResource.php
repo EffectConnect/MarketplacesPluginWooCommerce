@@ -108,6 +108,11 @@ class ConnectionResource implements ConfigConstants
     protected $offerExportVirtualStockAmount;
 
     /**
+     * @var int
+     */
+    protected $offerExportVirtualStockConditionalBackorders;
+
+    /**
      * @var string
      */
     protected $orderImportOrderStatus;
@@ -168,6 +173,7 @@ class ConnectionResource implements ConfigConstants
         $this->catalogExportBrandAttribute         = strval($data['catalog_export_brand_attribute'] ?? '');
         $this->catalogExportLanguage               = strval($data['catalog_export_language'] ?? 'nl');
         $this->offerExportVirtualStockAmount       = intval($data['offer_export_virtual_stock_amount'] ?? 99);
+        $this->offerExportVirtualStockConditionalBackorders = intval($data['offer_export_virtual_stock_conditional_backorders'] ?? 0);
         $this->orderImportOrderStatus              = strval($data['order_import_order_status'] ?? 'wc-processing');
         $this->orderImportIdCarrier                = strval($data['order_import_id_carrier'] ?? 'effectconnect_shipping');
         $this->orderImportIdPaymentModule          = strval($data['order_import_id_payment_module'] ?? 'effectconnect_payment');
@@ -327,6 +333,14 @@ class ConnectionResource implements ConfigConstants
     public function getOfferExportVirtualStockAmount(): int
     {
         return $this->offerExportVirtualStockAmount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOfferExportVirtualStockConditionalBackorders(): int
+    {
+        return $this->offerExportVirtualStockConditionalBackorders;
     }
 
     /**
@@ -558,6 +572,7 @@ class ConnectionResource implements ConfigConstants
             'catalog_export_brand_attribute' => $this->catalogExportBrandAttribute,
             'catalog_export_language' => $this->catalogExportLanguage,
             'offer_export_virtual_stock_amount' => $this->offerExportVirtualStockAmount,
+            'offer_export_virtual_stock_conditional_backorders' => $this->offerExportVirtualStockConditionalBackorders,
             'order_import_order_status' => $this->orderImportOrderStatus,
             'order_import_id_carrier' => $this->orderImportIdCarrier,
             'order_import_id_payment_module' => $this->orderImportIdPaymentModule,

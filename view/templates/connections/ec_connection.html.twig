@@ -281,6 +281,17 @@
                     </p>
                 </td>
             </tr>
+            <tr>
+                <th>
+                    <label for="offerExportVirtualStockConditionalBackorders">{{ __('Use actual stock for backorder products with quantity above 0') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getOfferExportVirtualStockConditionalBackorders() %}checked{% endif %}
+                            type="checkbox" id="offerExportVirtualStockConditionalBackorders" name="offer_export_virtual_stock_conditional_backorders" value="1"/>
+                    <p class="description">{{ __('Normally the fictional stock is used for all products that allow backorders. Enable this checkbox if the fictional stock for backorder products should only be used for products that have quantity 0 (or less).') }}</p>
+                </td>
+            </tr>
         </table>
 
         <h2 class="title">{{ __('Order import settings') }}</h2>

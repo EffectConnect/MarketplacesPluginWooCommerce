@@ -340,7 +340,11 @@ class ProductRepository
      *   Product is 'in stock' -> send fictional stock
      *   Product is 'out of stock' -> send stock 0
      * Stock management
-     *   Backorders enabled > send fictional stock
+     *   Backorders enabled
+     *     Setting 'offer_export_virtual_stock_conditional_backorders' disabled (default) > send fictional stock
+     *     Setting 'offer_export_virtual_stock_conditional_backorders' enabled
+     *       Product has quantity > 0 -> send stock amount
+     *       Product has quantity <= 0 -> send fictional stock
      *   Backorders disabled -> send stock amount
      *
      * @param WC_Product $product
@@ -352,7 +356,15 @@ class ProductRepository
         // Stock management
         if ($product->managing_stock()) {
             if ($product->backorders_allowed()) {
-                return $this->correctStockValue($connection->getOfferExportVirtualStockAmount());
+                if ($connection->getOfferExportVirtualStockConditionalBackorders()) {
+                    if ($product->get_stock_quantity() > 0) {
+                        return $this->correctStockValue(intval($product->get_stock_quantity()));
+                    } else {
+                        return $this->correctStockValue($connection->getOfferExportVirtualStockAmount());
+                    }
+                } else {
+                    return $this->correctStockValue($connection->getOfferExportVirtualStockAmount());
+                }
             } else {
                 return $this->correctStockValue(intval($product->get_stock_quantity()));
             }

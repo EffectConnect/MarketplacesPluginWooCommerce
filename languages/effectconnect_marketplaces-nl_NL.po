@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-12-06 15:59+0100\n"
-"PO-Revision-Date: 2022-12-06 15:59+0100\n"
+"POT-Creation-Date: 2023-02-01 16:24+0100\n"
+"PO-Revision-Date: 2023-02-01 16:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -59,7 +59,7 @@ msgstr "Instellingen"
 msgid "Logs"
 msgstr "Logbestanden"
 
-#: src/Controller/LogController.php:37
+#: src/Controller/LogController.php:51
 msgid "Download log files"
 msgstr "Log bestanden downloaden"
 
@@ -1078,69 +1078,69 @@ msgstr "Elke 5 dagen"
 msgid "1 week"
 msgstr "Elke week"
 
-#: src/Model/ConnectionResource.php:432
+#: src/Model/ConnectionResource.php:446
 msgid "WooCommerce order state changed to"
 msgstr "WooCommerce order status is gewijzigd naar"
 
-#: src/Model/ConnectionResource.php:436
+#: src/Model/ConnectionResource.php:450
 msgid "WooCommerce order received a Track and Trace code from MyParcel"
 msgstr ""
 "WooCommerce order heeft een Track and Trace code ontvangen vanuit MyParcel"
 
-#: src/Model/ConnectionResource.php:439
+#: src/Model/ConnectionResource.php:453
 msgid "Don't update orders"
 msgstr "Orders niet bijwerken"
 
-#: src/Model/ConnectionResource.php:465
+#: src/Model/ConnectionResource.php:479
 msgid "General"
 msgstr "Algemeen"
 
-#: src/Model/ConnectionResource.php:466
+#: src/Model/ConnectionResource.php:480
 msgid "Exclude from export"
 msgstr "Uitsluiten van export"
 
-#: src/Model/ConnectionResource.php:468
+#: src/Model/ConnectionResource.php:482
 msgid "Custom attributes"
 msgstr "Custom attributen"
 
-#: src/Model/ConnectionResource.php:469
+#: src/Model/ConnectionResource.php:483
 msgid "Default attributes"
 msgstr "Default attributen"
 
-#: src/Model/ConnectionResource.php:470
+#: src/Model/ConnectionResource.php:484
 msgid "Taxonomies"
 msgstr "Taxonomieën"
 
-#: src/Model/ConnectionResource.php:473
+#: src/Model/ConnectionResource.php:487
 msgid "External plugins"
 msgstr "Externe plugins"
 
-#: src/Model/ConnectionResource.php:492
+#: src/Model/ConnectionResource.php:506
 msgid "Import both internally and externally fulfilled orders"
 msgstr ""
 "Zowel interne orders als orders met logistiek door marketplace importeren"
 
-#: src/Model/ConnectionResource.php:493
+#: src/Model/ConnectionResource.php:507
 msgid "Import only internally fulfilled orders"
 msgstr "Alleen interne orders importeren"
 
-#: src/Model/ConnectionResource.php:494
+#: src/Model/ConnectionResource.php:508
 msgid "Import only externally fulfilled orders"
 msgstr "Alleen orders importeren met logistiek door marketplace"
 
-#: src/Model/ConnectionResource.php:507
+#: src/Model/ConnectionResource.php:521
 msgid "Please fill in a connection name"
 msgstr "Vul een eigen referentie in voor de connectie"
 
-#: src/Model/ConnectionResource.php:512
+#: src/Model/ConnectionResource.php:526
 msgid "Please fill in a public key"
 msgstr "Vul een publieke sleutel in"
 
-#: src/Model/ConnectionResource.php:517
+#: src/Model/ConnectionResource.php:531
 msgid "Please fill in a private key"
 msgstr "Vul een geheime sleutel in"
 
-#: src/Model/ConnectionResource.php:522
+#: src/Model/ConnectionResource.php:536
 msgid "The fictional stock amount should be between 0 and 9999"
 msgstr "Het fictieve voorraad aantal moet tussen 0 en 9999 liggen"
 
@@ -1250,15 +1250,11 @@ msgstr "Actieve %s taalcodes: [%s]."
 msgid "Default %s language code: [%s]."
 msgstr "Default %s taalcode: [%s]."
 
-#: view/templates/connections/ec_connection.html.twig:71
-msgid "Test translation"
-msgstr "Test vertaling"
-
-#: view/templates/connections/ec_connection.html.twig:80
+#: view/templates/connections/ec_connection.html.twig:78
 msgid "Catalog language"
 msgstr "Catalogus taal"
 
-#: view/templates/connections/ec_connection.html.twig:92
+#: view/templates/connections/ec_connection.html.twig:90
 msgid ""
 "Select the general language that product details are written in for the "
 "catalog (this does not change anything in the catalog and is only used as an "
@@ -1268,11 +1264,11 @@ msgstr ""
 "verandert niks aan de catalogus, maar wordt slechts gebruikt als indicator "
 "voor de producttaal in EffectConnect)."
 
-#: view/templates/connections/ec_connection.html.twig:97
+#: view/templates/connections/ec_connection.html.twig:95
 msgid "Only export active products"
 msgstr "Exporteer alleen actieve producten"
 
-#: view/templates/connections/ec_connection.html.twig:103
+#: view/templates/connections/ec_connection.html.twig:101
 msgid ""
 "If this setting is enabled only products that are enabled will be exported "
 "to EffectConnect."
@@ -1280,11 +1276,11 @@ msgstr ""
 "Als deze instelling is ingeschakeld, worden alleen producten die zijn "
 "ingeschakeld geëxporteerd naar EffectConnect."
 
-#: view/templates/connections/ec_connection.html.twig:108
+#: view/templates/connections/ec_connection.html.twig:106
 msgid "Export taxonomies as attributes"
 msgstr "Taxonomieën exporteren als attributen"
 
-#: view/templates/connections/ec_connection.html.twig:114
+#: view/templates/connections/ec_connection.html.twig:112
 msgid ""
 "If this setting is enabled all product taxonomies will be exported to "
 "EffectConnect as attributes."
@@ -1292,11 +1288,11 @@ msgstr ""
 "Als deze instelling is ingeschakeld, worden alle taxonomieën geëxporteerd "
 "naar EffectConnect (als product attribuut)."
 
-#: view/templates/connections/ec_connection.html.twig:119
+#: view/templates/connections/ec_connection.html.twig:117
 msgid "Use special price"
 msgstr "Gebruik actieprijs"
 
-#: view/templates/connections/ec_connection.html.twig:125
+#: view/templates/connections/ec_connection.html.twig:123
 msgid ""
 "If enabled the original price will be exported to EffectConnect Marketplaces "
 "separately in case there is a sale price. If disabled only the original "
@@ -1306,15 +1302,15 @@ msgstr ""
 "de aanbiedingsprijs (indien er een aanbiedingsprijs is). Indien "
 "uitgeschakeld wordt alleen de reguliere productprijs geëxporteerd."
 
-#: view/templates/connections/ec_connection.html.twig:130
+#: view/templates/connections/ec_connection.html.twig:128
 msgid "EAN attribute"
 msgstr "EAN attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:150
+#: view/templates/connections/ec_connection.html.twig:148
 msgid "Exclude products with invalid EAN"
 msgstr "Producten met ongeldige EAN uitsluiten"
 
-#: view/templates/connections/ec_connection.html.twig:156
+#: view/templates/connections/ec_connection.html.twig:154
 msgid ""
 "When checked, products with invalid EAN will be excluded from export. "
 "Otherwise products will be exported without EAN, since EffectConnect won't "
@@ -1325,11 +1321,11 @@ msgstr ""
 "reden hiervoor is dat EffectConnect de export zal afkeuren indien deze "
 "producten met een ongeldige EAN bevat."
 
-#: view/templates/connections/ec_connection.html.twig:161
+#: view/templates/connections/ec_connection.html.twig:159
 msgid "Add leading zero to EAN"
 msgstr "Voorloopnul toevoegen aan EAN"
 
-#: view/templates/connections/ec_connection.html.twig:167
+#: view/templates/connections/ec_connection.html.twig:165
 msgid ""
 "Select whether the plugin should automatically add a leading zero to an EAN "
 "that consists of 12 characters. Products with invalid EAN will be exported "
@@ -1338,35 +1334,35 @@ msgstr ""
 "Selecteer of een EAN waarde die uit 12 tekens bestaat aangevuld moet worden "
 "met een voorloopnul."
 
-#: view/templates/connections/ec_connection.html.twig:172
+#: view/templates/connections/ec_connection.html.twig:170
 msgid "Title attribute"
 msgstr "Titel attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:192
+#: view/templates/connections/ec_connection.html.twig:190
 msgid "Description attribute"
 msgstr "Beschrijving attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:212
+#: view/templates/connections/ec_connection.html.twig:210
 msgid "Cost attribute"
 msgstr "Kostprijs attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:232
+#: view/templates/connections/ec_connection.html.twig:230
 msgid "Delivery attribute"
 msgstr "Levertijd attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:252
+#: view/templates/connections/ec_connection.html.twig:250
 msgid "Brand attribute"
 msgstr "Merk attribuut"
 
-#: view/templates/connections/ec_connection.html.twig:272
+#: view/templates/connections/ec_connection.html.twig:270
 msgid "Offer export settings"
 msgstr "Instellingen voor de voorraad export"
 
-#: view/templates/connections/ec_connection.html.twig:276
+#: view/templates/connections/ec_connection.html.twig:274
 msgid "Fictional stock amount"
 msgstr "Fictieve voorraad aantal"
 
-#: view/templates/connections/ec_connection.html.twig:281
+#: view/templates/connections/ec_connection.html.twig:279
 msgid ""
 "The stock amount to export in case product is in stock, but stock amount is "
 "unknown (backorders are enabled or stock management is disabled)."
@@ -1375,19 +1371,36 @@ msgstr ""
 "maar de voorraadhoeveelheid onbekend is (nabestellingen zijn ingeschakeld of "
 "voorraadbeheer is uitgeschakeld)."
 
-#: view/templates/connections/ec_connection.html.twig:282
+#: view/templates/connections/ec_connection.html.twig:280
 msgid "Possible values: 0-9999."
 msgstr "Mogelijke waardes: 0-9999."
 
-#: view/templates/connections/ec_connection.html.twig:288
+#: view/templates/connections/ec_connection.html.twig:286
+msgid "Use actual stock for backorder products with quantity above 0"
+msgstr ""
+"Gebruik fysieke voorraad voor nabestellingsproducten met voorraad groter dan "
+"0"
+
+#: view/templates/connections/ec_connection.html.twig:292
+msgid ""
+"Normally the fictional stock is used for all products that allow backorders. "
+"Enable this checkbox if the fictional stock for backorder products should "
+"only be used for products that have quantity 0 (or less)."
+msgstr ""
+"Normaal wordt het fictieve voorraad aantal gebruikt voor alle "
+"nabestellingsproducten. Vink de checkbox aan indien het fictieve voorraad "
+"aantal bij nabestellingsproducten alleen moet worden gebruikt bij een "
+"voorraad van 0 (of minder)."
+
+#: view/templates/connections/ec_connection.html.twig:297
 msgid "Order import settings"
 msgstr "Instellingen voor de order import"
 
-#: view/templates/connections/ec_connection.html.twig:292
+#: view/templates/connections/ec_connection.html.twig:301
 msgid "Send emails"
 msgstr "Verzend e-mails"
 
-#: view/templates/connections/ec_connection.html.twig:298
+#: view/templates/connections/ec_connection.html.twig:307
 msgid ""
 "Whether or not to let WooCommerce send order update emails to the customer "
 "and admin for each imported order. When disabled, no emails are sent when "
@@ -1400,37 +1413,37 @@ msgstr ""
 "alleen e-mails verstuurd die staan ingeschakeld in de WooCommerce e-"
 "mailinstellingen."
 
-#: view/templates/connections/ec_connection.html.twig:303
+#: view/templates/connections/ec_connection.html.twig:312
 msgid "Order status"
 msgstr "Status van bestelling"
 
-#: view/templates/connections/ec_connection.html.twig:315
+#: view/templates/connections/ec_connection.html.twig:324
 msgid "Select what order status should be used for imported orders."
 msgstr ""
 "Selecteer welke orderstatus moet worden gebruikt voor geïmporteerde "
 "bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:320
+#: view/templates/connections/ec_connection.html.twig:329
 msgid "Payment method"
 msgstr "Betaalmethode"
 
-#: view/templates/connections/ec_connection.html.twig:332
+#: view/templates/connections/ec_connection.html.twig:341
 msgid "Select the payment method for imported orders."
 msgstr "Selecteer de betalingsmethode voor geïmporteerde bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:337
+#: view/templates/connections/ec_connection.html.twig:346
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
-#: view/templates/connections/ec_connection.html.twig:349
+#: view/templates/connections/ec_connection.html.twig:358
 msgid "Select the shipping method for imported orders."
 msgstr "Selecteer de verzendmethode voor geïmporteerde bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:354
+#: view/templates/connections/ec_connection.html.twig:363
 msgid "External fulfilment"
 msgstr "Logistiek door marketplace"
 
-#: view/templates/connections/ec_connection.html.twig:366
+#: view/templates/connections/ec_connection.html.twig:375
 msgid ""
 "Whether to import orders that are externally fulfilled or not. Internally "
 "fulfilled orders have status paid in EffectConnect. Externally fulfilled "
@@ -1441,25 +1454,25 @@ msgstr ""
 "'paid' in EffectConnect. Extern uitgevoerde bestellingen hebben de tag "
 "'completed' en 'external_fulfilled'."
 
-#: view/templates/connections/ec_connection.html.twig:371
+#: view/templates/connections/ec_connection.html.twig:380
 msgid "Shipment export"
 msgstr "Verzendingen export"
 
-#: view/templates/connections/ec_connection.html.twig:375
+#: view/templates/connections/ec_connection.html.twig:384
 msgid "When to update order"
 msgstr "Wanneer order bijwerken"
 
-#: view/templates/connections/ec_connection.html.twig:387
+#: view/templates/connections/ec_connection.html.twig:396
 msgid "Select when to update the order status in EffectConnect to shipped."
 msgstr ""
 "Selecteer wanneer de order status in EffectConnect naar 'verzonden' gezet "
 "moet worden."
 
-#: view/templates/connections/ec_connection.html.twig:392
+#: view/templates/connections/ec_connection.html.twig:401
 msgid "Tracking code format"
 msgstr "Tracking code format"
 
-#: view/templates/connections/ec_connection.html.twig:396
+#: view/templates/connections/ec_connection.html.twig:405
 msgid ""
 "Tracking codes format to look for in order comments. Use [code] as "
 "placeholder for the tracking code. For example: \"Tracking code: [code]\". "
@@ -1548,6 +1561,9 @@ msgstr "Bestanden ouder dan %s dag(en) zullen automatisch worden opgeruimd."
 #: view/templates/options/ec_settings_list.html.twig:2
 msgid "EffectConnect - Global configuration"
 msgstr "EffectConnect - Algemene instellingen"
+
+#~ msgid "Test translation"
+#~ msgstr "Test vertaling"
 
 #~ msgid "Manual actions"
 #~ msgstr "Handmatige acties"

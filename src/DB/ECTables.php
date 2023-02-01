@@ -52,6 +52,7 @@ class ECTables
          catalog_export_brand_attribute VARCHAR(256) NOT NULL,
          catalog_export_language VARCHAR(2) NOT NULL,
          offer_export_virtual_stock_amount INT(11) UNSIGNED NOT NULL,
+         offer_export_virtual_stock_conditional_backorders TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
          order_import_order_status VARCHAR(64) NOT NULL,
          order_import_id_carrier VARCHAR(64) NOT NULL,
          order_import_id_payment_module VARCHAR(64) NOT NULL,
