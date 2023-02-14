@@ -23,7 +23,7 @@ class ShipmentWatcher
     {
         $this->shippingExportQueueRepository = ShippingExportQueueRepository::getInstance();
         $this->connectionRepository = ConnectionRepository::getInstance();
-        add_action('woocommerce_order_edit_status', [$this, 'afterOrderStatusUpdate'], 10, 2);
+        add_action('woocommerce_order_status_changed', [$this, 'afterOrderStatusUpdate'], 10, 3);
 
         if (MyParcelHelper::myParcelPluginActivated()) {
             add_action('added_post_meta', [$this, 'afterChangedPostMeta'], 10, 4);
@@ -33,10 +33,11 @@ class ShipmentWatcher
 
     /**
      * @param $orderId
+     * @param $oldStatus
      * @param $newStatus
      * @return void
      */
-    public function afterOrderStatusUpdate($orderId, $newStatus)
+    public function afterOrderStatusUpdate($orderId, $oldStatus, $newStatus)
     {
         // Add 'wc-' to order status (WC both uses order states with and without the prefix).
         $newStatus = 'wc-' === substr($newStatus, 0, 3) ? $newStatus : 'wc-' . $newStatus;
