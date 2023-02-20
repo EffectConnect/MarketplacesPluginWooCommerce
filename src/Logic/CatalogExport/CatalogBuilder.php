@@ -432,15 +432,14 @@ class CatalogBuilder
         }
 
         // Attributes
-        $productFields = $this->getProductFields();
-        $attributes = array_merge(
+        $attributes = $this->deduplicateAttributes(array_merge(
             $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
             $this->getProductAttributes($wcProductVariationWrapper->getWcAttributes()),
             $this->getProductAttributesFixed(),
             $this->getProductPerfectBrandsAttributes(),
-            $productFields,
-            $this->getProductMetaFields($productFields)
-        );
+            $this->getProductFields(),
+            $this->getProductMetaFields()
+        ));
         if (count($attributes) > 0) {
             $productOptionExport['attributes']['attribute'] = $attributes;
         }
@@ -875,6 +874,7 @@ class CatalogBuilder
         $wcProductTaxonomies = $this->productOptionsRepo->getProductTaxonomies($productId, $allTaxonomies);
 
         foreach ($wcProductTaxonomies as $wcProductTaxonomy) {
+            // TODO: skip duplicates
 
             //
             // Get taxonomy names for each language (fixed)
@@ -1035,26 +1035,20 @@ class CatalogBuilder
      * Gets extra meta fields attached to a product.
      * In the function 'getProductFields' we already fetched ACF fields (https://www.advancedcustomfields.com).
      * In this function we also fetch fields that are generated 'on-the-fly' (for example by other plugins code base).
-     * To make sure we don't return duplicate fields, we check the already processed $productFields.
      *
-     * @param array $productFields
      * @return array
      */
-    public function getProductMetaFields(array $productFields): array
+    public function getProductMetaFields(): array
     {
         $fieldsExport = [];
         $product = $this->getDefaultProductTranslation();
 
-        // Only add meta that were not included yet in the export are don't start with an underscore (those are internal fields).
+        // Only add meta that don't start with an underscore (those are internal fields).
         $metas = [];
         $allMetas = $product->get_meta_data();
-        $processedMetaKeys = [];
-        foreach ($productFields as $productField) {
-            $processedMetaKeys[] = $productField['code'];
-        }
         foreach ($allMetas as $meta) {
             /** @var WC_Meta_Data $meta */
-            if (!empty($meta->key) && is_string($meta->key) && !in_array($meta->key, $processedMetaKeys) && substr($meta->key, 0, 1) !== '_') {
+            if (!empty($meta->key) && is_string($meta->key) && substr($meta->key, 0, 1) !== '_') {
                 $metas[] = $meta;
             }
         }
@@ -1607,6 +1601,23 @@ class CatalogBuilder
     protected function sanitize(string $string): string
     {
         return function_exists('wc_sanitize_taxonomy_name') ? wc_sanitize_taxonomy_name($string) : $string;
+    }
+
+    /**
+     * @param array $attributes
+     * @return array
+     */
+    protected function deduplicateAttributes(array $attributes): array
+    {
+        $attributeCodes   = [];
+        $uniqueAttributes = [];
+        foreach ($attributes as $attribute) {
+            if (!in_array($attribute['code'], $attributeCodes)) {
+                $uniqueAttributes[] = $attribute;
+                $attributeCodes[]   = $attribute['code'];
+            }
+        }
+        return $uniqueAttributes;
     }
 
     /**
