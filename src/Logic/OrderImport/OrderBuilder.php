@@ -353,7 +353,9 @@ class OrderBuilder
 
         try {
             $order_shipping_item = new WC_Order_Item_Shipping();
-            $order_shipping_item->set_name($shipmentMethodName);
+            $shippingInfo = __('EffectConnect Marketplaces channel', 'effectconnect_marketplaces') . ' ' .
+                '`' . $ecOrder->getChannelInfo()->getTitle() . '` (' . $ecOrder->getIdentifiers()->getChannelNumber() . ')';
+            $order_shipping_item->set_name($shippingInfo);
             $order_shipping_item->set_total($shippingTotal);
             $this->order->add_item(
                 $order_shipping_item

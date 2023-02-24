@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-02-01 16:24+0100\n"
-"PO-Revision-Date: 2023-02-01 16:27+0100\n"
+"POT-Creation-Date: 2023-02-24 11:52+0100\n"
+"PO-Revision-Date: 2023-02-24 11:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -59,7 +59,7 @@ msgstr "Instellingen"
 msgid "Logs"
 msgstr "Logbestanden"
 
-#: src/Controller/LogController.php:51
+#: src/Controller/LogController.php:37
 msgid "Download log files"
 msgstr "Log bestanden downloaden"
 
@@ -1078,6 +1078,10 @@ msgstr "Elke 5 dagen"
 msgid "1 week"
 msgstr "Elke week"
 
+#: src/Logic/OrderImport/OrderBuilder.php:356
+msgid "EffectConnect Marketplaces channel"
+msgstr "EffectConnect Marketplaces kanaal"
+
 #: src/Model/ConnectionResource.php:446
 msgid "WooCommerce order state changed to"
 msgstr "WooCommerce order status is gewijzigd naar"
@@ -1561,9 +1565,6 @@ msgstr "Bestanden ouder dan %s dag(en) zullen automatisch worden opgeruimd."
 #: view/templates/options/ec_settings_list.html.twig:2
 msgid "EffectConnect - Global configuration"
 msgstr "EffectConnect - Algemene instellingen"
-
-#~ msgid "Test translation"
-#~ msgstr "Test vertaling"
 
 #~ msgid "Manual actions"
 #~ msgstr "Handmatige acties"
