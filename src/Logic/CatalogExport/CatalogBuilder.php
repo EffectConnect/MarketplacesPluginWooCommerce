@@ -1331,7 +1331,8 @@ class CatalogBuilder
                 ];
             }
 
-            $attributeValuesExport = [
+            $attributeValuesExport = [];
+            $attributeValuesExport[] = [
                 'code'   => $attributeValueCode,
                 'names' => [
                     'name' => $attributeValueNames,
@@ -1612,7 +1613,19 @@ class CatalogBuilder
         $attributeCodes   = [];
         $uniqueAttributes = [];
         foreach ($attributes as $attribute) {
+            // Skip duplicate attribute key
             if (!in_array($attribute['code'], $attributeCodes)) {
+                $attributeValueCodes   = [];
+                $uniqueAttributeValues = [];
+                $attributeValues       = &$attribute['values']['value'];
+                foreach ($attributeValues as $attributeValue) {
+                    // Skip duplicate attribute value key
+                    if (!in_array($attributeValue['code'], $attributeValueCodes)) {
+                        $uniqueAttributeValues[] = $attributeValue;
+                        $attributeValueCodes[]   = $attributeValue['code'];
+                    }
+                }
+                $attributeValues    = $uniqueAttributeValues;
                 $uniqueAttributes[] = $attribute;
                 $attributeCodes[]   = $attribute['code'];
             }
