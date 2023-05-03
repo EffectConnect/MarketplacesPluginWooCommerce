@@ -7,13 +7,6 @@ class SessionMessageHelper
     const SESSION_ERROR_MESSAGES_KEY = 'ec_errors';
     const SESSION_NOTICE_MESSAGES_KEY = 'ec_notices';
 
-    public function __construct()
-    {
-        if (!session_id()) {
-            session_start();
-        }
-    }
-
     /**
      * @param string $error
      * @return void
@@ -55,6 +48,7 @@ class SessionMessageHelper
      */
     protected function addMessage(string $message, string $key)
     {
+        $this->openSession();
         if (isset($_SESSION[$key]) && is_array($_SESSION[$key])) {
             $_SESSION[$key][] = $message;
         } else {
@@ -68,11 +62,22 @@ class SessionMessageHelper
      */
     protected function getMessages(string $key): array
     {
+        $this->openSession();
         if (isset($_SESSION[$key]) && is_array($_SESSION[$key])) {
             $messages = $_SESSION[$key];
             unset($_SESSION[$key]);
             return $messages;
         }
         return [];
+    }
+
+    /**
+     * @return void
+     */
+    public function openSession()
+    {
+        if (!session_id()) {
+            session_start();
+        }
     }
 }
