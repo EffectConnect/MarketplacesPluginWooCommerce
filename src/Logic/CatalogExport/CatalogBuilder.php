@@ -18,6 +18,7 @@ use EffectConnect\Marketplaces\Model\ConnectionResource;
 use EffectConnect\Marketplaces\Model\WcProductVariationWrapper;
 use Exception;
 use Laminas\Validator\Barcode;
+use Throwable;
 use WC_Meta_Data;
 use WC_Product;
 use WC_Product_Attribute;
@@ -664,7 +665,11 @@ class CatalogBuilder
     protected function createProductVariations(WC_Product_Variable $variableProduct): array
     {
         // Returning 'objects' is not available in WC4, we have to convert the returned array to an object ourselves.
-        $variationsArray = $variableProduct->get_available_variations();
+        try {
+            $variationsArray = $variableProduct->get_available_variations();
+        } catch (Throwable $e) {
+            throw new ProductVariationsCreationFailedException('Could not fetch product variations (message from WooCommerce: ' . $e->getMessage() . ')');
+        }
         $variations = [];
         foreach ($variationsArray as $variation) {
             $variations[] = wc_get_product($variation['variation_id']);
