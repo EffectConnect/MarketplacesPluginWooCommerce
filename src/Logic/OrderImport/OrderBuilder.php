@@ -143,6 +143,7 @@ class OrderBuilder
             || update_post_meta($this->order->get_id(), 'effectconnect_order_number_channel', $ecOrder->getIdentifiers()->getChannelNumber()) === false
             || update_post_meta($this->order->get_id(), 'effectconnect_channel_name', $ecOrder->getChannelInfo()->getTitle()) === false
             || update_post_meta($this->order->get_id(), 'effectconnect_channel_type', $channelType) === false
+            || update_post_meta($this->order->get_id(), 'effectconnect_external_fulfillment', $this->checkIfExternallyFulfilled($ecOrder) ? 'Yes' : 'No') === false
         ) {
             throw new OrderImportFailedException($this->connection->getConnectionId(), 'Post meta update failed.');
         }

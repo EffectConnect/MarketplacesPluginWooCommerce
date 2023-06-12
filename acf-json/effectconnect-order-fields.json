@@ -79,6 +79,25 @@
             "maxlength": ""
         },
         {
+            "key": "effectconnect_external_fulfillment",
+            "label": "Effectconnect External Fulfillment",
+            "name": "effectconnect_external_fulfillment",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "order_source",
             "label": "Order Source",
             "name": "order_source",
