@@ -414,7 +414,7 @@ class CatalogBuilder
 
         // Product delivery time
         $deliveryTime = $this->getProductDeliveryTime();
-        if (!empty($cost)) {
+        if (!empty($deliveryTime)) {
             $productOptionExport['deliveryTime'] = $deliveryTime;
         }
 
