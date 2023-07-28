@@ -34,7 +34,7 @@ class OfferBuilder extends CatalogBuilder
         $productOptionsExport = [];
         foreach ($products as $productOption) {
             // All the following functions will get their data from  $this->productTranslations
-            $this->productTranslations = $this->getProductTranslations($productOption);
+            $this->collectProductTranslations($productOption);
 
             $productOptionExport = [
                 'identifier' => $productOption->get_id(),

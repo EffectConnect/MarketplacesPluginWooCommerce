@@ -75,6 +75,11 @@ class CatalogBuilder
     protected $productTranslations = [];
 
     /**
+     * @var WC_Product[]
+     */
+    protected $parentProductTranslations = [];
+
+    /**
      * @var array
      */
     protected $categoryTranslationsByIdAndLocale = [];
@@ -313,7 +318,7 @@ class CatalogBuilder
         $productOption = $wcProductVariationWrapper->getWcProduct();
 
         // All the following functions will get their data from  $this->productTranslations
-        $this->productTranslations = $this->getProductTranslations($productOption);
+        $this->collectProductTranslations($productOption);
 
         try {
             $identifier = $this->getProductOptionId();
@@ -495,6 +500,15 @@ class CatalogBuilder
         foreach ($this->languages as $language) {
             $productTranslation = $this->getProductTranslation($language);
             $productDescription = $this->productOptionsRepo->getProductDescription($productTranslation, $this->connection);
+
+            // In case of variable product and empty description, fallback on parent product description
+            if (empty($productDescription)) {
+                $parentProductTranslation = $this->getParentProductTranslation($language);
+                if ($parentProductTranslation instanceof WC_Product) {
+                    $productDescription = $this->productOptionsRepo->getProductDescription($parentProductTranslation, $this->connection);
+                }
+            }
+
             if (!empty($productDescription)) {
                 $descriptions[] = [
                     '_attributes' => ['language' => $language],
@@ -1433,9 +1447,8 @@ class CatalogBuilder
 
     /**
      * @param WC_Product $product
-     * @return WC_Product[]
      */
-    protected function getProductTranslations(Wc_Product $product): array
+    protected function collectProductTranslations(Wc_Product $product)
     {
         // By default add current product as default locale.
         $defaultLocale = $this->getDefaultLanguage();
@@ -1456,7 +1469,19 @@ class CatalogBuilder
             }
         }
 
-        return $productTranslations;
+        // Also collect parent product info (to be used for fallbacks - for example if variation description is empty, we can use parent description)
+        $parentProductTranslations = [];
+        foreach ($productTranslations as $locale => $productTranslation) {
+            if ($productTranslation instanceof WC_Product_Variation) {
+                $parentProductTranslation = wc_get_product($productTranslation->get_parent_id());
+                if ($parentProductTranslation instanceof WC_Product) {
+                    $parentProductTranslations[$locale] = $parentProductTranslation;
+                }
+            }
+        }
+
+        $this->productTranslations       = $productTranslations;
+        $this->parentProductTranslations = $parentProductTranslations;
     }
 
     /**
@@ -1574,6 +1599,21 @@ class CatalogBuilder
             return $this->productTranslations[$language];
         }
         return $this->getDefaultProductTranslation();
+    }
+
+    /**
+     * @param string $language
+     * @return WC_Product|null
+     */
+    protected function getParentProductTranslation(string $language)
+    {
+        if (isset($this->parentProductTranslations[$language])) {
+            return $this->parentProductTranslations[$language];
+        }
+        if (count($this->parentProductTranslations) > 0) {
+            return reset($this->parentProductTranslations);
+        }
+        return null;
     }
 
     /**
