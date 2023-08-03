@@ -40,16 +40,16 @@
         },
         {
             "name": "effectconnect/php-sdk",
-            "version": "3.2.8",
+            "version": "3.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EffectConnect/EffectConnectSDK.git",
-                "reference": "e24a4d6ae41cab01ac94fcaac73bcd5102b23ec4"
+                "reference": "3021de999ba7b1d01e740ef202df2f6f5f674fac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EffectConnect/EffectConnectSDK/zipball/e24a4d6ae41cab01ac94fcaac73bcd5102b23ec4",
-                "reference": "e24a4d6ae41cab01ac94fcaac73bcd5102b23ec4",
+                "url": "https://api.github.com/repos/EffectConnect/EffectConnectSDK/zipball/3021de999ba7b1d01e740ef202df2f6f5f674fac",
+                "reference": "3021de999ba7b1d01e740ef202df2f6f5f674fac",
                 "shasum": ""
             },
             "require": {
@@ -81,7 +81,11 @@
                 "php",
                 "sdk"
             ],
-            "time": "2020-07-15T14:48:35+00:00"
+            "support": {
+                "issues": "https://github.com/EffectConnect/EffectConnectSDK/issues",
+                "source": "https://github.com/EffectConnect/EffectConnectSDK/tree/3.2.10"
+            },
+            "time": "2022-01-18T14:29:10+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -693,5 +697,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.2.0"
 }

@@ -99,11 +99,16 @@ class ComposerStaticInit9590529475c7265c132a16ffdac8962e
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit9590529475c7265c132a16ffdac8962e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit9590529475c7265c132a16ffdac8962e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9590529475c7265c132a16ffdac8962e::$classMap;
 
         }, null, ClassLoader::class);
     }
