@@ -31,7 +31,6 @@ class LogController extends BaseController implements ControllerInterface
      */
     public function init()
     {
-        // TODO
         $this->render('logs/ec_logs.html.twig', [
             'dataFolder'        => realpath(FilePathConstants::TEMP_DIRECTORY),
             'logExpirationDays' => ConfigContainer::getInstance()->getLogExpirationValueInDays(),
