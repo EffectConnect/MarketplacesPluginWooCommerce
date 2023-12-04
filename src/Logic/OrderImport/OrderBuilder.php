@@ -93,6 +93,7 @@ class OrderBuilder
 
         // Set all order attributes.
         try {
+            $this->setOrderCurrency($ecOrder);
             $this->setOrderAddresses($ecOrder);
             $this->setOrderPostMeta($ecOrder);
             $this->setProducts($ecOrder);
@@ -162,6 +163,22 @@ class OrderBuilder
             }
         }
         return false;
+    }
+
+    /**
+     * @param EffectConnectOrder $ecOrder
+     * @return void
+     * @throws OrderImportFailedException
+     */
+    protected function setOrderCurrency(EffectConnectOrder $ecOrder)
+    {
+        if ($ecOrder->getCurrency()) {
+            try {
+                $this->order->set_currency($ecOrder->getCurrency());
+            } catch (WC_Data_Exception $e) {
+                throw new OrderImportFailedException($this->connection->getConnectionId(), 'Error while setting currency ' . $ecOrder->getCurrency() . ' [' . $e->getMessage(). '].');
+            }
+        }
     }
 
     /**
