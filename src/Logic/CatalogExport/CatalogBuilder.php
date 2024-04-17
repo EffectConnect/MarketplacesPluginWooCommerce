@@ -567,8 +567,10 @@ class CatalogBuilder
         // Add images (and use image url as key, since image urls must be unique)
         $imageUrls = [];
         foreach ($galleryIds as $id) {
-            $image       = wp_get_attachment_image_src($id, 'full');
-            $imageUrls[] = current($image);
+            $image = wp_get_attachment_image_src($id, 'full');
+            if (is_array($image)) {
+                $imageUrls[] = current($image);
+            }
         }
 
         // EC API limits amount of images (max 10 unique image urls)
