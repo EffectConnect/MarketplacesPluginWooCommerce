@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-02-24 11:52+0100\n"
-"PO-Revision-Date: 2023-02-24 11:53+0100\n"
+"POT-Creation-Date: 2024-05-15 13:00+0200\n"
+"PO-Revision-Date: 2024-05-15 13:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;translate\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -59,7 +59,7 @@ msgstr "Instellingen"
 msgid "Logs"
 msgstr "Logbestanden"
 
-#: src/Controller/LogController.php:37
+#: src/Controller/LogController.php:55
 msgid "Download log files"
 msgstr "Log bestanden downloaden"
 
@@ -1078,73 +1078,73 @@ msgstr "Elke 5 dagen"
 msgid "1 week"
 msgstr "Elke week"
 
-#: src/Logic/OrderImport/OrderBuilder.php:356
+#: src/Logic/OrderImport/OrderBuilder.php:379
 msgid "EffectConnect Marketplaces channel"
 msgstr "EffectConnect Marketplaces kanaal"
 
-#: src/Model/ConnectionResource.php:446
+#: src/Model/ConnectionResource.php:460
 msgid "WooCommerce order state changed to"
 msgstr "WooCommerce order status is gewijzigd naar"
 
-#: src/Model/ConnectionResource.php:450
+#: src/Model/ConnectionResource.php:464
 msgid "WooCommerce order received a Track and Trace code from MyParcel"
 msgstr ""
 "WooCommerce order heeft een Track and Trace code ontvangen vanuit MyParcel"
 
-#: src/Model/ConnectionResource.php:453
+#: src/Model/ConnectionResource.php:467
 msgid "Don't update orders"
 msgstr "Orders niet bijwerken"
 
-#: src/Model/ConnectionResource.php:479
+#: src/Model/ConnectionResource.php:493
 msgid "General"
 msgstr "Algemeen"
 
-#: src/Model/ConnectionResource.php:480
+#: src/Model/ConnectionResource.php:494
 msgid "Exclude from export"
 msgstr "Uitsluiten van export"
 
-#: src/Model/ConnectionResource.php:482
+#: src/Model/ConnectionResource.php:496
 msgid "Custom attributes"
 msgstr "Custom attributen"
 
-#: src/Model/ConnectionResource.php:483
+#: src/Model/ConnectionResource.php:497
 msgid "Default attributes"
 msgstr "Default attributen"
 
-#: src/Model/ConnectionResource.php:484
+#: src/Model/ConnectionResource.php:498
 msgid "Taxonomies"
 msgstr "Taxonomieën"
 
-#: src/Model/ConnectionResource.php:487
+#: src/Model/ConnectionResource.php:501
 msgid "External plugins"
 msgstr "Externe plugins"
 
-#: src/Model/ConnectionResource.php:506
+#: src/Model/ConnectionResource.php:520
 msgid "Import both internally and externally fulfilled orders"
 msgstr ""
 "Zowel interne orders als orders met logistiek door marketplace importeren"
 
-#: src/Model/ConnectionResource.php:507
+#: src/Model/ConnectionResource.php:521
 msgid "Import only internally fulfilled orders"
 msgstr "Alleen interne orders importeren"
 
-#: src/Model/ConnectionResource.php:508
+#: src/Model/ConnectionResource.php:522
 msgid "Import only externally fulfilled orders"
 msgstr "Alleen orders importeren met logistiek door marketplace"
 
-#: src/Model/ConnectionResource.php:521
+#: src/Model/ConnectionResource.php:535
 msgid "Please fill in a connection name"
 msgstr "Vul een eigen referentie in voor de connectie"
 
-#: src/Model/ConnectionResource.php:526
+#: src/Model/ConnectionResource.php:540
 msgid "Please fill in a public key"
 msgstr "Vul een publieke sleutel in"
 
-#: src/Model/ConnectionResource.php:531
+#: src/Model/ConnectionResource.php:545
 msgid "Please fill in a private key"
 msgstr "Vul een geheime sleutel in"
 
-#: src/Model/ConnectionResource.php:536
+#: src/Model/ConnectionResource.php:550
 msgid "The fictional stock amount should be between 0 and 9999"
 msgstr "Het fictieve voorraad aantal moet tussen 0 en 9999 liggen"
 
@@ -1418,36 +1418,49 @@ msgstr ""
 "mailinstellingen."
 
 #: view/templates/connections/ec_connection.html.twig:312
+msgid "Skip taxes"
+msgstr "BTW overslaan"
+
+#: view/templates/connections/ec_connection.html.twig:318
+msgid ""
+"If this option is enabled, no tax will be calculated for imported orders, "
+"otherwise the default WooCommerce tax settings will be used."
+msgstr ""
+"Als deze optie aan staat, wordt de BTW-berekening overgeslagen bij het "
+"importeren van orders, en anders wordt de BTW berekend volgens de "
+"instellingen in WooCommerce."
+
+#: view/templates/connections/ec_connection.html.twig:323
 msgid "Order status"
 msgstr "Status van bestelling"
 
-#: view/templates/connections/ec_connection.html.twig:324
+#: view/templates/connections/ec_connection.html.twig:335
 msgid "Select what order status should be used for imported orders."
 msgstr ""
 "Selecteer welke orderstatus moet worden gebruikt voor geïmporteerde "
 "bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:329
+#: view/templates/connections/ec_connection.html.twig:340
 msgid "Payment method"
 msgstr "Betaalmethode"
 
-#: view/templates/connections/ec_connection.html.twig:341
+#: view/templates/connections/ec_connection.html.twig:352
 msgid "Select the payment method for imported orders."
 msgstr "Selecteer de betalingsmethode voor geïmporteerde bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:346
+#: view/templates/connections/ec_connection.html.twig:357
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
-#: view/templates/connections/ec_connection.html.twig:358
+#: view/templates/connections/ec_connection.html.twig:369
 msgid "Select the shipping method for imported orders."
 msgstr "Selecteer de verzendmethode voor geïmporteerde bestellingen."
 
-#: view/templates/connections/ec_connection.html.twig:363
+#: view/templates/connections/ec_connection.html.twig:374
 msgid "External fulfilment"
 msgstr "Logistiek door marketplace"
 
-#: view/templates/connections/ec_connection.html.twig:375
+#: view/templates/connections/ec_connection.html.twig:386
 msgid ""
 "Whether to import orders that are externally fulfilled or not. Internally "
 "fulfilled orders have status paid in EffectConnect. Externally fulfilled "
@@ -1458,25 +1471,25 @@ msgstr ""
 "'paid' in EffectConnect. Extern uitgevoerde bestellingen hebben de tag "
 "'completed' en 'external_fulfilled'."
 
-#: view/templates/connections/ec_connection.html.twig:380
+#: view/templates/connections/ec_connection.html.twig:391
 msgid "Shipment export"
 msgstr "Verzendingen export"
 
-#: view/templates/connections/ec_connection.html.twig:384
+#: view/templates/connections/ec_connection.html.twig:395
 msgid "When to update order"
 msgstr "Wanneer order bijwerken"
 
-#: view/templates/connections/ec_connection.html.twig:396
+#: view/templates/connections/ec_connection.html.twig:407
 msgid "Select when to update the order status in EffectConnect to shipped."
 msgstr ""
 "Selecteer wanneer de order status in EffectConnect naar 'verzonden' gezet "
 "moet worden."
 
-#: view/templates/connections/ec_connection.html.twig:401
+#: view/templates/connections/ec_connection.html.twig:412
 msgid "Tracking code format"
 msgstr "Tracking code format"
 
-#: view/templates/connections/ec_connection.html.twig:405
+#: view/templates/connections/ec_connection.html.twig:416
 msgid ""
 "Tracking codes format to look for in order comments. Use [code] as "
 "placeholder for the tracking code. For example: \"Tracking code: [code]\". "
