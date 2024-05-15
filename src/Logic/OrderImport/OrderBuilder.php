@@ -292,6 +292,11 @@ class OrderBuilder
             //$orderedProductOption->set_name($productOption->product_name); // TODO: why
             //$orderedProductOption->set_sku($this->generateSku($orderedProductOption)); // TODO: why
 
+            if ($this->connection->getOrderImportSkipTaxes()) {
+                try {
+                    $wcProductOption->set_tax_status('none');
+                } catch (WC_Data_Exception $e) {}
+            }
             $ordered[$product->getProduct()->getIdentifier()][] = $wcProductOption;
         }
 
@@ -390,7 +395,7 @@ class OrderBuilder
         }
 
         // Make sure WC sets the correct VAT
-        $this->order->calculate_totals();
+        $this->order->calculate_totals(!$this->connection->getOrderImportSkipTaxes());
     }
 
     /**

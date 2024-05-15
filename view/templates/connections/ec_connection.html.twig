@@ -309,6 +309,17 @@
             </tr>
             <tr>
                 <th>
+                    <label for="orderImportSkipTaxes">{{ __('Skip taxes') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getOrderImportSkipTaxes() %}checked{% endif %}
+                            type="checkbox" id="orderImportSkipTaxes" name="order_import_skip_taxes" value="1"/>
+                    <p class="description">{{ __('If this option is enabled, no tax will be calculated for imported orders, otherwise the default WooCommerce tax settings will be used.') }}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
                     <label for="orderImportOrderStatus">{{ __('Order status') }}</label>
                 </th>
                 <td>
