@@ -114,6 +114,21 @@
             </tr>
             <tr>
                 <th>
+                    <label for="catalogExportSkipRegenerateIds">{{ __('Skip regenerating IDs for simple products') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getCatalogExportSkipRegenerateIds() %}checked{% endif %}
+                            type="checkbox" id="catalogExportSkipRegenerateIds" name="catalog_export_skip_regenerate_ids" value="1"/>
+                    <p class="description">
+                        {{ __('If this setting is enabled SIMPLE products will not get a new ID if any of the attributes have been changed.') }}<br/>
+                        {{ __('Independant of this setting, IDs for VARIABLE products are always deduced from the products\'s attributes, since WooCommerce doesn\'t keep IDs for product variations.') }}<br/>
+                        {{ __('NOTE: be careful when enabling/disabling this setting! This could cause regeneration of offers on the marketplaces.') }}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>
                     <label for="catalogExportSpecialPrice">{{ __('Use special price') }}</label>
                 </th>
                 <td>

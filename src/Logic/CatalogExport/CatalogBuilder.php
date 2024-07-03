@@ -462,7 +462,7 @@ class CatalogBuilder
     protected function getProductOptionId(): int
     {
         $product = $this->getDefaultProductTranslation();
-        return $this->productOptionsRepo->getProductOptionId($product, $this->getAttributeArray($product));
+        return $this->productOptionsRepo->getProductOptionId($product, $this->getAttributeArray($product), boolval($this->connection->getCatalogExportSkipRegenerateIds()));
     }
 
     /**

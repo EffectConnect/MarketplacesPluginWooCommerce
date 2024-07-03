@@ -55,6 +55,11 @@ class ConnectionResource implements ConfigConstants
     /**
      * @var int
      */
+    protected $catalogExportSkipRegenerateIds;
+
+    /**
+     * @var int
+     */
     protected $catalogExportSpecialPrice;
 
     /**
@@ -167,6 +172,7 @@ class ConnectionResource implements ConfigConstants
         $this->catalogExportWpmlLanguages          = intval($data['catalog_export_wpml_languages'] ?? 1);
         $this->catalogExportOnlyActive             = intval($data['catalog_export_only_active'] ?? 1);
         $this->catalogExportTaxonomies             = intval($data['catalog_export_taxonomies'] ?? 0);
+        $this->catalogExportSkipRegenerateIds      = intval($data['catalog_export_skip_regenerate_ids'] ?? 0);
         $this->catalogExportSpecialPrice           = intval($data['catalog_export_special_price'] ?? 1);
         $this->catalogExportEanLeadingZero         = intval($data['catalog_export_ean_leading_zero'] ?? 0);
         $this->catalogExportSkipInvalidEan         = intval($data['catalog_export_skip_invalid_ean'] ?? 0);
@@ -251,6 +257,14 @@ class ConnectionResource implements ConfigConstants
     public function getCatalogExportTaxonomies(): int
     {
         return $this->catalogExportTaxonomies;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCatalogExportSkipRegenerateIds(): int
+    {
+        return $this->catalogExportSkipRegenerateIds;
     }
 
     /**
@@ -575,6 +589,7 @@ class ConnectionResource implements ConfigConstants
             'catalog_export_wpml_languages' => $this->catalogExportWpmlLanguages,
             'catalog_export_only_active' => $this->catalogExportOnlyActive,
             'catalog_export_taxonomies' => $this->catalogExportTaxonomies,
+            'catalog_export_skip_regenerate_ids' => $this->catalogExportSkipRegenerateIds,
             'catalog_export_special_price' => $this->catalogExportSpecialPrice,
             'catalog_export_ean_leading_zero' => $this->catalogExportEanLeadingZero,
             'catalog_export_skip_invalid_ean' => $this->catalogExportSkipInvalidEan,

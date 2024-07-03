@@ -41,6 +41,7 @@ class ECTables
          catalog_export_wpml_languages TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_only_active TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_taxonomies TINYINT(1) UNSIGNED NOT NULL,
+         catalog_export_skip_regenerate_ids TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_special_price TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_ean_leading_zero TINYINT(1) UNSIGNED NOT NULL,
          catalog_export_skip_invalid_ean TINYINT(1) UNSIGNED NOT NULL,

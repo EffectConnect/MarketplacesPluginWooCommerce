@@ -94,17 +94,21 @@ class ProductRepository
     /**
      * Returns the id for a product.
      * @param WC_Product $productOption
-     * @param $attributeArray
+     * @param array $attributeArray
+     * @param bool $skipRegenerateIdsForSimpleProducts
      * @return int
      * @throws InvalidProductOptionIdException
      */
-    public function getProductOptionId(WC_Product $productOption, $attributeArray): int
+    public function getProductOptionId(WC_Product $productOption, array $attributeArray, bool $skipRegenerateIdsForSimpleProducts = false): int
     {
         $productId = $productOption->get_parent_id() ? $productOption->get_parent_id() : $productOption->get_id();
         $variationId = $productOption->get_parent_id() ? $productOption->get_id() : null;
 
         $name = $productOption->get_name();
         $attributes = $attributeArray;
+        if ($productOption->get_parent_id() === 0 && $skipRegenerateIdsForSimpleProducts) {
+            $attributes = []; // Only use product ID for determining unique product hash
+        }
 
         $hashID = $this->addProductOptionsData($variationId, $productId, $name, $attributes);
 
