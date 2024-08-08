@@ -138,15 +138,26 @@ class OrderBuilder
         if (!empty($channelSubtype)) {
             $channelType .= ' (' . $channelSubtype . ')';
         }
-        if (
-            update_post_meta($this->order->get_id(), 'order_source', 'effectconnect') === false
-            || update_post_meta($this->order->get_id(), 'effectconnect_order_number', $ecOrder->getIdentifiers()->getEffectConnectNumber()) === false
-            || update_post_meta($this->order->get_id(), 'effectconnect_order_number_channel', $ecOrder->getIdentifiers()->getChannelNumber()) === false
-            || update_post_meta($this->order->get_id(), 'effectconnect_channel_name', $ecOrder->getChannelInfo()->getTitle()) === false
-            || update_post_meta($this->order->get_id(), 'effectconnect_channel_type', $channelType) === false
-            || update_post_meta($this->order->get_id(), 'effectconnect_external_fulfillment', $this->checkIfExternallyFulfilled($ecOrder) ? 'Yes' : 'No') === false
-        ) {
-            throw new OrderImportFailedException($this->connection->getConnectionId(), 'Post meta update failed.');
+
+        $metaValues = [
+            'order_source'                       => 'effectconnect',
+            'effectconnect_order_number'         => $ecOrder->getIdentifiers()->getEffectConnectNumber(),
+            'effectconnect_order_number_channel' => $ecOrder->getIdentifiers()->getChannelNumber(),
+            'effectconnect_channel_name'         => $ecOrder->getChannelInfo()->getTitle(),
+            'effectconnect_channel_type'         => $channelType,
+            'effectconnect_external_fulfillment' => $this->checkIfExternallyFulfilled($ecOrder) ? 'Yes' : 'No',
+        ];
+
+        foreach ($metaValues as $metaKey => $metaValue) {
+            $oldValue = get_post_meta($this->order->get_id(), $metaKey, true);
+            // Prevent throwing OrderImportFailedException exception in case the order already has the value we would like to update (caused by external plugins)
+            if ($oldValue === $metaValue) {
+                continue;
+            }
+            $updated = update_post_meta($this->order->get_id(), $metaKey, $metaValue);
+            if ($updated === false) {
+                throw new OrderImportFailedException($this->connection->getConnectionId(), 'Post meta update failed (' . $metaKey . ': ' . $oldValue . ' => ' . $metaValue . ').');
+            }
         }
     }
 
