@@ -442,6 +442,7 @@ class CatalogBuilder
             $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
             $this->getProductAttributes($wcProductVariationWrapper->getWcAttributes()),
             $this->getProductAttributesFixed(),
+            $this->getProductAttributesFixedImages(),
             $this->getProductPerfectBrandsAttributes(),
             $this->getProductFields(),
             $this->getProductMetaFields()
@@ -552,29 +553,12 @@ class CatalogBuilder
      */
     protected function getProductImages(): array
     {
-        $images = [];
-        $product = $this->getDefaultProductTranslation();
-
-        // Gallery images
-        $galleryIds = $product->get_gallery_image_ids();
-
-        // Main product image ID (always add in front of other gallery images)
-        $mainProductImageId = $product->get_image_id();
-        if (!empty($mainProductImageId)) {
-            array_unshift($galleryIds, $mainProductImageId);
-        }
-
-        // Add images (and use image url as key, since image urls must be unique)
-        $imageUrls = [];
-        foreach ($galleryIds as $id) {
-            $image = wp_get_attachment_image_src($id, 'full');
-            if (is_array($image)) {
-                $imageUrls[] = current($image);
-            }
-        }
+        $images    = [];
+        $product   = $this->getDefaultProductTranslation();
+        $imageUrls = $this->getProductImageUrls($product);
 
         // EC API limits amount of images (max 10 unique image urls)
-        $uniqueImageUrls = array_slice(array_unique($imageUrls), 0, 10);
+        $uniqueImageUrls = array_slice($imageUrls, 0, 10);
 
         // Add the images
         foreach ($uniqueImageUrls as $index => $imageUrl) {
@@ -585,6 +569,34 @@ class CatalogBuilder
         }
 
         return $images;
+    }
+
+    /**
+     * @param WC_Product $product
+     * @return array
+     */
+    protected function getProductImageUrls(WC_Product $product): array
+    {
+        // Gallery images
+        $galleryIds = $product->get_gallery_image_ids();
+
+        // Main product image ID (always add in front of other gallery images)
+        $mainProductImageId = $product->get_image_id();
+        if (!empty($mainProductImageId)) {
+            array_unshift($galleryIds, $mainProductImageId);
+        }
+
+        // Add images
+        $imageUrls = [];
+        foreach ($galleryIds as $id) {
+            $image = wp_get_attachment_image_src($id, 'full');
+            if (is_array($image)) {
+                $imageUrls[] = current($image);
+            }
+        }
+
+        // Image urls must be unique
+        return array_unique($imageUrls);
     }
 
     /**
@@ -1309,14 +1321,20 @@ class CatalogBuilder
         $attributesExport = [];
 
         $fixedAttributes = [
-            'width'           => 'get_width',
-            'height'          => 'get_height',
-            'length'          => 'get_length',
-            'weight'          => 'get_weight',
-            'parent_title'    => 'get_title',
-            'variation_title' => 'get_name',
-            'backorders'      => 'get_backorders',
+            'width'              => 'get_width',
+            'height'             => 'get_height',
+            'length'             => 'get_length',
+            'weight'             => 'get_weight',
+            'parent_title'       => 'get_title',
+            'variation_title'    => 'get_name',
+            'backorders'         => 'get_backorders',
+            'parent_description' => 'get_description',
         ];
+        // Attributes in the list below that also appear in the list above will be fetched from the parent product instead of the child.
+        $fixedParentAttributes = [
+            'parent_description',
+        ];
+
         foreach ($fixedAttributes as $fixedAttributeKey => $fixedAttributeFunction)
         {
             $attributeValueCode = '';
@@ -1324,7 +1342,12 @@ class CatalogBuilder
             $attributeValueNames = [];
 
             foreach ($this->languages as $language) {
-                $productTranslation = $this->getProductTranslation($language);
+                $parentProductTranslation = $this->getParentProductTranslation($language);
+                if ($parentProductTranslation instanceof WC_Product && in_array($fixedAttributeKey, $fixedParentAttributes)) {
+                    $productTranslation = $parentProductTranslation;
+                } else {
+                    $productTranslation = $this->getProductTranslation($language);
+                }
                 if (method_exists($productTranslation, $fixedAttributeFunction)) {
                     $attributeValue = call_user_func([$productTranslation, $fixedAttributeFunction]);
                     if (!empty($attributeValue)) {
@@ -1371,6 +1394,82 @@ class CatalogBuilder
                 ],
             ];
         }
+
+        return $attributesExport;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductAttributesFixedImages(): array
+    {
+        $attributesExport  = [];
+        $fixedAttributeKey = 'parent_images';
+
+        $imageUrlsByLanguage = [];
+        $imageCount = 0;
+        foreach ($this->languages as $language) {
+            $parentProductTranslation = $this->getParentProductTranslation($language);
+            if ($parentProductTranslation instanceof WC_Product) {
+                $productTranslation = $parentProductTranslation;
+            } else {
+                $productTranslation = $this->getProductTranslation($language);
+            }
+            $imageUrls = $this->getProductImageUrls($productTranslation);
+            if ($imageCount > 0 && count($imageUrls) !== $imageCount) {
+                return []; // The EC API would not accept different languages that have a different amount of image urls
+            }
+            $imageCount = count($imageUrls);
+            $imageUrlsByLanguage[$language] = $imageUrls;
+        }
+
+        $attributeValuesExport = [];
+        for ($index = 0; $index < $imageCount; $index++) {
+            $attributeValueCode  = '';
+            $attributeValueNames = [];
+
+            foreach ($this->languages as $language) {
+                $attributeValue = $imageUrlsByLanguage[$language][$index] ?? '';
+                if (empty($attributeValue)) {
+                    return []; // The EC API would not accept empty attribute value
+                }
+
+                if (empty($attributeValueCode)) {
+                    $attributeValueCode = $this->sanitize($attributeValue);
+                }
+
+                $attributeValueNames[] = [
+                    '_attributes' => ['language' => $language],
+                    '_cdata'      => $attributeValue,
+                ];
+            }
+
+            $attributeValuesExport[] = [
+                'code'   => $attributeValueCode,
+                'names' => [
+                    'name' => $attributeValueNames,
+                ],
+            ];
+        }
+
+        $attributeNames = [];
+        foreach ($this->languages as $language) {
+            $attributeNames[] = [
+                '_attributes' => ['language' => $language],
+                '_cdata'      =>  $fixedAttributeKey . ' (Fixed WooCommerce Attribute)',
+            ];
+        }
+
+        $attributeCode = WcHelper::WC_DEFAULT_ATTRIBUTE_PREFIX . $fixedAttributeKey;
+        $attributesExport[] = [
+            'code'   => $attributeCode,
+            'names' => [
+                'name' => $attributeNames,
+            ],
+            'values' => [
+                'value' => $attributeValuesExport,
+            ],
+        ];
 
         return $attributesExport;
     }
