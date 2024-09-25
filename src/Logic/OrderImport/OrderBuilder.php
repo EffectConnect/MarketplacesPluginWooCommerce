@@ -151,14 +151,20 @@ class OrderBuilder
         foreach ($metaValues as $metaKey => $metaValue) {
             $oldValue = get_post_meta($this->order->get_id(), $metaKey, true);
             // Prevent throwing OrderImportFailedException exception in case the order already has the value we would like to update (caused by external plugins)
-            if ($oldValue === $metaValue) {
-                continue;
+            if ($oldValue !== $metaValue) {
+                $updated = update_post_meta($this->order->get_id(), $metaKey, $metaValue);
+                if ($updated === false) {
+                    throw new OrderImportFailedException($this->connection->getConnectionId(), 'Post meta update failed (' . $metaKey . ': ' . $oldValue . ' => ' . $metaValue . ').');
+                }
             }
-            $updated = update_post_meta($this->order->get_id(), $metaKey, $metaValue);
-            if ($updated === false) {
-                throw new OrderImportFailedException($this->connection->getConnectionId(), 'Post meta update failed (' . $metaKey . ': ' . $oldValue . ' => ' . $metaValue . ').');
+
+            // Compatibility with HPOS - https://woocommerce.com/document/high-performance-order-storage/
+            $oldValue = $this->order->get_meta($metaKey);
+            if ($oldValue !== $metaValue) {
+                $this->order->update_meta_data($metaKey, $metaValue);
             }
         }
+        $this->order->save(); // Save HPOS orders meta fields
     }
 
     /**
