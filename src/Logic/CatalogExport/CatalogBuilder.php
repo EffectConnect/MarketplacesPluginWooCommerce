@@ -1452,6 +1452,10 @@ class CatalogBuilder
             ];
         }
 
+        if (count($attributeValuesExport) == 0) {
+            return [];
+        }
+
         $attributeNames = [];
         foreach ($this->languages as $language) {
             $attributeNames[] = [
