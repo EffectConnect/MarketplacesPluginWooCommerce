@@ -1329,6 +1329,7 @@ class CatalogBuilder
             'variation_title'    => 'get_name',
             'backorders'         => 'get_backorders',
             'parent_description' => 'get_description',
+            'global_unique_id'   => 'get_global_unique_id',
         ];
         // Attributes in the list below that also appear in the list above will be fetched from the parent product instead of the child.
         $fixedParentAttributes = [

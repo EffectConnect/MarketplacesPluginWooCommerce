@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2024-07-03 13:06+0200\n"
-"PO-Revision-Date: 2024-07-03 13:11+0200\n"
+"PO-Revision-Date: 2024-11-20 15:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -856,90 +856,94 @@ msgid "SKU"
 msgstr "SKU"
 
 #: src/Helper/WcHelper.php:58
+msgid "GTIN, UPC, EAN, or ISBN"
+msgstr "GTIN, UPC, EAN, of ISBN"
+
+#: src/Helper/WcHelper.php:59
 msgid "Regular price"
 msgstr "Reguliere prijs"
 
-#: src/Helper/WcHelper.php:59
+#: src/Helper/WcHelper.php:60
 msgid "Sale price"
 msgstr "Actieprijs"
 
-#: src/Helper/WcHelper.php:60
+#: src/Helper/WcHelper.php:61
 msgid "Date sale price starts"
 msgstr "Start actieperiode"
 
-#: src/Helper/WcHelper.php:61
+#: src/Helper/WcHelper.php:62
 msgid "Date sale price ends"
 msgstr "Einde actieperiode"
 
-#: src/Helper/WcHelper.php:62
+#: src/Helper/WcHelper.php:63
 msgid "Total sales"
 msgstr "Totale verkopen"
 
-#: src/Helper/WcHelper.php:63
+#: src/Helper/WcHelper.php:64
 msgid "Tax status"
 msgstr "BTW-status"
 
-#: src/Helper/WcHelper.php:64
+#: src/Helper/WcHelper.php:65
 msgid "Tax class"
 msgstr "Belastingklasse"
 
-#: src/Helper/WcHelper.php:65
+#: src/Helper/WcHelper.php:66
 msgid "Manage stock?"
 msgstr "Voorraad beheren?"
 
-#: src/Helper/WcHelper.php:66
+#: src/Helper/WcHelper.php:67
 msgid "In stock?"
 msgstr "Op voorraad?"
 
-#: src/Helper/WcHelper.php:67
+#: src/Helper/WcHelper.php:68
 msgid "Stock status"
 msgstr "Voorraad status"
 
-#: src/Helper/WcHelper.php:68
+#: src/Helper/WcHelper.php:69
 msgid "Backorders allowed?"
 msgstr "Nabestellingen toestaan?"
 
-#: src/Helper/WcHelper.php:69
+#: src/Helper/WcHelper.php:70
 msgid "Low stock amount"
 msgstr "Drempel lage voorraad"
 
-#: src/Helper/WcHelper.php:70
+#: src/Helper/WcHelper.php:71
 msgid "Sold individually?"
 msgstr "Wordt individueel verkocht?"
 
-#: src/Helper/WcHelper.php:71
+#: src/Helper/WcHelper.php:72
 msgid "Weight"
 msgstr "Gewicht"
 
-#: src/Helper/WcHelper.php:72
+#: src/Helper/WcHelper.php:73
 msgid "Length"
 msgstr "Lengte"
 
-#: src/Helper/WcHelper.php:73
+#: src/Helper/WcHelper.php:74
 msgid "Width"
 msgstr "Breedte"
 
-#: src/Helper/WcHelper.php:74
+#: src/Helper/WcHelper.php:75
 msgid "Height"
 msgstr "Hoogte"
 
-#: src/Helper/WcHelper.php:75
+#: src/Helper/WcHelper.php:76
 msgid "Purchase note"
 msgstr "Aankoopnotitie"
 
-#: src/Helper/WcHelper.php:151
+#: src/Helper/WcHelper.php:152
 msgid "Product Code"
 msgstr "Product Code"
 
-#: src/Helper/WcHelper.php:152
+#: src/Helper/WcHelper.php:153
 msgid "Product Code 2"
 msgstr "Product Code 2"
 
-#: src/Helper/WcHelper.php:155
+#: src/Helper/WcHelper.php:156
 msgid "Perfect Brands"
 msgstr "Perfect Brands"
 
-#: src/Helper/WcHelper.php:158
+#: src/Helper/WcHelper.php:159
 msgid "EAN for WooCommerce"
 msgstr "EAN for WooCommerce"
 

@@ -55,6 +55,7 @@ class WcHelper
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'description' => TranslationHelper::translate('Description'),
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'short_description' => TranslationHelper::translate('Short description'),
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'sku' => TranslationHelper::translate('SKU'),
+            self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'global_unique_id' => TranslationHelper::translate('GTIN, UPC, EAN, or ISBN'),
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'regular_price' => TranslationHelper::translate('Regular price'),
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'sale_price' => TranslationHelper::translate('Sale price'),
             self::WC_DEFAULT_ATTRIBUTE_PREFIX . 'date_on_sale_from' => TranslationHelper::translate('Date sale price starts'),
