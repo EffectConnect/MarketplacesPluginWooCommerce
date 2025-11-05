@@ -438,14 +438,17 @@ class CatalogBuilder
         }
 
         // Attributes
+        // Taxonomies are put at the end, because a taxonomy can also appear as attribute. In that case the attribute
+        // has priority because (in case of product variations) only the attribute value that is used for the variation
+        // should be included in the export (and the taxonomy might include all attributes values).
         $attributes = $this->deduplicateAttributes(array_merge(
-            $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
             $this->getProductAttributes($wcProductVariationWrapper->getWcAttributes()),
             $this->getProductAttributesFixed(),
             $this->getProductAttributesFixedImages(),
             $this->getProductPerfectBrandsAttributes(),
             $this->getProductFields(),
-            $this->getProductMetaFields()
+            $this->getProductMetaFields(),
+            $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
         ));
         if (count($attributes) > 0) {
             $productOptionExport['attributes']['attribute'] = $attributes;
