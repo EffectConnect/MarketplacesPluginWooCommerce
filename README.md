@@ -6,10 +6,15 @@ Use this plugin to connect your WooCommerce webshop with EffectConnect Marketpla
 
 The plugin has been tested with the following requirements:
 
-| Source      | Compatible versions |
-|-------------|---------------------|
-| WooCommerce | 4.0 - 9.0.2         |
-| PHP | 7.1 - 8.1           |
+| WooCommerce version | PHP version |
+|---------------------|-------------|
+| 4                   | 7.2 - 7.4   |
+| 5                   | 7.2 - 7.4   |
+| 6                   | 7.3 - 8.0   |
+| 7                   | 7.4 - 8.1   |
+| 8                   | 7.4 - 8.2   |
+| 9                   | 7.4 - 8.2   |
+| 10                  | 7.4 - 8.3   |
 
 You can check your default PHP version by running `php -v` in your SSH console.
 If the default version does not match the table above, ask your server administrator how to run commands in another PHP version.
