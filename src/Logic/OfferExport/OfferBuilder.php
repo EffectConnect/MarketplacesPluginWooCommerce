@@ -7,7 +7,7 @@ use EffectConnect\Marketplaces\Constants\LoggerConstants;
 use EffectConnect\Marketplaces\Logging\LoggerContainer;
 use EffectConnect\Marketplaces\Logic\CatalogExport\CatalogBuilder;
 use EffectConnect\Marketplaces\Model\ConnectionResource;
-use Exception;
+use Throwable;
 use WC_Product;
 
 class OfferBuilder extends CatalogBuilder
@@ -107,7 +107,7 @@ class OfferBuilder extends CatalogBuilder
 
                 $productData = $this->buildOfferUpdate($optionsArray, $productId);
                 if (count($productData) > 0) $productModel[] = $productData;
-            } catch (Exception $e) {
+            } catch (Throwable $e) {
                 LoggerContainer::getLogger(LoggerConstants::OFFER_EXPORT)->error('Skipping invalid product', [
                     'process' => LoggerConstants::OFFER_EXPORT,
                     'message' => $e->getMessage(),
