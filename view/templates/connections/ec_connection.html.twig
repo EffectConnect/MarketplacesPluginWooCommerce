@@ -401,6 +401,23 @@
                     <p class="description">{{ __('Whether to import orders that are externally fulfilled or not. Internally fulfilled orders have status paid in EffectConnect. Externally fulfilled orders have status completed and tag external_fulfilled.') }}</p>
                 </td>
             </tr>
+            <tr>
+                <th>
+                    <label for="orderImportExternalFulfilmentOrderStatus">{{ __('Order status externally fulfilled orders') }}</label>
+                </th>
+                <td>
+                    <select id="orderImportExternalFulfilmentOrderStatus" name="order_import_external_fulfilment_order_status">
+                        {% for orderStatusId, orderStatusName in formData.getExternalFulfilmentOrderStatusOptions() %}
+                            <option
+                                    {% if orderStatusId is same as(formData.getOrderImportExternalFulfilmentOrderStatus()) %}selected="selected"{% endif %}
+                                    value="{{ orderStatusId }}">
+                                {{ orderStatusName }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <p class="description">{{ __('Optionally select what order status should be used for imported orders that are externally fulfilled.') }}</p>
+                </td>
+            </tr>
         </table>
 
         <h2 class="title">{{ __('Shipment export') }}</h2>

@@ -471,21 +471,34 @@ class OrderBuilder
     }
 
     /**
-     * TODO: use separate state (completed?) for externally fulfilled orders?
-     *
      * @param EffectConnectOrder $ecOrder
      * @throws OrderImportFailedException
      */
     protected function setStatus(EffectConnectOrder $ecOrder)
     {
-        $state    = $this->connection->getOrderImportOrderStatus();
+        // Available order states
         $wcStates = ConnectionResource::getOrderStatusOptions();
+
+        // Default order state
+        $state              = $this->connection->getOrderImportOrderStatus();
+        $stateWithoutPrefix = $this->connection->getOrderImportOrderStatus(true);
+
+        // Use custom order state for externally fulfilled orders (optional)
+        if ($this->checkIfExternallyFulfilled($ecOrder)) {
+            $externalFulfilmentState              = $this->connection->getOrderImportExternalFulfilmentOrderStatus();
+            $externalFulfilmentStateWithoutPrefix = $this->connection->getOrderImportExternalFulfilmentOrderStatus(true);
+            if (isset($wcStates[$externalFulfilmentState])) {
+                $state              = $externalFulfilmentState;
+                $stateWithoutPrefix = $externalFulfilmentStateWithoutPrefix;
+            }
+        }
+
         if (empty($state) || !isset($wcStates[$state])) {
             throw new OrderImportFailedException($this->connection->getConnectionId(), 'Order status [' . $state . '] not found.');
         }
 
         // Make sure this status change will send an email only when set in the settings.
-        $this->setOrderEmail($this->connection->getOrderImportOrderStatus(true));
+        $this->setOrderEmail($stateWithoutPrefix);
         $this->order->update_status($state, $ecOrder->getStatus());
     }
 

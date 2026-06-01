@@ -125,6 +125,11 @@ class ConnectionResource implements ConfigConstants
     /**
      * @var string
      */
+    protected $orderImportExternalFulfilmentOrderStatus;
+
+    /**
+     * @var string
+     */
     protected $orderImportIdCarrier;
 
     /**
@@ -186,6 +191,7 @@ class ConnectionResource implements ConfigConstants
         $this->offerExportVirtualStockAmount       = intval($data['offer_export_virtual_stock_amount'] ?? 99);
         $this->offerExportVirtualStockConditionalBackorders = intval($data['offer_export_virtual_stock_conditional_backorders'] ?? 0);
         $this->orderImportOrderStatus              = strval($data['order_import_order_status'] ?? 'wc-processing');
+        $this->orderImportExternalFulfilmentOrderStatus = strval($data['order_import_external_fulfilment_order_status'] ?? '');
         $this->orderImportIdCarrier                = strval($data['order_import_id_carrier'] ?? 'effectconnect_shipping');
         $this->orderImportIdPaymentModule          = strval($data['order_import_id_payment_module'] ?? 'effectconnect_payment');
         $this->orderImportExternalFulfilment       = strval($data['order_import_external_fulfilment'] ?? 'any');
@@ -378,6 +384,20 @@ class ConnectionResource implements ConfigConstants
     }
 
     /**
+     * @param bool $removePrefix
+     * @return string
+     */
+    public function getOrderImportExternalFulfilmentOrderStatus(bool $removePrefix = false): string
+    {
+        $status = $this->orderImportExternalFulfilmentOrderStatus;
+        if ($removePrefix) {
+            // Remove 'wc-' from order status (WC both uses order states with and without the prefix).
+            $status = preg_replace('~^wc-~', '', $status);
+        }
+        return $status;
+    }
+
+    /**
      * @return string
      */
     public function getOrderImportIdCarrier(): string
@@ -462,6 +482,18 @@ class ConnectionResource implements ConfigConstants
     public static function getOrderStatusOptions(): array
     {
         return self::sort(WcHelper::getOrderStatusOptions());
+    }
+
+    /**
+     * Get optional list of available order statuses.
+     *
+     * @return array
+     */
+    public static function getExternalFulfilmentOrderStatusOptions(): array
+    {
+        $options = WcHelper::getOrderStatusOptions();
+        $options[''] = '';
+        return self::sort($options);
     }
 
     /**
@@ -603,6 +635,7 @@ class ConnectionResource implements ConfigConstants
             'offer_export_virtual_stock_amount' => $this->offerExportVirtualStockAmount,
             'offer_export_virtual_stock_conditional_backorders' => $this->offerExportVirtualStockConditionalBackorders,
             'order_import_order_status' => $this->orderImportOrderStatus,
+            'order_import_external_fulfilment_order_status' => $this->orderImportExternalFulfilmentOrderStatus,
             'order_import_id_carrier' => $this->orderImportIdCarrier,
             'order_import_id_payment_module' => $this->orderImportIdPaymentModule,
             'order_import_external_fulfilment' => $this->orderImportExternalFulfilment,
