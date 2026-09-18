@@ -418,6 +418,17 @@
                     <p class="description">{{ __('Optionally select what order status should be used for imported orders that are externally fulfilled.') }}</p>
                 </td>
             </tr>
+            <tr>
+                <th>
+                    <label for="orderImportSkipReduceStock">{{ __('Skip stock reduction') }}</label>
+                </th>
+                <td>
+                    <input
+                            {% if formData.getOrderImportSkipReduceStock() %}checked{% endif %}
+                            type="checkbox" id="orderImportSkipReduceStock" name="order_import_skip_reduce_stock" value="1"/>
+                    <p class="description">{{ __('If this option is enabled, WooCommerce will skip stock reduction for imported orders that are externally fulfilled.') }}</p>
+                </td>
+            </tr>
         </table>
 
         <h2 class="title">{{ __('Shipment export') }}</h2>

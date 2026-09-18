@@ -61,6 +61,7 @@ class ECTables
          order_import_external_fulfilment VARCHAR(64) NOT NULL,   
          order_import_send_emails TINYINT(1) NOT NULL,
          order_import_skip_taxes TINYINT(1) NOT NULL,
+         order_import_skip_reduce_stock TINYINT(1) NOT NULL DEFAULT '0',
          shipment_export_when VARCHAR(64) NOT NULL,   
          shipment_export_tracking_codes VARCHAR(256) NOT NULL,   
          PRIMARY KEY (connection_id)

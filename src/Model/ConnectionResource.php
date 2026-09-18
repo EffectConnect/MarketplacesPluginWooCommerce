@@ -153,6 +153,11 @@ class ConnectionResource implements ConfigConstants
     protected $orderImportSkipTaxes;
 
     /**
+     * @var int
+     */
+    protected $orderImportSkipReduceStock;
+
+    /**
      * @var string
      */
     protected $shipmentExportWhen;
@@ -197,6 +202,7 @@ class ConnectionResource implements ConfigConstants
         $this->orderImportExternalFulfilment       = strval($data['order_import_external_fulfilment'] ?? 'any');
         $this->orderImportSendEmails               = intval($data['order_import_send_emails'] ?? 0);
         $this->orderImportSkipTaxes                = intval($data['order_import_skip_taxes'] ?? 0);
+        $this->orderImportSkipReduceStock          = intval($data['order_import_skip_reduce_stock'] ?? 0);
         $this->shipmentExportWhen                  = strval($data['shipment_export_when'] ?? 'wc-completed');
         $this->shipmentExportTrackingCodes         = strval($data['shipment_export_tracking_codes'] ?? TrackingCodeFromOrderCommentHelper::getDefaultSearchString());
     }
@@ -438,6 +444,14 @@ class ConnectionResource implements ConfigConstants
     }
 
     /**
+     * @return int
+     */
+    public function getOrderImportSkipReduceStock(): int
+    {
+        return $this->orderImportSkipReduceStock;
+    }
+
+    /**
      * @return string
      */
     public function getShipmentExportWhen(): string
@@ -641,6 +655,7 @@ class ConnectionResource implements ConfigConstants
             'order_import_external_fulfilment' => $this->orderImportExternalFulfilment,
             'order_import_send_emails' => $this->orderImportSendEmails,
             'order_import_skip_taxes' => $this->orderImportSkipTaxes,
+            'order_import_skip_reduce_stock' => $this->orderImportSkipReduceStock,
             'shipment_export_when' => $this->shipmentExportWhen,
             'shipment_export_tracking_codes' => $this->shipmentExportTrackingCodes,
         ];

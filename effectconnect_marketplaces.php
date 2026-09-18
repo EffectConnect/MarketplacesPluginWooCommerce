@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.57
+ * Version: 3.0.58
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */
@@ -11,6 +11,7 @@ use EffectConnect\Marketplaces\Controller\ECMenu;
 use EffectConnect\Marketplaces\Cron\CronSchedules;
 use EffectConnect\Marketplaces\DB\ECTables;
 use EffectConnect\Marketplaces\Logic\OfferExport\ProductWatcher;
+use EffectConnect\Marketplaces\Logic\OrderImport\OrderImportStockGuard;
 use EffectConnect\Marketplaces\Logic\ShipmentExport\ShipmentWatcher;
 use EffectConnect\Marketplaces\Model\ECPayment;
 use EffectConnect\Marketplaces\Model\ECShipping;
@@ -20,7 +21,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('EFFECTCONNECT_MARKETPLACES_VERSION')) {
-    define('EFFECTCONNECT_MARKETPLACES_VERSION', '3.0.57');
+    define('EFFECTCONNECT_MARKETPLACES_VERSION', '3.0.58');
 }
 
 class PluginActivationClass
@@ -57,6 +58,7 @@ class PluginActivationClass
     public function addWatchers()
     {
         new ProductWatcher();
+        new OrderImportStockGuard();
         new ShipmentWatcher();
     }
 

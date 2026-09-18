@@ -145,7 +145,7 @@ class OrderBuilder
             'effectconnect_order_number_channel' => $ecOrder->getIdentifiers()->getChannelNumber(),
             'effectconnect_channel_name'         => $ecOrder->getChannelInfo()->getTitle(),
             'effectconnect_channel_type'         => $channelType,
-            'effectconnect_external_fulfillment' => $this->checkIfExternallyFulfilled($ecOrder) ? 'Yes' : 'No',
+            'effectconnect_external_fulfillment' => $this->checkIfExternallyFulfilled($ecOrder) ? 'Yes' : 'No', // This value is used in OrderImportStockGuard
         ];
 
         foreach ($metaValues as $metaKey => $metaValue) {
