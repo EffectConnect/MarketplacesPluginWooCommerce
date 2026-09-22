@@ -41,6 +41,19 @@ class ShippingExportQueueRepository
     }
 
     /**
+     * @param int $id
+     * @return ShipmentExportQueueResource
+     */
+    public function get(int $id): ShipmentExportQueueResource
+    {
+        $result = $this->wpdb->get_row(
+            $this->wpdb->prepare("SELECT * FROM `$this->tableName` WHERE `shipping_export_queue_id` = %s",
+                $id), 'ARRAY_A'
+        );
+
+        return new ShipmentExportQueueResource((array)$result);
+    }
+    /**
      * @param int $orderId
      * @return ShipmentExportQueueResource
      */

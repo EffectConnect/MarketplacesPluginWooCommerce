@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-09-18 13:55+0200\n"
-"PO-Revision-Date: 2026-09-18 13:58+0200\n"
+"POT-Creation-Date: 2026-09-21 14:34+0200\n"
+"PO-Revision-Date: 2026-09-21 14:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -1082,73 +1082,73 @@ msgstr "Elke 5 dagen"
 msgid "1 week"
 msgstr "Elke week"
 
-#: src/Logic/OrderImport/OrderBuilder.php:396
+#: src/Logic/OrderImport/OrderBuilder.php:395
 msgid "EffectConnect Marketplaces channel"
 msgstr "EffectConnect Marketplaces kanaal"
 
-#: src/Model/ConnectionResource.php:520
+#: src/Model/ConnectionResource.php:534
 msgid "WooCommerce order state changed to"
 msgstr "WooCommerce order status is gewijzigd naar"
 
-#: src/Model/ConnectionResource.php:524
+#: src/Model/ConnectionResource.php:538
 msgid "WooCommerce order received a Track and Trace code from MyParcel"
 msgstr ""
 "WooCommerce order heeft een Track and Trace code ontvangen vanuit MyParcel"
 
-#: src/Model/ConnectionResource.php:527
+#: src/Model/ConnectionResource.php:541
 msgid "Don't update orders"
 msgstr "Orders niet bijwerken"
 
-#: src/Model/ConnectionResource.php:553
+#: src/Model/ConnectionResource.php:567
 msgid "General"
 msgstr "Algemeen"
 
-#: src/Model/ConnectionResource.php:554
+#: src/Model/ConnectionResource.php:568
 msgid "Exclude from export"
 msgstr "Uitsluiten van export"
 
-#: src/Model/ConnectionResource.php:556
+#: src/Model/ConnectionResource.php:570
 msgid "Custom attributes"
 msgstr "Custom attributen"
 
-#: src/Model/ConnectionResource.php:557
+#: src/Model/ConnectionResource.php:571
 msgid "Default attributes"
 msgstr "Default attributen"
 
-#: src/Model/ConnectionResource.php:558
+#: src/Model/ConnectionResource.php:572
 msgid "Taxonomies"
 msgstr "Taxonomieën"
 
-#: src/Model/ConnectionResource.php:561
+#: src/Model/ConnectionResource.php:575
 msgid "External plugins"
 msgstr "Externe plugins"
 
-#: src/Model/ConnectionResource.php:580
+#: src/Model/ConnectionResource.php:594
 msgid "Import both internally and externally fulfilled orders"
 msgstr ""
 "Zowel interne orders als orders met logistiek door marketplace importeren"
 
-#: src/Model/ConnectionResource.php:581
+#: src/Model/ConnectionResource.php:595
 msgid "Import only internally fulfilled orders"
 msgstr "Alleen interne orders importeren"
 
-#: src/Model/ConnectionResource.php:582
+#: src/Model/ConnectionResource.php:596
 msgid "Import only externally fulfilled orders"
 msgstr "Alleen orders importeren met logistiek door marketplace"
 
-#: src/Model/ConnectionResource.php:595
+#: src/Model/ConnectionResource.php:609
 msgid "Please fill in a connection name"
 msgstr "Vul een eigen referentie in voor de connectie"
 
-#: src/Model/ConnectionResource.php:600
+#: src/Model/ConnectionResource.php:614
 msgid "Please fill in a public key"
 msgstr "Vul een publieke sleutel in"
 
-#: src/Model/ConnectionResource.php:605
+#: src/Model/ConnectionResource.php:619
 msgid "Please fill in a private key"
 msgstr "Vul een geheime sleutel in"
 
-#: src/Model/ConnectionResource.php:610
+#: src/Model/ConnectionResource.php:624
 msgid "The fictional stock amount should be between 0 and 9999"
 msgstr "Het fictieve voorraad aantal moet tussen 0 en 9999 liggen"
 
@@ -1557,6 +1557,28 @@ msgstr ""
 "Gebruik [code] als placeholder voor de tracking code. Voorbeeld: \"Tracking "
 "code: [code]\". Gebruik meerdere regels om meerdere formats te kunnen "
 "gebruiken."
+
+#: view/templates/connections/ec_connection.html.twig:464
+msgid "Waiting time in minutes"
+msgstr "Wachttijd in minuten"
+
+#: view/templates/connections/ec_connection.html.twig:469
+msgid ""
+"Minutes to wait after an order status changes in WooCommerce before sending "
+"the update to EffectConnect — giving the order time to receive a tracking "
+"code first."
+msgstr ""
+"Het aantal minuten dat er wordt gewacht met het sturen van een update naar "
+"EffectConnect nadat de status van de order is gewijzigd in WooCommerce, "
+"zodat een tracking code die later binnen komt alsnog verwerkt kan worden."
+
+#: view/templates/connections/ec_connection.html.twig:470
+msgid ""
+"A value of 0 means there is no waiting time and the update is sent "
+"immediately (default behaviour)."
+msgstr ""
+"Een waarde van 0 betekent dat er geen wachttijd gehanteerd wordt en een "
+"statusverandering direct wordt verwerkt (standaard werkwijze)."
 
 #: view/templates/connections/ec_connections_listview.html.twig:2
 msgid "EffectConnect - Connections"

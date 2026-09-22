@@ -63,6 +63,7 @@ class ECTables
          order_import_skip_taxes TINYINT(1) NOT NULL,
          order_import_skip_reduce_stock TINYINT(1) NOT NULL DEFAULT '0',
          shipment_export_when VARCHAR(64) NOT NULL,   
+         shipment_export_delay INT(11) UNSIGNED NOT NULL DEFAULT '0',
          shipment_export_tracking_codes VARCHAR(256) NOT NULL,   
          PRIMARY KEY (connection_id)
     ) $charset_collate;";
@@ -130,6 +131,7 @@ class ECTables
         ec_marketplaces_identification_number VARCHAR(128) NOT NULL,
         ec_marketplaces_order_line_ids text NOT NULL,
         is_shipped TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
+        is_shipped_at datetime DEFAULT NULL,
         carrier_name VARCHAR(64) DEFAULT NULL,
         tracking_number VARCHAR(64) DEFAULT NULL,
         order_imported_at datetime DEFAULT NULL,

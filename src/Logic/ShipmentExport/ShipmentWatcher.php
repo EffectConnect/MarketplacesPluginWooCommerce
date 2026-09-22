@@ -4,6 +4,7 @@ namespace EffectConnect\Marketplaces\Logic\ShipmentExport;
 
 use EffectConnect\Marketplaces\DB\ConnectionRepository;
 use EffectConnect\Marketplaces\DB\ShippingExportQueueRepository;
+use EffectConnect\Marketplaces\Helper\DateTimeHelper;
 use EffectConnect\Marketplaces\Helper\MyParcelHelper;
 use EffectConnect\Marketplaces\Helper\TrackingCodeFromOrderCommentHelper;
 
@@ -59,6 +60,11 @@ class ShipmentWatcher
                     $shipmentExportQueueResource->setTrackingNumber($trackingCode);
                 }
 
+                // Set first shipped date (leave untouched after subsequent updates)
+                if (!$shipmentExportQueueResource->getIsShippedAt()) {
+                    $shipmentExportQueueResource->setIsShippedAt(DateTimeHelper::now());
+                }
+
                 $this->shippingExportQueueRepository->update($shipmentExportQueueResource);
             }
         }
@@ -91,6 +97,10 @@ class ShipmentWatcher
                         if (is_array($shipmentData) && isset($shipmentData['track_trace']) && !empty($shipmentData['track_trace'])) {
                             $shipmentExportQueueResource->setIsShipped(1);
                             $shipmentExportQueueResource->setTrackingNumber(strval($shipmentData['track_trace']));
+                            // Set first shipped date (leave untouched after subsequent updates)
+                            if (!$shipmentExportQueueResource->getIsShippedAt()) {
+                                $shipmentExportQueueResource->setIsShippedAt(DateTimeHelper::now());
+                            }
                             $this->shippingExportQueueRepository->update($shipmentExportQueueResource);
                         }
                     }

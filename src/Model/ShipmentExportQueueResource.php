@@ -38,6 +38,11 @@ class ShipmentExportQueueResource
     protected $isShipped;
 
     /**
+     * @var DateTime|null
+     */
+    protected $isShippedAt;
+
+    /**
      * @var string|null
      */
     protected $carrierName;
@@ -84,6 +89,11 @@ class ShipmentExportQueueResource
         $this->importError                        = intval($data['import_error'] ?? 0);
         $this->carrierName                        = isset($data['carrier_name']) ? strval($data['carrier_name']) : null;
         $this->trackingNumber                     = isset($data['tracking_number']) ? strval($data['tracking_number']) : null;
+        try {
+            $this->isShippedAt = isset($data['is_shipped_at']) ? new DateTime($data['is_shipped_at']) : null;
+        } catch (Exception $e) {
+            $this->isShippedAt = null;
+        }
         try {
             $this->orderImportedAt = isset($data['order_imported_at']) ? new DateTime($data['order_imported_at']) : null;
         } catch (Exception $e) {
@@ -174,6 +184,22 @@ class ShipmentExportQueueResource
     }
 
     /**
+     * @return DateTime|null
+     */
+    public function getOrderImportedAt(): ?DateTime
+    {
+        return $this->orderImportedAt;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getIsShippedAt(): ?DateTime
+    {
+        return $this->isShippedAt;
+    }
+
+    /**
      * @param int $orderId
      * @return void
      */
@@ -216,6 +242,15 @@ class ShipmentExportQueueResource
     public function setIsShipped(int $isShipped)
     {
         $this->isShipped = $isShipped;
+    }
+
+    /**
+     * @param DateTime $isShippedAt
+     * @return void
+     */
+    public function setIsShippedAt(DateTime $isShippedAt): void
+    {
+        $this->isShippedAt = $isShippedAt;
     }
 
     /**
@@ -294,6 +329,10 @@ class ShipmentExportQueueResource
 
         if (!is_null($this->trackingNumber)) {
             $fields['tracking_number'] = $this->trackingNumber;
+        }
+
+        if (!is_null($this->isShippedAt)) {
+            $fields['is_shipped_at'] = $this->isShippedAt->format('Y-m-d H:i:s');
         }
 
         if (!is_null($this->orderImportedAt)) {

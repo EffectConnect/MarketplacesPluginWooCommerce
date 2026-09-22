@@ -459,6 +459,18 @@
                     <p class="description">{{ __('Tracking codes format to look for in order comments. Use [code] as placeholder for the tracking code. For example: "Tracking code: [code]". Separate multitple format by new lines.') }}</p>
                 </td>
             </tr>
+            <tr class="dependsOnShipmentExportWhenWait">
+                <th>
+                    <label for="shipmentExportDelay">{{ __('Waiting time in minutes') }}</label>
+                </th>
+                <td>
+                    <input type="number" id="shipmentExportDelay" name="shipment_export_delay" value="{{ formData.getShipmentExportDelay() }}"/>
+                    <p class="description">
+                        {{ __('Minutes to wait after an order status changes in WooCommerce before sending the update to EffectConnect — giving the order time to receive a tracking code first.') }}
+                        {{ __('A value of 0 means there is no waiting time and the update is sent immediately (default behaviour).') }}
+                    </p>
+                </td>
+            </tr>
         </table>
 
         {{ button|raw }}
@@ -467,6 +479,7 @@
 
 <style>
     .dependsOnShipmentExportWhen,
+    .dependsOnShipmentExportWhenWait,
     .dependsOnInvertedCatalogExportWpmlLanguages,
     .dependsOnCatalogExportEanAttribute {
         display: none;
@@ -505,8 +518,10 @@
         function setTrackingCodes() {
             if (shipmentExportWhenElement.val().startsWith('wc-')) {
                 jQuery('.dependsOnShipmentExportWhen').show();
+                jQuery('.dependsOnShipmentExportWhenWait').show();
             } else {
                 jQuery('.dependsOnShipmentExportWhen').hide();
+                jQuery('.dependsOnShipmentExportWhenWait').hide();
             }
         }
         shipmentExportWhenElement.on('change', function() {

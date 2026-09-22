@@ -11,6 +11,7 @@ use EffectConnect\Marketplaces\Exception\OrderImportFailedException;
 use EffectConnect\Marketplaces\Exception\OrdersImportFailedException;
 use EffectConnect\Marketplaces\Exception\SdkCoreNotInitializedException;
 use EffectConnect\Marketplaces\Exception\ShipmentsExportFailedException;
+use EffectConnect\Marketplaces\Helper\DateTimeHelper;
 use EffectConnect\Marketplaces\Logging\LoggerContainer;
 use EffectConnect\Marketplaces\Logic\ConfigContainer;
 use EffectConnect\Marketplaces\Logic\OrderImport\OrderBuilder;
@@ -226,17 +227,49 @@ class OrderHandler extends ApiCallHandler
             'connection_id' => $connection->getConnectionId(),
         ]);
 
-        foreach ($shipmentExportQueueResources as $shipmentExportQueueResource)
+        // Get the queue IDs
+        $shipmentExportQueueIds = array_map(function($element) {
+            return $element->getShippingExportQueueId();
+        }, $shipmentExportQueueResources);
+        foreach ($shipmentExportQueueIds as $shipmentExportQueueId)
         {
+            // The $shipmentExportQueueResources list could be outdated already, since multiple trackingExportCall calls
+            // could have been executed by now, and in the meantime one of the orders within trackingExportCall could be
+            // given a T&T code. SO let's reload by the queue ID.
+            $shipmentExportQueueResource = $shippingExportQueueRepository->get($shipmentExportQueueId);
+            if ($shipmentExportQueueResource->getShippingExportQueueId() === 0) {
+                LoggerContainer::getLogger(LoggerConstants::SHIPMENT_EXPORT)->error('Shipment export failed.', [
+                    'process'       => LoggerConstants::SHIPMENT_EXPORT,
+                    'connection_id' => $connection->getConnectionId(),
+                    'id'            => $shipmentExportQueueId,
+                ]);
+                continue;
+            }
+
+            // Skip the export in case a delay has been set and this delay has not past yet.
+            if (
+                $connection->getShipmentExportDelay() > 0
+                && $shipmentExportQueueResource->getIsShippedAt() instanceof DateTime
+                && DateTimeHelper::now()->getTimestamp() - $shipmentExportQueueResource->getIsShippedAt()->getTimestamp() < $connection->getShipmentExportDelay() * 60
+            ) {
+                LoggerContainer::getLogger(LoggerConstants::SHIPMENT_EXPORT)->info('Shipment export delayed.', [
+                    'process'         => LoggerConstants::SHIPMENT_EXPORT,
+                    'connection_id'   => $connection->getConnectionId(),
+                    'tracking_export' => $shipmentExportQueueResource->toArray(),
+                    'delay'           => $connection->getShipmentExportDelay(),
+                ]);
+                continue;
+            }
+
             // Save that we are exporting this tracking code to prevent other cronjobs to process the same item.
             // Bad luck if the export fails, we will not try to do this again. All tracking items we export (either
             // by order state 'shipped' or when a tracking number was added) will get the 'shipped' status in
             // EffectConnect. Adding a tracking number (and carrier) to the order update is optional.
             // Each type of export is done once (set EC order to 'shipped' and add tracking number - we won't do
             // any updates).
-            $shipmentExportQueueResource->setShippedExportedAt(new DateTime);
+            $shipmentExportQueueResource->setShippedExportedAt(DateTimeHelper::now());
             if ($shipmentExportQueueResource->getCarrierName() !== null || $shipmentExportQueueResource->getTrackingNumber() !== null) {
-                $shipmentExportQueueResource->setTrackingExportedAt(new DateTime);
+                $shipmentExportQueueResource->setTrackingExportedAt(DateTimeHelper::now());
             }
             $shippingExportQueueRepository->update($shipmentExportQueueResource);
 

@@ -2,14 +2,13 @@
 
 namespace EffectConnect\Marketplaces\Logic\OrderImport;
 
-use DateTime;
 use EffectConnect\Marketplaces\Constants\LoggerConstants;
 use EffectConnect\Marketplaces\DB\OrderRepository;
 use EffectConnect\Marketplaces\DB\ProductRepository;
 use EffectConnect\Marketplaces\DB\ShippingExportQueueRepository;
 use EffectConnect\Marketplaces\Enums\ExternalFulfilmentEnum;
 use EffectConnect\Marketplaces\Exception\OrderImportFailedException;
-use EffectConnect\Marketplaces\Helper\MyParcelHelper;
+use EffectConnect\Marketplaces\Helper\DateTimeHelper;
 use EffectConnect\Marketplaces\Logging\LoggerContainer;
 use EffectConnect\Marketplaces\Model\ConnectionResource;
 use EffectConnect\Marketplaces\Model\ShipmentExportQueueResource;
@@ -520,7 +519,7 @@ class OrderBuilder
         $shipmentExportQueueResource->setConnectionId($this->connection->getConnectionId());
         $shipmentExportQueueResource->setEcMarketplacesIdentificationNumber($ecOrder->getIdentifiers()->getEffectConnectNumber());
         $shipmentExportQueueResource->setEcMarketplacesOrderLineIds($orderLineIds);
-        $shipmentExportQueueResource->setOrderImportedAt(new DateTime);
+        $shipmentExportQueueResource->setOrderImportedAt(DateTimeHelper::now());
         $this->shippingExportQueueRepo->upsert($shipmentExportQueueResource);
     }
 

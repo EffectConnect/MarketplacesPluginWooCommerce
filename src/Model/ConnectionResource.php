@@ -163,6 +163,11 @@ class ConnectionResource implements ConfigConstants
     protected $shipmentExportWhen;
 
     /**
+     * @var int
+     */
+    protected $shipmentExportDelay;
+
+    /**
      * @var string
      */
     protected $shipmentExportTrackingCodes;
@@ -204,6 +209,7 @@ class ConnectionResource implements ConfigConstants
         $this->orderImportSkipTaxes                = intval($data['order_import_skip_taxes'] ?? 0);
         $this->orderImportSkipReduceStock          = intval($data['order_import_skip_reduce_stock'] ?? 0);
         $this->shipmentExportWhen                  = strval($data['shipment_export_when'] ?? 'wc-completed');
+        $this->shipmentExportDelay                 = intval($data['shipment_export_delay'] ?? 0);
         $this->shipmentExportTrackingCodes         = strval($data['shipment_export_tracking_codes'] ?? TrackingCodeFromOrderCommentHelper::getDefaultSearchString());
     }
 
@@ -460,6 +466,14 @@ class ConnectionResource implements ConfigConstants
     }
 
     /**
+     * @return int
+     */
+    public function getShipmentExportDelay(): int
+    {
+        return $this->shipmentExportDelay;
+    }
+
+    /**
      * @return string
      */
     public function getShipmentExportTrackingCodes(): string
@@ -657,6 +671,7 @@ class ConnectionResource implements ConfigConstants
             'order_import_skip_taxes' => $this->orderImportSkipTaxes,
             'order_import_skip_reduce_stock' => $this->orderImportSkipReduceStock,
             'shipment_export_when' => $this->shipmentExportWhen,
+            'shipment_export_delay' => $this->shipmentExportDelay,
             'shipment_export_tracking_codes' => $this->shipmentExportTrackingCodes,
         ];
     }
