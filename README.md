@@ -1,3 +1,6 @@
+> [!WARNING]
+> This branch does not contain the latest plugin updates and solely exists to support the older WooCommerce versions 4, 5 and 6.
+
 # EffectConnect Marketplaces - WooCommerce plugin
 
 Use this plugin to connect your WooCommerce webshop with EffectConnect Marketplaces. For more information about EffectConnect, go to the [EffectConnect website](https://www.effectconnect.com "EffectConnect Website").
