@@ -12,9 +12,10 @@ The plugin has been tested with the following requirements:
 | 5                   | 7.2 - 7.4   |
 | 6                   | 7.3 - 8.0   |
 | 7                   | 7.4 - 8.1   |
-| 8                   | 7.4 - 8.2   |
-| 9                   | 7.4 - 8.2   |
-| 10                  | 7.4 - 8.3   |
+| 8                   | 7.4 - 8.3   |
+| 9                   | 7.4 - 8.4   |
+| 10                  | 7.4 - 8.4   |
+| 11                  | 7.4 - 8.5   |
 
 You can check your default PHP version by running `php -v` in your SSH console.
 If the default version does not match the table above, ask your server administrator how to run commands in another PHP version.

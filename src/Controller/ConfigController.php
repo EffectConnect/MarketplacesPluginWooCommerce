@@ -26,7 +26,7 @@ class ConfigController extends ConfigContainer implements ControllerInterface
         $options['ShipmentExport'] = $this->getShipmentExportSettings();
         $options['Logging']        = $this->getLoggingSettings();
 
-        $this->render('options/ec_settings_list.html.twig', [
+        $this->render('options/ec_settings_list.php', [
             'options' => $options,
             'button'  => get_submit_button(TranslationHelper::translate('Save settings'), 'primary', 'save_config'),
         ]);

@@ -17,7 +17,6 @@ use EffectConnect\Marketplaces\Logic\ConfigContainer;
 use EffectConnect\Marketplaces\Model\ConnectionResource;
 use EffectConnect\Marketplaces\Model\WcProductVariationWrapper;
 use Exception;
-use Laminas\Validator\Barcode;
 use Throwable;
 use WC_Meta_Data;
 use WC_Product;
@@ -448,7 +447,7 @@ class CatalogBuilder
             $this->getProductPerfectBrandsAttributes(),
             $this->getProductFields(),
             $this->getProductMetaFields(),
-            $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : [],
+            $this->connection->getCatalogExportTaxonomies() ? $this->getProductTaxonomies() : []
         ));
         if (count($attributes) > 0) {
             $productOptionExport['attributes']['attribute'] = $attributes;
@@ -1550,8 +1549,16 @@ class CatalogBuilder
      */
     protected function validateEAN(string $ean): bool
     {
-        $validator = new Barcode('EAN13');
-        return $validator->isValid($ean);
+        if (strlen($ean) !== 13 || strspn($ean, '0123456789') !== 13) {
+            return false;
+        }
+
+        $sum = 0;
+        for ($i = 0; $i < 12; $i++) {
+            $sum += (int) $ean[$i] * ($i % 2 === 0 ? 1 : 3);
+        }
+
+        return (10 - $sum % 10) % 10 === (int) $ean[12];
     }
 
     /**

@@ -16,11 +16,16 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+        }
+    },
     "require": {
-        "effectconnect/php-sdk": "^3.2",
-        "twig/twig": "^3.0",
-        "laminas/laminas-validator": "2.15.x-dev",
-        "monolog/monolog": "2.x-dev"
+        "php": ">=7.2.5",
+        "effectconnect/php-sdk": "^3.2.12",
+        "monolog/monolog": "^2.10"
     },
     "autoload": {
         "psr-4": {

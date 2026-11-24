@@ -3,13 +3,7 @@
 namespace EffectConnect\Marketplaces\Controller;
 
 use EffectConnect\Marketplaces\Helper\SessionMessageHelper;
-use EffectConnect\Marketplaces\Helper\TranslationHelper;
-use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
-use Twig\Loader\FilesystemLoader;
-use Twig\TwigFunction;
+use InvalidArgumentException;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
@@ -17,11 +11,12 @@ if (!defined('ABSPATH')) {
 
 class BaseController
 {
-    /**
-     * Instantiate Twig
-     * @var Environment
-     */
-    protected $twig;
+    private const TEMPLATES = [
+        'connections/ec_connection.php',
+        'connections/ec_connections_listview.php',
+        'logs/ec_logs.php',
+        'options/ec_settings_list.php',
+    ];
 
     /**
      * @var SessionMessageHelper
@@ -30,12 +25,6 @@ class BaseController
 
     public function __construct()
     {
-        $loader = new FilesystemLoader(__DIR__ . '/../../view/templates');
-        $this->twig = new Environment($loader);
-        $this->twig->addFunction(new TwigFunction('__', function (string $text, array $parameters = []) {
-            return sprintf(__($text, TranslationHelper::getTextDomain()), ...$parameters);
-        }));
-
         $this->messagesContainer = new SessionMessageHelper();
     }
 
@@ -44,12 +33,18 @@ class BaseController
      * @param array $context
      * @return void
      */
-    public function render(string $name, array $context = [])
+    public function render(string $name, array $context = []): void
     {
-        try {
-            $context['errors']  = $this->messagesContainer->getErrors();
-            $context['notices'] = $this->messagesContainer->getNotices();
-            echo $this->twig->render($name, $context);
-        } catch (LoaderError | RuntimeError | SyntaxError $e) {}
+        if (!in_array($name, self::TEMPLATES, true)) {
+            throw new InvalidArgumentException(sprintf('Unknown admin template: %s', $name));
+        }
+
+        $context['errors']  = $this->messagesContainer->getErrors();
+        $context['notices'] = $this->messagesContainer->getNotices();
+
+        (static function (string $templatePath, array $context): void {
+            extract($context, EXTR_SKIP);
+            require $templatePath;
+        })(__DIR__ . '/../../view/templates/' . $name, $context);
     }
 }

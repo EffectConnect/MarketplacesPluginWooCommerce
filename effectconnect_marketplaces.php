@@ -2,7 +2,8 @@
 /**
  * Plugin Name: EffectConnect Marketplaces
  * Description: This plugin will allow you to connect your WooCommerce 4.0+ webshop with EffectConnect Marketplaces.
- * Version: 3.0.59
+ * Version: 3.1.0
+ * Requires PHP: 7.2.5
  * Author: EffectConnect
  * Author URI: https://www.effectconnect.com/
  */
@@ -21,7 +22,7 @@ if (!defined('ABSPATH')) {
 }
 
 if (!defined('EFFECTCONNECT_MARKETPLACES_VERSION')) {
-    define('EFFECTCONNECT_MARKETPLACES_VERSION', '3.0.59');
+    define('EFFECTCONNECT_MARKETPLACES_VERSION', '3.1.0');
 }
 
 class PluginActivationClass

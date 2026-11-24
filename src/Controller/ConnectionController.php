@@ -71,7 +71,7 @@ class ConnectionController extends BaseController implements ControllerInterface
     public function showListViewPage()
     {
         $connections = $this->connectionRepo->getAllConnections();
-        $this->render('connections/ec_connections_listview.html.twig', [
+        $this->render('connections/ec_connections_listview.php', [
             'connections' => $connections,
             'url'         => $this->url,
         ]);
@@ -105,7 +105,7 @@ class ConnectionController extends BaseController implements ControllerInterface
             $formData = $this->connectionRepo->get($connectionId);
         }
 
-        $this->render('connections/ec_connection.html.twig', [
+        $this->render('connections/ec_connection.php', [
             'activeWpmlLanguages' => LanguagePluginHelper::getActiveLanguageCodes(),
             'defaultWpmlLanguage' => LanguagePluginHelper::getDefaultLanguage(),
             'wpmlPluginName'      => LanguagePluginHelper::getPluginName(),

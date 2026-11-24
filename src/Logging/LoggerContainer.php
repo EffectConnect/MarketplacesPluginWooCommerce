@@ -11,7 +11,6 @@ use EffectConnect\Marketplaces\Helper\XmlFileHelper;
 use EffectConnect\Marketplaces\Constants\FilePathConstants;
 use EffectConnect\Marketplaces\Constants\LoggerConstants;
 use Exception;
-use Laminas\Validator\Date;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
